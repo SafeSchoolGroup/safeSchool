@@ -1,0 +1,85 @@
+api_etablissement_index:
+    path:     /
+    defaults: { _controller: "APIEtablissementBundle:Etablissement:index" }
+    methods:  GET
+
+api_etablissement_show:
+    path:     /{id}/show
+    defaults: { _controller: "APIEtablissementBundle:Etablissement:show" }
+    methods:  GET
+
+api_etablissement_new:
+    path:     /new
+    defaults: { _controller: "APIEtablissementBundle:Etablissement:new" }
+    methods:  [GET, POST]
+
+api_etablissement_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "APIEtablissementBundle:Etablissement:edit" }
+    methods:  [GET, POST]
+
+api_etablissement_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "APIEtablissementBundle:Etablissement:delete" }
+    methods:  DELETE
+
+api_etablissement_filiere:
+    path:     /{id}/filiere
+    defaults: { _controller: "APIEtablissementBundle:Etablissement:ajaxFiliere" }
+    methods:  [GET, POST]
+
+api_etablissement_actualite:
+    path:     /{id}/actualite
+    defaults: { _controller: "APIEtablissementBundle:Etablissement:ajaxActu" }
+    methods:  [GET, POST]
+
+api_etablissement_actualiteBg:
+    path:     /last_bg
+    defaults: { _controller: "APIEtablissementBundle:Etablissement:ajaxLoadLastActuBg" }
+    methods:  [GET, POST]
+
+api_etablissement_matieres:
+    path:     /{id}/matiere
+    defaults: { _controller: "APIEtablissementBundle:Etablissement:listeModalMatieres" }
+    methods:  [GET, POST]
+
+api_etablissement_annonces:
+    path:     /annonce
+    defaults: { _controller: "APIEtablissementBundle:Etablissement:listeAnnoncesComs" }
+    methods:  [GET, POST]
+
+api_etablissement_contact:
+    path:     /contact
+    defaults: { _controller: "APIEtablissementBundle:Etablissement:contact" }
+    methods:  [GET, POST]
+
+# api_etablissement_listeAjax:
+#     path:     /liste/{niveau}/{statut}/{categorie}
+#     defaults: { _controller: "APIEtablissementBundle:Etablissement:ajaxListeEtablissements" }
+#     methods:  [GET, POST]
+
+api_etablissement_liste:
+    path:     /{niveau}/{statut}
+    defaults: { _controller: "APIEtablissementBundle:Etablissement:listeEtablissementsByCriteria" }
+    methods:  [GET, POST]
+
+api_etablissement_list:
+    path:     /list
+    defaults: { _controller: "APIEtablissementBundle:Etablissement:listOfEtablissements" }
+    methods:  [GET, POST]
+
+api_etablissement_liste_actus:
+    path:     /allActus
+    defaults: { _controller: "APIEtablissementBundle:Etablissement:listeAllActus" }
+    methods:  [GET, POST]
+
+api_etablissement_school_home:
+    path:     /home
+    defaults: { _controller: "APIEtablissementBundle:Etablissement:schoolHome" }
+    methods:  [GET]
+
+# post final school registration
+api_etablissement_school_final_registration:
+    path:     /ajax/registration
+    defaults: { _controller: "APIEtablissementBundle:Etablissement:ajaxSchoolInfo" }
+    methods:  [GET,POST]

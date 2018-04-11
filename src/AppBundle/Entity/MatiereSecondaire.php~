@@ -1,0 +1,503 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * MatiereSecondaire
+ */
+class MatiereSecondaire
+{
+    /**
+     * @var int
+     */
+    private $id;
+
+    /**
+     * @var EtablissementClasse
+     */
+    private $etablissementClasse;
+
+    /**
+     * @var string
+     */
+    private $codeMatiere;
+
+    /**
+     * @var string
+     */
+    private $libelleMatiere;
+
+    /**
+     * @var int
+     */
+    private $credit;
+
+    /**
+     * @var int
+     */
+    private $masseHoraire;
+
+    protected $matiereSecondaireProfs = null;
+    protected $matiereSecondaireApprenants = null;
+
+    /**
+     * @var \Doctrine\Common\Collections\ArrayCollection
+     */
+    private $matiereProgCoursSecondaire;
+
+    /**
+     * @var \Doctrine\Common\Collections\ArrayCollection
+     */
+    private $etablissementProfMatieresSecondaire;
+
+
+    /**
+     * Constructor
+     *
+     */
+    public function __construct() {
+        $this->matiereSecondaireProfs = new ArrayCollection();
+        $this->matiereSecondaireApprenants = new ArrayCollection();
+        $this->matiereProgCoursSecondaire = new ArrayCollection();
+        $this->etablissementProfMatieresSecondaire = new ArrayCollection();
+
+
+    }
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Get codeMatiere
+     *
+     * @return string
+     */
+    public function getCodeMatiere()
+    {
+        return $this->codeMatiere;
+    }
+
+    /**
+     * Set codeMatiere
+     *
+     * @param string $codeMatiere
+     * @return Matiere
+     */
+    public function setCodeMatiere($codeMatiere)
+    {
+        $this->codeMatiere = $codeMatiere;
+
+        return $this;
+    }
+
+    /**
+     * Get libelleMatiere
+     *
+     * @return string
+     */
+    public function getLibelleMatiere()
+    {
+        return $this->libelleMatiere;
+    }
+
+    /**
+     * Set libelleMatiere
+     *
+     * @param string $libelleMatiere
+     * @return Matiere
+     */
+    public function setLibelleMatiere($libelleMatiere)
+    {
+        $this->libelleMatiere = $libelleMatiere;
+
+        return $this;
+    }
+
+    /**
+     * Get credit
+     *
+     * @return integer
+     */
+    public function getCredit()
+    {
+        return $this->credit;
+    }
+
+    /**
+     * Set credit
+     *
+     * @param integer $credit
+     * @return Matiere
+     */
+    public function setCredit($credit)
+    {
+        $this->credit = $credit;
+
+        return $this;
+    }
+
+    /**
+     * Get masseHoraire
+     *
+     * @return integer
+     */
+    public function getMasseHoraire()
+    {
+        return $this->masseHoraire;
+    }
+
+    /**
+     * Set masseHoraire
+     *
+     * @param integer $masseHoraire
+     * @return Matiere
+     */
+    public function setMasseHoraire($masseHoraire)
+    {
+        $this->masseHoraire = $masseHoraire;
+
+        return $this;
+    }
+
+    /**
+     * Add matiereProfs
+     *
+     * @param \AppBundle\Entity\Enseigner $matiereProfs
+     * @return Matiere
+     */
+    public function addMatiereProf(\AppBundle\Entity\Enseigner $matiereProfs)
+    {
+        $this->matiereProfs[] = $matiereProfs;
+
+        return $this;
+    }
+
+    /**
+     * Remove matiereProfs
+     *
+     * @param \AppBundle\Entity\Enseigner $matiereProfs
+     */
+    public function removeMatiereProf(\AppBundle\Entity\Enseigner $matiereProfs)
+    {
+        $this->matiereProfs->removeElement($matiereProfs);
+    }
+
+    /**
+     * Get matiereProfs
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getMatiereProfs()
+    {
+        return $this->matiereProfs;
+    }
+
+    /**
+     * Get niveauEtude
+     *
+     * @return \AppBundle\Entity\NiveauEtude
+     */
+    public function getNiveauEtude()
+    {
+        return $this->niveauEtude;
+    }
+
+    /**
+     * Set niveauEtude
+     *
+     * @param \AppBundle\Entity\NiveauEtude $niveauEtude
+     * @return Matiere
+     */
+    public function setNiveauEtude(\AppBundle\Entity\NiveauEtude $niveauEtude = null)
+    {
+        $this->niveauEtude = $niveauEtude;
+
+        return $this;
+    }
+
+    /**
+     * Get etablissementFiliere
+     *
+     * @return \AppBundle\Entity\EtablissementFiliere
+     */
+    public function getEtablissementFiliere()
+    {
+        return $this->etablissementFiliere;
+    }
+
+    /**
+     * Set etablissementFiliere
+     *
+     * @param \AppBundle\Entity\EtablissementFiliere $etablissementFiliere
+     *
+     * @return Matiere
+     */
+    public function setEtablissementFiliere(\AppBundle\Entity\EtablissementFiliere $etablissementFiliere = null)
+    {
+        $this->etablissementFiliere = $etablissementFiliere;
+
+        return $this;
+    }
+
+    /**
+     * Get prof
+     *
+     * @return \AppBundle\Entity\Prof
+     */
+    public function getProf()
+    {
+        return $this->prof;
+    }
+
+    /**
+     * Set prof
+     *
+     * @param \AppBundle\Entity\Prof $prof
+     *
+     * @return Matiere
+     */
+    public function setProf(\AppBundle\Entity\Prof $prof = null)
+    {
+        $this->prof = $prof;
+
+        return $this;
+    }
+
+    /**
+     * Add matiereApprenant
+     *
+     * @param \AppBundle\Entity\Note $matiereApprenant
+     *
+     * @return Matiere
+     */
+    public function addMatiereApprenant(\AppBundle\Entity\Note $matiereApprenant)
+    {
+        $this->matiereApprenants[] = $matiereApprenant;
+
+        return $this;
+    }
+
+    /**
+     * Remove matiereApprenant
+     *
+     * @param \AppBundle\Entity\Note $matiereApprenant
+     */
+    public function removeMatiereApprenant(\AppBundle\Entity\Note $matiereApprenant)
+    {
+        $this->matiereApprenants->removeElement($matiereApprenant);
+    }
+
+    /**
+     * Get matiereApprenants
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getMatiereApprenants()
+    {
+        return $this->matiereApprenants;
+    }
+
+    /**
+     * Add matiereProgCour
+     *
+     * @param \AppBundle\Entity\ProgrammeCours $matiereProgCour
+     *
+     * @return Matiere
+     */
+    public function addMatiereProgCour(\AppBundle\Entity\ProgrammeCours $matiereProgCour)
+    {
+        $this->matiereProgCours[] = $matiereProgCour;
+
+        return $this;
+    }
+
+    /**
+     * Remove matiereProgCour
+     *
+     * @param \AppBundle\Entity\ProgrammeCours $matiereProgCour
+     */
+    public function removeMatiereProgCour(\AppBundle\Entity\ProgrammeCours $matiereProgCour)
+    {
+        $this->matiereProgCours->removeElement($matiereProgCour);
+    }
+
+    /**
+     * Get matiereProgCours
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getMatiereProgCours()
+    {
+        return $this->matiereProgCours;
+    }
+
+    /**
+     * Add matiereSecondaireProf
+     *
+     * @param \AppBundle\Entity\Enseigner $matiereSecondaireProf
+     *
+     * @return MatiereSecondaire
+     */
+    public function addMatiereSecondaireProf(\AppBundle\Entity\Enseigner $matiereSecondaireProf)
+    {
+        $this->matiereSecondaireProfs[] = $matiereSecondaireProf;
+
+        return $this;
+    }
+
+    /**
+     * Remove matiereSecondaireProf
+     *
+     * @param \AppBundle\Entity\Enseigner $matiereSecondaireProf
+     */
+    public function removeMatiereSecondaireProf(\AppBundle\Entity\Enseigner $matiereSecondaireProf)
+    {
+        $this->matiereSecondaireProfs->removeElement($matiereSecondaireProf);
+    }
+
+    /**
+     * Get matiereSecondaireProfs
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getMatiereSecondaireProfs()
+    {
+        return $this->matiereSecondaireProfs;
+    }
+
+    /**
+     * Add matiereSecondaireApprenant
+     *
+     * @param \AppBundle\Entity\NoteSecondaire $matiereSecondaireApprenant
+     *
+     * @return MatiereSecondaire
+     */
+    public function addMatiereSecondaireApprenant(\AppBundle\Entity\NoteSecondaire $matiereSecondaireApprenant)
+    {
+        $this->matiereSecondaireApprenants[] = $matiereSecondaireApprenant;
+
+        return $this;
+    }
+
+    /**
+     * Remove matiereSecondaireApprenant
+     *
+     * @param \AppBundle\Entity\NoteSecondaire $matiereSecondaireApprenant
+     */
+    public function removeMatiereSecondaireApprenant(\AppBundle\Entity\NoteSecondaire $matiereSecondaireApprenant)
+    {
+        $this->matiereSecondaireApprenants->removeElement($matiereSecondaireApprenant);
+    }
+
+    /**
+     * Get matiereSecondaireApprenants
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getMatiereSecondaireApprenants()
+    {
+        return $this->matiereSecondaireApprenants;
+    }
+
+    /**
+     * Add matiereProgCoursSecondaire
+     *
+     * @param \AppBundle\Entity\ProgrammeCoursSecondaire $matiereProgCoursSecondaire
+     *
+     * @return MatiereSecondaire
+     */
+    public function addMatiereProgCoursSecondaire(\AppBundle\Entity\ProgrammeCoursSecondaire $matiereProgCoursSecondaire)
+    {
+        $this->matiereProgCoursSecondaire[] = $matiereProgCoursSecondaire;
+
+        return $this;
+    }
+
+    /**
+     * Remove matiereProgCoursSecondaire
+     *
+     * @param \AppBundle\Entity\ProgrammeCoursSecondaire $matiereProgCoursSecondaire
+     */
+    public function removeMatiereProgCoursSecondaire(\AppBundle\Entity\ProgrammeCoursSecondaire $matiereProgCoursSecondaire)
+    {
+        $this->matiereProgCoursSecondaire->removeElement($matiereProgCoursSecondaire);
+    }
+
+    /**
+     * Get matiereProgCoursSecondaire
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getMatiereProgCoursSecondaire()
+    {
+        return $this->matiereProgCoursSecondaire;
+    }
+
+    /**
+     * Set etablissementClasse
+     *
+     * @param \AppBundle\Entity\EtablissementClasse $etablissementClasse
+     *
+     * @return MatiereSecondaire
+     */
+    public function setEtablissementClasse(\AppBundle\Entity\EtablissementClasse $etablissementClasse = null)
+    {
+        $this->etablissementClasse = $etablissementClasse;
+
+        return $this;
+    }
+
+    /**
+     * Get etablissementClasse
+     *
+     * @return \AppBundle\Entity\EtablissementClasse
+     */
+    public function getEtablissementClasse()
+    {
+        return $this->etablissementClasse;
+    }
+
+    /**
+     * Add etablissementProfMatieresSecondaire
+     *
+     * @param \AppBundle\Entity\MatiereSecondaire $etablissementProfMatieresSecondaire
+     *
+     * @return MatiereSecondaire
+     */
+    public function addEtablissementProfMatieresSecondaire(\AppBundle\Entity\MatiereSecondaire $etablissementProfMatieresSecondaire)
+    {
+        $this->etablissementProfMatieresSecondaire[] = $etablissementProfMatieresSecondaire;
+
+        return $this;
+    }
+
+    /**
+     * Remove etablissementProfMatieresSecondaire
+     *
+     * @param \AppBundle\Entity\MatiereSecondaire $etablissementProfMatieresSecondaire
+     */
+    public function removeEtablissementProfMatieresSecondaire(\AppBundle\Entity\MatiereSecondaire $etablissementProfMatieresSecondaire)
+    {
+        $this->etablissementProfMatieresSecondaire->removeElement($etablissementProfMatieresSecondaire);
+    }
+
+    /**
+     * Get etablissementProfMatieresSecondaire
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getEtablissementProfMatieresSecondaire()
+    {
+        return $this->etablissementProfMatieresSecondaire;
+    }
+}

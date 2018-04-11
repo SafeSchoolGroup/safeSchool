@@ -1,0 +1,38 @@
+AppBundle\Entity\ProgrammeCours:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\ProgrammeCoursRepository
+    #uniqueConstraints:
+        #unique_keys:
+            #columns: [ matiere_id,sous_classe_id ]
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        dateProgramme:
+            type: datetime
+        heureDebut:
+            type: time
+        heureFin:
+            type: time
+        jour:
+            type: string
+            length: '8'
+    manyToOne:
+        enseigner:
+            targetEntity: Enseigner
+            inversedBy:  progCours
+            joinColumn:
+                enseigner_id:
+                    referencedColumnName: id
+        salle:
+            targetEntity: Salle
+            inversedBy:  progCours
+            joinColumn:
+                salle_id:
+                    referencedColumnName: id
+
+    lifecycleCallbacks: {  }

@@ -1,0 +1,518 @@
+<?php
+
+namespace API\InscriptionBundle\Controller;
+
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+
+use Doctrine\ORM\EntityRepository;
+
+
+
+
+
+use AppBundle\Entity\Apprenant;
+use AppBundle\Entity\Tuteur;
+use AppBundle\Entity\Fichier;
+
+
+class InscriptionController extends Controller
+{
+
+    private $infoInscription;
+
+    public function getInfoInscription(){
+        return $this->infoInscription;
+    }
+
+    public function setInfoInscription ($infoInscription){
+        $this->infoInscription = $infoInscription;
+    }
+
+    public function inscriptionAction( Request $request)
+    {
+        $session = $request->getSession();
+        $session->set('id',1);
+      $form=$this->createFormBuilder()
+            ->add('nom',TextType::class,array(
+                'constraints' => array(
+                //new Isletter(),
+                new IsLetterInfo(),
+            ))
+            )
+            ->add('prenom',TextType::class,array(
+                'constraints' => array(
+                    new IsLetterInfo(),
+            )
+
+            ))
+            ->add('dateNaissance',DateType::class,array(
+                'widget' => 'single_text',
+                'input' => 'datetime',
+                'format' => 'yyyy-MM-dd',
+                'attr' => ['class' => 'js-datepicker'],
+
+                'constraints' => array(
+
+                    new NotBlank(array(
+                        "message" => "ce champ ne doit pas etre vide"
+                    )),
+
+            ),
+                ))
+            ->add('nationalite',TextType::class,array(
+                'constraints' => array(
+                    new IsLetterInfo(),
+
+            ),
+
+            ))
+            ->add('telephone',TelType::class,array(
+                'constraints' => array(
+                    new IsTelephone()
+                ))
+            )
+
+            ->add('email',EmailType::class,array(
+                'constraints' => array(
+                new NotBlank(array(
+                    "message" => "ce champ ne doit pas etre vide"
+                )),
+                new Email(array(
+                    'message' => 'Cet e-mail n\'est pas valide'
+                )),
+            ),
+
+            ))
+            /*->add('joindre',FileType::class,array(
+
+                'constraints' => array(
+                    new NotBlank(array(
+                        "message" => "ce champ ne doit pas etre vide"
+                    )),
+                ),
+
+            'multiple' => true,
+            'required' => false
+            ))*/
+
+            ->add('filiereserie',EntityType::class, array(
+
+                'class' => 'AppBundle:Filiere',
+
+
+                 'query_builder' => function (EntityRepository $er){
+                     return $er->createQueryBuilder('l')
+                     ->orderBy('l.libelleFiliere', 'ASC');
+                     },
+                     'empty_value'   => 'choisissez votre Filière',
+                     'choice_label' => 'libelleFiliere',
+                     'choices_as_values' => true,
+                     'choice_attr' => function($val, $key, $index) {
+                             $disabled = false;
+                             if ($val == 'empty_value') {
+                                 $disabled = true;
+                             }
+                             return $disabled ? ['disabled' => $disabled] : [];
+                             // set disabled to true based on the value, key or index of the choice...
+                     },
+
+                'constraints' => array(
+                    new NotBlank(array(
+                        "message" => "ce champ ne doit pas etre vide"
+                    )),
+
+
+            ),
+
+
+            ))
+            ->add('statusapprenant',ChoiceType::class, array(
+                'choices' => array(
+                    'choisissez votre status' => null,
+                    'Inscrit' => 'inscriptible',
+                    'Preinscrit' => 'preinscriptible',
+                    'Abandon' =>'abandonne',
+            ),
+
+            'choices_as_values' => true,
+            'choice_attr' => function($val, $key, $index) {
+                    $disabled = false;
+                    if ($val == null) {
+                        $disabled = true;
+                    }
+                    return $disabled ? ['disabled' => $disabled] : [];
+                    // set disabled to true based on the value, key or index of the choice...
+            },
+
+            'constraints' => array(
+                new NotBlank(array(
+                    "message" => "ce champ ne doit pas etre vide"
+                )),
+
+        ),
+
+        ))
+
+            ->add('lieuNaissance',TextType::class,array(
+                'constraints' => array(
+
+
+                    new IsLetterInfo(),
+            ),
+            ))
+            ->add('annee',TextType::class,array(
+                'disabled' => true
+            ))
+            ->add('nomparent',TextType::class,array(
+                'constraints' => array(
+
+                    new Isletter(),
+            )
+            ))
+            ->add('prenomparent',TextType::class,array(
+                'constraints' => array(
+
+                    new IsLetterInfo(),
+            )
+            ))
+            ->add('telephoneparent',TextType::class,array(
+                'constraints' => array(
+
+                    new IsTelephone(),
+
+            )
+            ))
+            ->add('lienParente',ChoiceType::class, array(
+                'choices' => array(
+                    'choisissez le lien de parenté' => null,
+                    'Père' => 'Parent-proche',
+                    'Mère' => 'Parent-proche',
+                    'Tuteur' =>'Parent-éloigné'
+            ),
+            'choices_as_values' => true,
+            'choice_attr' => function($val, $key, $index) {
+                    $disabled = false;
+                    if ($val == null) {
+                        $disabled = true;
+                    }
+                    return $disabled ? ['disabled' => $disabled] : [];
+                    // set disabled to true based on the value, key or index of the choice...
+            },
+            'constraints' => array(
+                new NotBlank(array(
+                    "message" => "ce champ ne doit pas etre vide"
+                )),
+        ),
+        ))
+            ->add('optionpaiement',ChoiceType::class, array(
+                'choices' => array(
+                'Mobile Money' => 'Mobile Money',
+                'Flooz' => 'Flooz',
+                'UBA' => 'Carte Visa UBA'
+
+            ),
+            'choices_as_values' => true,
+
+            'constraints' => array(
+                new NotBlank(array(
+                    "message" => "ce champ ne doit pas etre vide"
+                )),
+        ),
+                'choices_as_values' => true,
+
+            ))
+            ->add('emailparent',EmailType::class,array(
+                'constraints' => array(
+                    new NotBlank(array(
+                        "message" => "ce champ ne doit pas etre vide"
+                    )),
+                    new Email(array(
+                        'message' => 'Cet e-mail n\'est pas valide'
+                    )),
+            )
+            ))
+
+            ->add('niveauEtude',EntityType::class, array(
+                'class' => 'AppBundle:NiveauEtude',
+
+                'query_builder' => function (EntityRepository $er){
+                     return $er->createQueryBuilder('n')
+                     ->orderBy('n.libelleNiveauEtude', 'DESC');
+                     },
+                'empty_value'   => 'Choisissez le Niveau d\'étude à commencer',
+                'choice_label' => 'libelleNiveauEtude',
+                'choices_as_values' => true,
+                'choice_attr' => function($val, $key, $index) {
+                     $disabled = false;
+                     if ($val == 'empty_value') {
+                         $disabled = true;
+                     }
+                     return $disabled ? ['disabled' => $disabled] : [];
+                     // set disabled to true based on the value, key or index of the choice...
+                     },
+
+                'constraints' => array(
+                    new NotBlank(array(
+                        "message" => "ce champ ne doit pas etre vide"
+                    )),
+
+
+            )
+        ))
+
+            ->add('sexe',ChoiceType::class,array(
+                'choices' => array(
+                'Choisissez votre sexe' => 'nul',
+                'Masculin' => 'M',
+                'Féminin' => 'F'
+            ),
+
+            'choices_as_values' => true,
+            'choice_attr' => function($val, $key, $index) {
+                    $disabled = false;
+                    if ($val == null) {
+                        $disabled = true;
+                    }
+                    return $disabled ? ['disabled' => $disabled] : [];
+                    // set disabled to true based on the value, key or index of the choice...
+            },
+
+            'constraints' => array(
+                new NotBlank(array(
+                    "message" => "ce champ ne doit pas etre vide"
+                )),
+        )
+            ))
+            ->add('adresseVille',TextType::class,array(
+                'constraints' => array(
+                    new NotBlank(array(
+                        "message" => "ce champ ne doit pas etre vide"
+                    )),
+            )
+            ))
+            ->add('profession',TextType::class,array(
+                'constraints' => array(
+
+                    new IsLetterInfo(),
+            )
+            ))
+
+            ->getForm();
+
+              $form->handleRequest($request);
+              if(/*$request->isXmlHttpRequest() && */$form->isSubmitted() && $request->getMethod() == 'POST'){
+                  if ($form->isValid()) {
+
+
+                      $data = $form->getData();
+
+                      $tuteur = new Tuteur();
+                      //$tuteurs = $request->get('id');
+                      //$tuteurs = $this->getAllTuteurFromTuteur();
+                      $tuteur->setNom($data['nomparent']);
+                      $tuteur->setPrenom($data['prenomparent']);
+                      $tuteur->setEmail($data['emailparent']);
+                      $tuteur->setTelephone($data['telephoneparent']);
+                      $tuteur->setLienParente($data['lienParente']);
+                      $tuteur->setSexe($data['sexe']);
+                      $tuteur->setAdresseVille('lhgkjhkfljfk');
+                      $tuteur->setAdresseRue('rgrgr');
+                      $tuteur->setProfession($data['profession']);
+                      $tuteur->setCode($this->generationCodeParentAction($tuteur));
+
+
+                      //$informations['tuteur'] = $tuteur;
+                      // $informations['tuteur'] = $tuteur->getPrenom();
+                        //$informations['tuteur'] = $tuteur->getSexe();
+
+                      //$tuteurNom = $informations['tuteur']['nom'];
+                     // $informations['tuteur'] = (array)$tuteur;
+                      //$tuteurNom = $arrayObject->getNom();*/
+
+
+                      $em = $this->getDoctrine()->getManager();
+
+                      //$em->persist($tuteur);
+                      //$em->flush();
+
+                      $lastTuteur = $em->getRepository('AppBundle:Exploit')->getMaxIdTuteur();
+
+                      $apprenant = new Apprenant();
+
+                      $apprenant->setNom($data['nom']);
+                      $apprenant->setPrenom($data['prenom']);
+                      $apprenant->setSexe($data['sexe']);
+                      $apprenant->setEmail($data['email']);
+                      $apprenant->setTelephone($data['telephone']);
+                      $apprenant->setAdresseVille($data['adresseVille']);
+                      $apprenant->setAdresseRue('jhfjhdflkl');
+                      $apprenant->setDateNaissance($data['dateNaissance']);
+                      $apprenant->setLieuNaissance($data['lieuNaissance']);
+                      $apprenant->setCode($this->generationCodeAction($apprenant));
+
+                      $apprenant->setTuteur($lastTuteur[0]);
+                      $exploit = $em->getRepository('AppBundle:Exploit')->find(1);
+
+                      $apprenant->addExploit($exploit);
+                      $apprenant->setTuteur($lastTuteur[0]);
+                      $fEnAction = $this->generationCodeParentAction($tuteur);
+                       $jEnAction = $this->generationCodeAction($apprenant);
+
+                      //$informations['apprenant'] = $apprenant;
+                     // $exploit->addApprenant($apprenant);
+                      //$em->persist($apprenant);
+
+                      //$em->flush();
+
+                      $lastApprenant = $em->getRepository('AppBundle:Exploit')->getMaxIdApprenant();
+                      //die(dump($lastApprenant));
+
+                      /*$file = $form['joindre']->getData();
+
+                      if ($file != null) {
+                          $fileName = $this->get('app.dossier_uploader')->upload($file);
+
+                          $fichier = new Fichier();
+                          $fichier->setNom($file->getClientOriginalName());
+                          $fichier->setChemin($fileName);
+                          $fichier->setUpdatedAt(new \DateTime('now'));
+                          $fichier->setTypeFichier($file->getClientMimeType());
+                          $fichier->setApprenant($lastApprenant[0]);
+                      }*/
+
+                      //$em->persist($fichier);
+
+                      //$em->flush();
+
+                      $json = json_encode($apprenant);
+                      $array = json_decode($json,true);
+                     $informations  = array('tuteur' => $array
+                                            /*'fichier' => $fichier*/);
+
+
+                     // $this->setInfoInscription($informations);
+
+
+
+                      return new JsonResponse (
+                          array(
+                              'data' => $app,
+                              'error' => false
+                          ));
+                          //return json_encode($this->getInfoInscription());
+                           //$jsonEncoder = new JsonEncoder();
+                           //return $jsonEncoder->encode($this->getInfoInscription(),$format = 'json');
+                    }
+                    else{
+                        return new JsonResponse(array(
+                            'data' => $this->getFormErrors($form),
+                        ));
+                    }
+                }
+
+                return $this->render('APIInscriptionBundle:inscription:inscription.html.twig', array(
+                      'form' => $form->createView(),
+                  ));
+    }
+
+    //fonction pour la génération automatique d'un code
+
+        public function generationCodeAction(Apprenant $apprenant,$prefix = "AP")
+        {
+            $apprenantSubstreNom = substr($apprenant->getNom(), 0, 1);
+            $apprenantSubstreEmail = substr($apprenant->getPrenom(), 0, 1);
+            srand(time());
+            $aleatoire = substr(rand(1000,10000000000),5,4);
+            $aleatoire2 = substr(rand(1000,10000000000000),2,2);
+            $aleatoireUnique = $this->uniqidReal();
+            $val = new \DateTime();
+            $val2 = $val->getTimestamp();
+            $variable  = array($aleatoireUnique,substr($val2,8,2).$prefix,$apprenantSubstreNom.$aleatoire2.$apprenantSubstreEmail,$aleatoire );
+            //$codeIdentificateurPourConnexion = implode("",$variable);
+
+            return implode(" - ",$variable);
+
+
+        }
+
+        public function generationCodeParentAction(Tuteur $tuteur,$prefix = "PA")
+        {
+            $tuteurSubstreNom = substr($tuteur->getNom(), 0, 1);
+            $tuteurSubstrePrenom = substr($tuteur->getPrenom(), 0, 1);
+            srand(time());
+            $aleatoire = substr(rand(1000,100000000),0,4);
+            $aleatoire2 = substr(rand(1000,10000000000000),4,2);
+            $aleatoireUnique = $this->uniqidReal();
+            $valP1 = new \DateTime();
+            $valP2 = $valP1->getTimestamp();
+            $variableP  = array($aleatoireUnique,substr($valP2,6,2).$prefix,$tuteurSubstrePrenom.$aleatoire2.$tuteurSubstreNom,$aleatoire);
+            //$variableP = array(substr($valP2,1,4),substr($valP2,3,4),substr($valP2,6,4));
+            //$codeIdentificateurPourConnexion = implode("",$variable);
+
+            return implode(" - ",$variableP);
+
+
+        }
+
+        function uniqidReal($length = 4) {
+        // fonction renvoyant 4 caractere vous pouvez augmentez en modifiant l'argument de la fonction.
+        if (function_exists("random_bytes")) {
+            $bytes = random_bytes(ceil($length / 2));
+        } elseif (function_exists("openssl_random_pseudo_bytes")) {
+            $bytes = openssl_random_pseudo_bytes(ceil($length / 2));
+        } else {
+            throw new Exception("no cryptographically secure random function available");
+        }
+
+        return substr(bin2hex($bytes), 0, $length);
+    }
+
+    /**
+     *
+    */
+
+    public function validationInscriptionAction(Request $request)
+    {
+        die(dump($request));
+        $em = $this->getDoctrine()->getManager();
+
+        $em->persist($this->getInfoInscription()['tuteur']);
+        $em->flush();
+        $em->persist($this->getInfoInscription()['apprenant']);
+        $em->flush();
+        $em->persist($this->getInfoInscription()['fichier']);
+        $em->flush();
+        //die(dump(getInfoInscription()['apprenant']));
+
+    }
+
+    protected function getFormErrors(\Symfony\Component\Form\Form $form)
+    {
+        $errors = array();
+        foreach ($form->getErrors() as $key => $error) {
+            $errors[] = $error->getMessage();
+        }
+
+        foreach ($form->all() as $child) {
+            if(!$child->isValid()){
+                $errors[$child->getName()] = $this->getFormErrors($child);
+
+            }
+
+        }
+        return $errors;
+    }
+
+    public function getListeApprenant()
+    {
+
+    }
+
+
+
+
+}

@@ -1,0 +1,13 @@
+AppBundle\Entity\Epreuve:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\EpreuveRepository
+    fields:
+        matiere:
+            type: string
+            length: 255
+        typeEpreuve:
+            type: string
+            length: 255
+            column: type_epreuve
+    lifecycleCallbacks: {  }

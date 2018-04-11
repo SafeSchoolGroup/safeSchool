@@ -1,0 +1,50 @@
+    {{ form_start(form, {'attr': {'id': 'form-school-registration', 'action': path('api_etablissement_new')}}) }}
+      <ul>
+        <li class="text">{{ form_label(form.nom) }} </li>
+        <li class="agileits-main">{{ form_widget(form.nom) }}</li>
+      </ul>
+      <ul>
+        <li class="text">{{ form_label(form.adresseRue) }}</li>
+        <li class="agileits-main">{{ form_widget(form.adresseRue) }}</li>
+      </ul>
+      <ul>
+        <li class="text">{{ form_label(form.adresseVille) }}</li>
+        <li class="agileits-main">{{ form_widget(form.adresseVille) }}</li>
+      </ul>
+      <ul>
+        <li class="text">{{form_label(form.adressePostale) }}</li>
+        <li class="agileits-main">{{form_widget(form.adressePostale) }}</li>
+      </ul>
+      <ul>
+        <li class="text">{{form_label(form.telephone1) }}</li>
+        <li class="agileits-main">{{form_widget(form.telephone1) }}</li>
+      </ul>
+      <ul>
+        <li class="text">{{form_label(form.telephone2) }}</li>
+        <li class="agileits-main">{{form_widget(form.telephone2) }}</li>
+      </ul>
+      <ul>
+        <li class="text">{{form_label(form.email) }}</li>
+        <li class="agileits-main">{{form_widget(form.email) }}</li>
+      </ul>
+      <ul>
+        <li class="text">{{form_label(form.anneeCreation) }}</li>
+        <li class="agileits-main">{{form_widget(form.anneeCreation) }}</li>
+      </ul>
+      <ul>
+        <li class="text">{{form_label(form.niveauEtablissement,"Niveau") }}</li>
+        <li class="agileits-main">{{form_widget(form.niveauEtablissement) }}</li>
+      </ul>
+      <ul>
+        <li class="text">{{form_label(form.statutEtablissement,"Statut") }}</li>
+        <li class="agileits-main">{{form_widget(form.statutEtablissement) }}</li>
+      </ul>
+      <ul>
+        <li class="text">{{form_label(form.categorieEtablissement,"Catégorie") }}</li>
+        <li class="agileits-main">{{form_widget(form.categorieEtablissement) }}</li>
+      </ul>
+
+      <div class="agile-submit">
+          <input type="submit" value="Créer">
+      </div>
+    {{ form_end(form) }}

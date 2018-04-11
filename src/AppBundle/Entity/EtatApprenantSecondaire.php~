@@ -1,0 +1,148 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * EtatApprenantSecondaire
+ */
+class EtatApprenantSecondaire
+{
+    /**
+     * @var Apprenant
+     */
+    private $apprenant;
+
+    /**
+     * @var SousClasse
+     */
+    private $sousClasse;
+
+    /**
+     * @var /Date
+     */
+    private $dateEtatApprenant;
+
+    /**
+     * @var string
+     */
+    private $decision;
+
+    /**
+     * Get dateEtatApprenant
+     *
+     * @return \DateTime
+     */
+    public function getDateEtatApprenant()
+    {
+        return $this->dateEtatApprenant;
+    }
+
+    /**
+     * Set dateEtatApprenant
+     *
+     * @param \DateTime $dateEtatApprenant
+     * @return EtatApprenant
+     */
+    public function setDateEtatApprenant($dateEtatApprenant)
+    {
+        $this->dateEtatApprenant = $dateEtatApprenant;
+
+        return $this;
+    }
+
+    /**
+     * Get decision
+     *
+     * @return boolean
+     */
+    public function getDecision()
+    {
+        return $this->decision;
+    }
+
+    /**
+     * Set decision
+     *
+     * @param boolean $decision
+     * @return EtatApprenant
+     */
+    public function setDecision($decision)
+    {
+        $this->decision = $decision;
+
+        return $this;
+    }
+
+    /**
+     * Get apprenant
+     *
+     * @return \AppBundle\Entity\Apprenant
+     */
+    public function getApprenant()
+    {
+        return $this->apprenant;
+    }
+
+    /**
+     * Set apprenant
+     *
+     * @param \AppBundle\Entity\Apprenant $apprenant
+     * @return EtatApprenant
+     */
+    public function setApprenant(\AppBundle\Entity\Apprenant $apprenant)
+    {
+        $this->apprenant = $apprenant;
+
+        return $this;
+    }
+
+    /**
+     * Get sousFiliere
+     *
+     * @return \AppBundle\Entity\SousFiliere
+     */
+    public function getSousFiliere()
+    {
+        return $this->sousFiliere;
+    }
+
+    /**
+     * Set sousFiliere
+     *
+     * @param \AppBundle\Entity\SousFiliere $sousFiliere
+     *
+     * @return EtatApprenant
+     */
+    public function setSousFiliere(\AppBundle\Entity\SousFiliere $sousFiliere)
+    {
+        $this->sousFiliere = $sousFiliere;
+
+        return $this;
+    }
+
+    /**
+     * Set sousClasse
+     *
+     * @param \AppBundle\Entity\SousClasse $sousClasse
+     *
+     * @return EtatApprenantSecondaire
+     */
+    public function setSousClasse(\AppBundle\Entity\SousClasse $sousClasse)
+    {
+        $this->sousClasse = $sousClasse;
+
+        return $this;
+    }
+
+    /**
+     * Get sousClasse
+     *
+     * @return \AppBundle\Entity\SousClasse
+     */
+    public function getSousClasse()
+    {
+        return $this->sousClasse;
+    }
+}

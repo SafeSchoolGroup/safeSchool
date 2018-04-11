@@ -1,0 +1,84 @@
+{% extends 'default/api_etablissement_layout.html.twig' %}
+
+{% block stylesheetsEtablissement %}
+<link rel="stylesheet" type="text/css" media="screen" href="{{ asset('assets/css/styles_etablissementContact.css') }}">
+{% endblock stylesheetsEtablissement %}
+
+{% block bodyEtablissement %}
+
+            <!-- div suggestion et contact -->
+          <div class="row div-sugest_contact">
+
+            <!-- formulaire avi et suggestion -->
+
+              <div class="row" id="div-avis-contacts">
+
+                <!-- avis et suggestions-->
+                <div class="col-md-7">
+                  <p id="p-avis">
+                    Avis et Suggestions
+                  </p>
+                  {{ form_start(form) }}
+                  <div class="form-group">
+                      {{ form_widget(form.titre) }}
+                  </div>
+                  <div class="form-group">
+                    {{ form_widget(form.contenu) }}
+                  </div>
+                  <input type="submit" value="Create" class="btn btn-default pillule" id="btn-avis"/>
+                 {{ form_end(form) }}
+                </div>
+
+                <!-- div contact  -->
+                <div class="col-md-4 inset-md-left-30 div-contact">
+                  <p id="p-contact">
+                    Nous Contacter
+                  </p>
+                  <h6 class="text-bold">Réseaux Sociaux</h6>
+                  <div class="hr bg-gray-light offset-top-10"></div>
+                  <img class="img-reseaux" src="{{ asset('assets/img/facebook.png') }}" alt="" title="aller sur notre page fb" width="50" height="30"/>
+                  <img class="img-reseaux" src="{{ asset('assets/img/twitter.png') }}" alt="" title="aller sur notre page twiter" width="50" height="30"/>
+                  <img class="img-reseaux" src="{{ asset('assets/img/instagram.png') }}" alt="" title="aller sur notre page instagram" width="50" height="30"/>
+                  <img class="img-reseaux" src="{{ asset('assets/img/View.png') }}" alt="" title=" Entrer dans l'oeil" width="50" height="30"/>
+
+                  <h6 class="text-bold tel margTop">Téléphone</h6>
+                  <div class="hr bg-gray-light offset-top-10"></div>
+                  <p>
+                  {{ etablissements.telephone1 }}
+                  <br>
+                  {{ etablissements.telephone2 }}
+                  </p>
+
+                  <h6 class="text-bold margTop">Addresses Electroniques</h6>
+                  <div class="hr bg-gray-light offset-top-10"></div>
+                  <p>
+                    Mail:
+                    {{ etablissements.email }}
+                    <br>
+                    Site:
+                    {{ etablissements.urlSite }}
+
+
+                  </p>
+
+                  <h6 class="text-bold margTop">Addresses</h6>
+                  <div class="hr bg-gray-light offset-top-10"></div>
+                  <p>
+                    {{ etablissements.adresseRue }}
+                    {{ etablissements.adresseVille }}
+                    <br>
+                    {{ etablissements.adressePostale }}
+                  </p>
+
+                  <h6 class="text-bold margTop">Heures d'ouverture</h6>
+                  <div class="hr bg-gray-light offset-top-10"></div>
+                  <p>
+                    Du Lundi au vendredi: 7h30 à 19h
+                    <br>
+                       Samedi: 8h à 13h00
+                  </p>
+                </div>
+             </div>
+          </div>
+
+{% endblock %}

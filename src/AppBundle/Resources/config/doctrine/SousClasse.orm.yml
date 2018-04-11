@@ -1,0 +1,38 @@
+AppBundle\Entity\SousClasse:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\SousClasseRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        codeSousClasse:
+            type: string
+            length: '5'
+            unique: true
+        libelleSousClasse:
+            type: string
+            length: '20'
+            nullable: true
+            unique: true
+    oneToMany:
+        apprenantCursus:
+            targetEntity: CursusApprenant
+            mappedBy: sousClasse
+            cascade: ['persist']
+        sousClasseEnseigner:
+            targetEntity: Enseigner
+            mappedBy: sousClasse
+            cascade: ['persist']
+        statPeriodiques:
+            targetEntity: StatPeriodique
+            mappedBy: sousClasse
+            cascade: ['persist']
+    manyToOne:
+        etablissementClasseNiveau:
+            targetEntity: EtablissementClasseNiveau
+            inversedBy: sousClasses
+    lifecycleCallbacks: {  }

@@ -1,0 +1,113 @@
+AppBundle\Entity\Etablissement:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\EtablissementRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        nom:
+            type: string
+            length: '50'
+        indication:
+            type: string
+            length: '75'    
+        adresseRue:
+            type: string
+            length: '25'
+        adresseVille:
+            type: string
+            length: '50'
+        adressePostale:
+            type: string
+            length: '10'
+        telephone1:
+            type: string
+            length: '12'
+        telephone2:
+            type: string
+            length: '12'
+        email:
+            type: string
+            length: 255
+            nullable: true
+        urlSite:
+            type: string
+            length: 255
+            nullable: true
+        anneeCreation:
+            type: string
+            length: '4'
+        historique:
+            type: text
+        statutEtablissement:
+            type: string
+            length: 255
+        categorieEtablissement:
+            type: string
+            length: 255
+            nullable: true
+        niveauEtablissement:
+            type: string
+            length: 255
+        logoEtablissement:
+            type: string
+            length: 255
+            nullable: true
+        photoCouvertureEtablissement:
+            type: string
+            length: 255
+            nullable: true
+        pourcentageDevoir:
+            type: decimal
+            scale: 2
+            nullable: true
+        pourcentagePartiel:
+            type: decimal
+            scale: 2
+            nullable: true
+        pourcentageTP:
+            type: decimal
+            scale: 2
+            nullable: true
+        longitude:
+            type: decimal
+            scale: 2
+            nullable: true
+        latitude:
+            type: decimal
+            scale: 2
+            nullable: true
+    oneToMany:
+        votes:
+            targetEntity: Vote
+            mappedBy: etablissement
+            cascade: ['persist']
+        etablissementClasses:
+            targetEntity: EtablissementClasse
+            mappedBy: etablissement
+            cascade: ['persist']
+        etablissementSalles:
+            targetEntity: Salle
+            mappedBy: etablissement
+            cascade: ['persist']
+        etablissementProfs:
+            targetEntity: EtablissementProf
+            mappedBy: etablissement
+            cascade: ['persist']
+        periodes:
+            targetEntity: Periode
+            mappedBy: etablissement
+            cascade: ['persist']
+        examens:
+            targetEntity: Examen
+            mappedBy: etablissement
+            cascade: ['persist']
+        dirigeants:
+            targetEntity: EtablissementDirigeant
+            mappedBy: etablissement
+            cascade: ['persist']
+    lifecycleCallbacks: {  }

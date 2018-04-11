@@ -1,0 +1,32 @@
+AppBundle\Entity\Enseigner:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\EnseignerRepository
+    id:
+          id:
+              type: integer
+              id: true
+              generator:
+                  strategy: AUTO
+    fields:
+        dateEnseigner:
+            type: date
+    manyToOne:
+        sousClasse:
+            targetEntity: SousClasse
+            inversedBy:  sousClasseEnseigner
+            joinColumn:
+                sous_classe_id:
+                    referencedColumnName: id
+        etablissementProf:
+            targetEntity: EtablissementProf
+            inversedBy:  etsProfMatieres
+            joinColumn:
+                etablissement_prof_id:
+                    referencedColumnName: id
+    oneToMany:
+        progCours:
+            targetEntity: ProgrammeCours
+            mappedBy: enseigner
+            cascade: ['persist']
+    lifecycleCallbacks: {  }

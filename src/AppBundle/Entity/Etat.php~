@@ -1,0 +1,97 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Etat
+ */
+class Etat
+{
+    /**
+     * @var int
+     */
+    private $id;
+
+    /**
+     * @var string
+     */
+    private $codeEtat;
+
+    /**
+     * @var string
+     */
+    private $libelleEtat;
+
+    /**
+     * Get codeEtat
+     *
+     * @return string
+     */
+    public function getCodeEtat()
+    {
+        return $this->codeEtat;
+    }
+
+    /**
+     * Set codeEtat
+     *
+     * @param string $codeEtat
+     * @return Etat
+     */
+    public function setCodeEtat($codeEtat)
+    {
+        $this->codeEtat = $codeEtat;
+
+        return $this;
+    }
+
+    /**
+     * Get libelleEtat
+     *
+     * @return string
+     */
+    public function getLibelleEtat()
+    {
+        return $this->libelleEtat;
+    }
+
+    /**
+     * Set libelleEtat
+     *
+     * @param string $libelleEtat
+     * @return Etat
+     */
+    public function setLibelleEtat($libelleEtat)
+    {
+        $this->libelleEtat = $libelleEtat;
+
+        return $this;
+    }
+
+    /**
+     * Get id
+     *
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+
+    /**
+     * Set id
+     *
+     * @param string $id
+     *
+     * @return Etat
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+}

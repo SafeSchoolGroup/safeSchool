@@ -1,0 +1,23 @@
+AppBundle\Entity\Specialite:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\SpecialiteRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        codeSpecialite:
+            type: string
+            length: '10'
+        libelleSpecialite:
+            type: string
+            length: 255
+    oneToMany:
+          etsClasseNiveauSpecialites:
+            targetEntity: EtablissementClasseNiveauSpecialite
+            mappedBy: specialite
+            cascade: ['persist']
+    lifecycleCallbacks: {  }

@@ -1,0 +1,67 @@
+AppBundle\Entity\CursusApprenant:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\CursusApprenantRepository
+    uniqueConstraints:
+        unique_keys:
+            columns: [ annee_scolaire,classe,etablissement_apprenant_id ]
+
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        decision:
+            type: string
+            length: 255
+            nullable: true
+        anneeScolaire:
+            type: string
+            length: 255
+        statut:
+            type: string
+            length: 255
+        moyenneGenerale:
+            type: decimal
+            scale: 2
+            nullable: true
+        classe:
+            type: string
+            length: 255
+        createdAt:
+          type: datetime
+        updatedAt:
+          type: datetime
+    manyToOne:
+        etablissementApprenant:
+            targetEntity: EtablissementApprenant
+            inversedBy:  apprenantCursus
+            joinColumn:
+                etablissement_apprenant_id:
+                    referencedColumnName: id
+        sousClasse:
+            targetEntity: SousClasse
+            inversedBy:  apprenantCursus
+            joinColumn:
+                sous_classe_id:
+                    referencedColumnName: id
+            nullable: true
+        etsClasseNiveauSpecialite:
+            targetEntity: EtablissementClasseNiveauSpecialite
+            inversedBy:  apprenantCursus
+            joinColumn:
+                ets_classe_niveau_specialite_id:
+                    referencedColumnName: id
+    oneToMany:
+        notes:
+            targetEntity: Note
+            mappedBy: apprenantCursus
+            cascade: ['persist']
+        moyennePeriodiqueApprenants:
+            targetEntity: MoyennePeriodiqueApprenant
+            mappedBy: apprenantCursus
+            nullable: true
+            cascade: ['persist']
+    lifecycleCallbacks: {  }

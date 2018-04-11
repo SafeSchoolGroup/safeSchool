@@ -1,0 +1,41 @@
+AppBundle\Entity\EtablissementApprenant:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\EtablissementApprenantRepository
+    uniqueConstraints:
+            unique_keys:
+                columns: [ etablissement_id,apprenant_id ]
+    id:
+      id:
+        type: integer
+        id: true
+        generator:
+            strategy: AUTO
+    fields:
+        fraisScolarite:
+            type: integer
+            nullable: true
+        createdAt:
+            type: datetime
+        updatedAt:
+            type: datetime
+    oneToMany:
+        apprenantCursus :
+            targetEntity: CursusApprenant
+            mappedBy: etablissementApprenant
+            cascade: ['persist']
+    manyToOne:
+        etablissement:
+            targetEntity: Etablissement
+            inversedBy:  etablissementClasses
+            joinColumn:
+                etablissement_id:
+                    referencedColumnName: id
+        apprenant:
+            targetEntity: Apprenant
+            inversedBy: apprenantEtablissements
+            joinColumn:
+                apprenant_id:
+                    referencedColumnName: id
+
+    lifecycleCallbacks: {  }

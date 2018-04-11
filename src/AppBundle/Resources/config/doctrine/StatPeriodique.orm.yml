@@ -1,0 +1,34 @@
+AppBundle\Entity\StatPeriodique:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\StatPeriodiqueRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        periode:
+            type: string
+            length: 255
+        effectifTotal:
+            type: integer
+        moyenne:
+            type: decimal
+            precision: '4'
+            scale: 2
+        nombreApprenantAyantMoyenne:
+            type: integer
+        anneeScolaire:
+            type: string
+            length: 255
+    manyToOne:
+        sousClasse:
+            targetEntity: SousClasse
+            inversedBy:  statPeriodiques
+            joinColumn:
+                sous_classe_id:
+                    referencedColumnName: id
+            cascade: ['persist']
+    lifecycleCallbacks: {  }

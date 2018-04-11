@@ -1,0 +1,42 @@
+{% extends "SafeSchoolUserBundle::layout.html.twig" %}
+
+{% block fos_user_content %}
+{% if error %}
+    <div>{{ error|trans({}, 'FOSUserBundle') }}</div>
+{% endif %}
+
+<form action="{{ path("fos_user_security_check") }}" method="post" class="form-horizontal" role="form">
+    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+
+    <div class="form-group">
+      <label class="col-sm-2" for="username">{{ 'security.login.username'|trans({}, 'FOSUserBundle') }}</label>
+      <div class="col-sm-6">
+        <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-sm-2" for="password">{{ 'security.login.password'|trans({}, 'FOSUserBundle') }}</label>
+      <div class="col-sm-6">
+        <input type="password" id="password" name="_password" required="required" />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <input class="col-sm-2" type="checkbox" id="remember_me" name="_remember_me" value="on" />
+      <div class="col-sm-6">
+        <label for="remember_me">{{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }}</label>
+      </div>
+    </div>
+
+    <input type="hidden" name="_target_path" value="api_etablissement_school_home" />
+
+    <div class="form-group">
+      <div class="col-sm-6">
+        <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}" />
+      </div>
+    </div>
+
+</form>
+
+{% endblock fos_user_content %}

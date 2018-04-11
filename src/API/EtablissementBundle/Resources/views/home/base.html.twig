@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Educational An  | Home </title>
+    <!-- Meta tag Keywords -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Educational Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+Smartphone Compatible web template, free web designs for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+        function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!--// Meta tag Keywords -->
+    <!-- css files -->
+    <link href="{{ asset('assets/front/css/style.css') }}" rel="stylesheet" type="text/css" media="all">
+    <link href="{{ asset('bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" media="all">
+    <link href="{{ asset('assets/front/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css" media="all">
+    <!--<link rel="stylesheet" href="{{ asset('assets/css/chocolat.css') }}" type="text/css" media="screen">-->
+    <link href="{{ asset('assets/front/css/owl.carousel.css') }}" rel="stylesheet">
+    {% block stylesheets %}{% endblock %}
+    <!--light-box-files -->
+    <!-- //css files -->
+    <!-- online-fonts -->
+    <!--<link href="//fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i&subset=latin-ext" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Covered+By+Your+Grace" rel="stylesheet">-->
+    <!-- //online-fonts -->
+</head>
+<body>
+    {% block body %}{% endblock %}
+    {% block footer %}{% endblock %}
+
+    <!-- js -->
+    <script type="text/javascript" src="{{ asset('assets/front/js/jquery-2.1.4.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bootstrap/js/bootstrap.js') }}"></script>
+
+
+    {% block javascripts %}{% endblock %}
+</body>
+</html>

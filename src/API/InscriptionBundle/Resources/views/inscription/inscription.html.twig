@@ -1,0 +1,633 @@
+{% extends 'APIEtablissementBundle:home:base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style_inscription.css') }} " />
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/filepicker.default.css') }} " />
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/intlTelInput.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootstrap-datepicker.min.css') }} " />
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/selectize.bootstrap3.css') }} " />
+
+{% endblock %}
+
+{% block body %}
+{% include 'APIEtablissementBundle:home:menubar.html.twig' %}
+
+<div class="row" id="div-row-inscription">
+
+  <div class="div-header-inscription">
+    <h3>Inscription </h3>
+    <p>
+      remplissez le formulaire ci-dessous
+    </p>
+  </div>
+        <h3> Information sur l'apprenant </h3>
+
+<form class="form-horizontal" action="{{ path('api_inscription',{id: etablissement.id}) }}" method="post" enctype="multipart/form-data"  id="form-inscription" name="inscription" novalidate="novalidate">
+
+  <div class="row " id="bodyrow">
+
+        <div class="col-md-6 infoApp">
+
+            <div class="form-group">
+
+              <label for="form_annee" class="required control-label col-sm-5">Année :</label>
+              <div class="col-sm-7">
+                  <input type="text" name="" value="2017-2018" class="form-control">
+                {#{{ form_widget(form.annee,{'attr':{'class':'form-control','value':'2017-2018'}}) }}
+                {{ form_errors(form.annee) }}#}
+
+              </div>
+            </div>
+
+            <div class="form-group">
+
+                <label for="form_nom" class="required control-label col-sm-5">Nom de l'apprenant :</label>
+                  <div class="col-sm-7" id="ex">
+                    {{ form_widget(form.nom,{'attr':{'class':'form-control'}}) }}
+                     {{ form_errors(form.nom) }}
+                  </div>
+            </div>
+
+            <div class="form-group">
+
+                <label for="form_prenom" class="required control-label col-sm-5">Prénom de l'apprenant :</label>
+                  <div class="col-sm-7">
+                    {{ form_widget(form.prenom,{'attr':{'class':'form-control'}}) }}
+                     {{ form_errors(form.prenom) }}
+                  </div>
+            </div>
+
+            <div class="form-group">
+
+              <label for="form_sexe" class="required control-label col-sm-5">Sexe :</label>
+              <div class="col-sm-5">
+                  <span class="custom-dropdown custom-dropdown--white">
+                {{ form_widget(form.sexe,{'attr':{'class':'form-control empty custom-dropdown__select custom-dropdown__select--white'}}) }}
+            </span>
+            {{ form_errors(form.sexe) }}
+              </div>
+
+            </div>
+
+            <div class="form-group">
+
+                <label for="form_datenaissance" class="required control-label col-sm-5">Né(e) le :</label>
+                <div class="col-sm-7  ">
+                    {{ form_widget(form.dateNaissance,{'attr':{'class':'form-control js-datepicker'}}) }}
+                    {{ form_errors(form.dateNaissance) }}
+                </div>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="form_nationalite" class="required control-label col-sm-5">Nationalité :</label>
+                <div class="col-sm-7">
+                  {{ form_widget(form.nationalite,{'attr':{'class':'form-control'}}) }}
+                  {{ form_errors(form.nationalite) }}
+                </div>
+            </div>
+
+            <div class="form-group">
+
+                <label for="form_telephone" class="required control-label col-sm-5">N° de téléphone :</label>
+                <div class="col-sm-7">
+                  {{ form_widget(form.telephone,{'attr':{'class':'form-control tel'}}) }}
+                </div>
+
+                {{ form_errors(form.telephone, {'attr':{'class':'div-error'}}) }}
+            </div>
+
+            <div class="form-group">
+
+                <label for="form_email" class="required control-label col-sm-5">Email :</label>
+                <div class="col-sm-7">
+                  {{ form_widget(form.email,{'attr':{'class':'form-control'}}) }}
+                  {{ form_errors(form.email) }}
+                </div>
+            </div>
+
+            <div class="form-group">
+
+                <label for="form_adresseVille'" class="required control-label col-sm-5">Adresse de votre ville :</label>
+                <div class="col-sm-7">
+                  {{ form_widget(form.adresseVille,{'attr':{'class':'form-control'}}) }}
+                  {{ form_errors(form.adresseVille) }}
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="col-md-6 infoApp">
+
+            {% if etablissement.niveauEtablissement == "Universite" %}
+                {% set labelfiliere = "Filiere" %}
+                {% set labelspecialite = "Spécialité" %}
+            {% else %}
+                {% set labelfiliere = "Classe" %}
+                {% set labelspecialite = "Série" %}
+            {% endif %}
+
+            <div class="form-group" id="div-filiere">
+
+                <label for="form_filiereserie" class="required control-label col-sm-5"> {{labelfiliere}} :</label>
+                <div class="col-sm-5">
+                     <span class="custom-dropdown custom-dropdown--white">
+                        <select class="form-control value custom-dropdown__select custom-dropdown__select--white" name="filiere" id="option_filiere_etablissement" data-etablissement= {{etablissement.id}} >
+                            <option value="">
+                                Choississez la filiere voulue
+                            </option>
+                            {% for filiere in filieres %}
+                                <option value="{{filiere.classe.id}}">{{filiere.classe.libelleClasse}}</option>
+                            {% endfor %}
+                        </select>
+                    {#{{ form_widget(form.filiereserie,{'attr':{'class':'form-control value custom-dropdown__select custom-dropdown__select--white'}}) }}#}
+                </span>
+                {#{{ form_errors(form.filiereserie) }}#}
+                </div>
+
+            </div>
+
+            {% if etablissement.niveauEtablissement == "Universite"  %}
+            <div class="form-group" id="div-filiere">
+
+                <label for="form_niveauEtude" class="required control-label col-sm-5"> Niveaux d'Etude :</label>
+                <div class="col-sm-5">
+                    <span class="custom-dropdown custom-dropdown--white">
+                        <select class="form-control value custom-dropdown__select custom-dropdown__select--white" name="niveauetude" id="niveauetude_etablissement">
+                            <option value="">
+                                Choississez votre Niveau d'Etude
+                            </option>
+                        </select>
+                    {#{{ form_widget(form.niveauEtude,{'attr':{'class':'form-control empty custom-dropdown__select custom-dropdown__select--white'}}) }}#}
+                    </span>
+                    {#{{ form_errors(form.niveauEtude) }}#}
+
+                </div>
+            </div>
+            {% endif %}
+
+
+            <div class="form-group">
+
+                <label for="form_statusapprenant" class="required control-label col-sm-5"> {{labelspecialite}} : </label>
+                <div class="col-sm-5">
+                    <span class="custom-dropdown custom-dropdown--white">
+                        <select class="form-control value custom-dropdown__select custom-dropdown__select--white" name="specialite" id="specialite_etablissement">
+
+                        </select>
+                    {#{{ form_widget(form.statusapprenant,{'attr':{'class':'form-control empty custom-dropdown__select custom-dropdown__select--white'}}) }}#}
+                </span>
+                    {#{{ form_errors(form.statusapprenant) }}#}
+                </div>
+            </div>
+
+            <div class="form-group" id="div-label">
+                <label for="form_lieuNaissance" class="required control-label col-sm-5">A :</label>
+                <div class="col-sm-5">
+                    {{ form_widget(form.lieuNaissance,{'attr':{'class':'form-control', 'placeholder':'Lieu de naissance' }}) }}
+                    {{ form_errors(form.lieuNaissance) }}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-offset-4 col-sm-10">
+                    <input type="file" name="fichiers_joints[]" id="form_fichiers_joints"  required="required" multiple="multiple" data-label="Joindre"  />
+
+                    <!--<input type="file" name="" value="..." class="join"  data-label = "Joindre">-->
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <br/>
+
+    <div class="row">
+
+
+        <h3 id="infoParent"> Information sur le parent </h3>
+
+
+        <div class="col-md-6 div-row-parent">
+
+            <div class="form-group">
+
+            <label for="form_nomparent" class="required control-label col-sm-5">Nom du parent :</label>
+              <div class="col-sm-7">
+                 {{ form_widget(form.tuteur.nom,{'attr':{'class':'form-control'}}) }}
+                 {{ form_errors(form.nom) }}
+              </div>
+          </div>
+
+            <div class="form-group">
+                <label for="form_prenomparent" class="required control-label col-sm-5">Prénom du parent :</label>
+                <div class="col-sm-7">
+                    {{ form_widget(form.tuteur.prenom,{'attr':{'class':'form-control'}}) }}
+                    {{ form_errors(form.prenom) }}
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+
+                <label for="form_telepnoneparent" class="required control-label col-sm-5">N° de téléphone :</label>
+                <div class="col-sm-7">
+
+                    {{ form_widget(form.tuteur.telephone,{'attr':{'class':'form-control telparent tel'}}) }}
+                </div>
+                {{ form_errors(form.tuteur.telephone) }}
+            </div>
+
+            <div class="form-group">
+
+                <label for="form_emailparent" class="required control-label col-sm-5">Email :</label>
+                <div class="col-sm-7">
+                    {{ form_widget(form.tuteur.email,{'attr':{'class':'form-control'}}) }}
+                    {{ form_errors(form.tuteur.email) }}
+                </div>
+            </div>
+
+
+
+
+        </div>
+
+        <div class="col-md-6 div-row-parent">
+
+
+            <div class="form-group">
+
+                <label for="form_profession" class="required control-label col-sm-5">profession :</label>
+                <div class="col-sm-7">
+                    {{ form_widget(form.tuteur.profession,{'attr':{'class':'form-control '}}) }}
+                    {{ form_errors(form.tuteur.profession) }}
+                </div>
+            </div>
+
+            <div class="form-group" id="div-filiere">
+
+                <label for="form_lienParente" class="required control-label col-sm-5"> Lien de parenté :</label>
+                <div class="col-sm-5">
+                    <span class="custom-dropdown custom-dropdown--white">
+                    {{ form_widget(form.tuteur.lienParente,{'attr':{'class':'form-control empty custom-dropdown__select custom-dropdown__select--white'}}) }}
+                </span>
+                {{ form_errors(form.tuteur.lienParente) }}
+                </div>
+
+            </div>
+
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('intention') }}">
+            <div class="form-group">
+
+                <label for="form_optionpaiement" class="required control-label col-sm-5">Option de paiement : </label>
+                <div class="col-sm-5">
+                    <span class="custom-dropdown custom-dropdown--white">
+                    {#{{ form_widget(form.optionpaiement,{'attr':{'class':'form-control custom-dropdown__select custom-dropdown__select--white'}}) }}
+                    {{ form_errors(form.optionpaiement) }}#}
+                </span>
+                </div>
+                {#{{ form_errors(form.optionpaiement) }}#}
+            </div>
+
+
+
+
+  </div></div>
+
+    <div class="row">
+        <div class="form-group">
+            <div class="col-sm-offset-4 col-sm-6">
+                <input type="submit" class="btn btn-primary" id="soummission" value="SOUMETTRE" />
+
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-4 col-sm-6">
+                <a href="{#{{path('impression')}}#}"  class="btn btn-primary" id="imprime">IMPRIME</a>
+            </div>
+        </div>
+    </div>
+
+
+ {{ form_end(form) }}
+  </div>
+
+  <!-- Modal -->
+<div id="modal-inscription" class="modal fade" role="dialog" data-backdrop = "static" data-keyboard = "false" >
+  <div class="modal-dialog modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Informations Renseignées</h4>
+      </div>
+      <div class="modal-body">
+          <h4 class="">Informations Sur l'apprenant</h4>
+        <form id="form-modal" action="index.html" method="post"  data-etablissement= {{etablissement.id}}>
+            <div class="form-group">
+                <label for="" id="" class="required control-label col-sm-5">Année:</label>
+                <div class="col-sm-7" id="ex">
+                    <input type="text" name="annee" value="2017-2018" class="form-control"/>
+                    {#{{ form_widget(form.tuteur.profession,{'attr':{'class':'form-control '}}) }}#}
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="" id="apprenant-nom" class="required control-label col-sm-5">Nom de l'apprenant:</label>
+                <div class="col-sm-7" id="ex">
+                    <input type="text" name="nom" value="" class="form-control"/>
+                    {#{{ form_widget(form.tuteur.profession,{'attr':{'class':'form-control '}}) }}#}
+                </div>
+            </div>
+
+            <div class="form-group">
+
+                <label for="form_nom" id = "apprenant-nom" class="required control-label col-sm-5">Prenom de l'apprenant :</label>
+                  <div class="col-sm-7" id="ex">
+                    <input type="text" name="prenom" value="" class="form-control"/>
+                  </div>
+            </div>
+
+            <div class="form-group">
+
+                <label for="form_nom" id = "apprenant-nom" class="required control-label col-sm-5">Sexe :</label>
+                  <div class="col-sm-7" id="ex">
+                    <input type="text" name="sexe" value="" class="form-control"/>
+                  </div>
+            </div>
+
+            <div class="form-group">
+
+                <label for="form_nom" id = "apprenant-nom" class="required control-label col-sm-5">Né(e) le:</label>
+                  <div class="col-sm-7" id="ex">
+                    <input type="text" name="dateNaissance" value="" class="form-control"/>
+                  </div>
+            </div>
+
+            <div class="form-group">
+
+                <label for="form_nom" id = "apprenant-nom" class="required control-label col-sm-5">A :</label>
+                  <div class="col-sm-7" id="ex">
+                    <input type="text" name="lieuNaissance" value="" class="form-control"/>
+                  </div>
+            </div>
+
+            <div class="form-group">
+
+                <label for="form_nom" id = "apprenant-nom" class="required control-label col-sm-5">Télephone :</label>
+                  <div class="col-sm-7" id="ex">
+                    <input type="text" name="telephone" value="" class="form-control"/>
+                  </div>
+            </div>
+
+            <div class="form-group">
+
+                <label for="form_nom" id = "apprenant-nom" class="required control-label col-sm-5">Email:</label>
+                  <div class="col-sm-7" id="ex">
+                    <input type="text" name="email" value="" class="form-control"/>
+                  </div>
+            </div>
+
+            <div class="form-group">
+
+                <label for="form_nom" id = "apprenant-nom" class="required control-label col-sm-5">Adresse:</label>
+                  <div class="col-sm-7" id="ex">
+                    <input type="text" name="adresseVille" value="" class="form-control"/>
+                  </div>
+            </div>
+
+
+
+            <div class="form-group">
+
+                <label for="form_nom" id = "apprenant-nom" class="required control-label col-sm-5">Nationalité de l'apprenant :</label>
+                  <div class="col-sm-7" id="ex">
+                    <input type="text" name="nationalite" value="" class="form-control"/>
+                  </div>
+            </div>
+
+
+
+            <div class="form-group">
+
+                <label for="form_nom" id = "apprenant-nom" class="required control-label col-sm-5">Filiere Choisir :</label>
+                  <div class="col-sm-7" id="ex">
+                    <input type="text" name="filiere" id="filiere" value="" class="form-control"/>
+                    <input type="hidden" name="filiere_id" id="filiere_id" value="" class="form-control">
+                  </div>
+            </div>
+
+            <div class="form-group">
+
+                <label for="form_nom" id = "apprenant-nom" class="required control-label col-sm-5">Specialite :</label>
+                  <div class="col-sm-7" id="ex">
+                    <input type="text" name="specialite" id="specialite_etablissement" value="" class="form-control"/>
+                    <input type="hidden" name="specialite_id" id="specialite_id" value="" class="form-control">
+                  </div>
+            </div>
+
+            <div class="form-group">
+
+                <label for="form_nom" id = "apprenant-nom" class="required control-label col-sm-5">Niveau d'étude :</label>
+                  <div class="col-sm-7" id="ex">
+                    <input type="text" name="niveauEtude" id="niveauEtude" value="" class="form-control"/>
+                    <input type="hidden" name="niveauEtude_id" id="niveauetude_id" value="" class="form-control">
+                  </div>
+            </div>
+
+            <div class="form-group">
+
+                <label for="form_nom" id = "apprenant-nom" class="required control-label col-sm-5">Né A :</label>
+                  <div class="col-sm-7" id="ex">
+                    <input type="text" name="lieuNaissance" value="" class="form-control"/>
+                  </div>
+            </div>
+
+            <div class="form-group">
+                <label for="" id="" class="required control-label col-sm-5">Fichier</label>
+                <div class="col-sm-7" id="ex">
+                    <input type="hidden" name="fichiers_id" id="fichiers_id" value="" class="form-control">
+
+                </div>
+            </div>
+
+            <h4 class="">Informations Sur le parent</h4>
+
+            <div class="form-group">
+
+                <label for="form_nom" id = "apprenant-nom" class="required control-label col-sm-5">Nom du pere :</label>
+                  <div class="col-sm-7" id="ex">
+                    <input type="text" name="tuteur_nom" value="" class="form-control"/>
+                  </div>
+            </div>
+
+            <div class="form-group">
+
+                <label for="form_nom" id = "apprenant-nom" class="required control-label col-sm-5">Prenom du parent :</label>
+                  <div class="col-sm-7" id="ex">
+                    <input type="text" name="tuteur_prenom" value="" class="form-control"/>
+                  </div>
+            </div>
+
+            <div class="form-group">
+
+                <label for="form_nom" id = "apprenant-nom" class="required control-label col-sm-5">N° Telephone du parent :</label>
+                  <div class="col-sm-7" id="ex">
+                    <input type="text" name="tuteur_telephone" value="" class="form-control"/>
+                  </div>
+            </div>
+
+            <div class="form-group">
+
+                <label for="form_nom" id = "apprenant-nom" class="required control-label col-sm-5">Email du parent :</label>
+                  <div class="col-sm-7" id="ex">
+                    <input type="text" name="tuteur_email" value="" class="form-control"/>
+                  </div>
+            </div>
+
+            <div class="form-group">
+
+                <label for="form_nom" id = "apprenant-nom" class="required control-label col-sm-5">lienParente :</label>
+                  <div class="col-sm-7" id="ex">
+                    <input type="text" name="tuteur_lienParente" value="" class="form-control"/>
+                  </div>
+            </div>
+
+            <div class="form-group">
+
+                <label for="form_nom" id = "apprenant-nom" class="required control-label col-sm-5">profession du parent :</label>
+                  <div class="col-sm-7" id="ex">
+                    <input type="text" name="tuteur_profession" value="" class="form-control"/>
+                  </div>
+            </div>
+
+
+        </form>
+
+      </div>
+
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-default" id="submit">valider</button>
+        <a href="{{path('api_inscription',{'id': etablissement.id })}}" type="button" class="btn btn-default" data-dismiss="modal">Modifier</a>
+
+        <!--<a href="{#{{ path('homepage') }}#}">Accueil</a>-- >
+        <button type="button" class="btn btn-default" data-dismiss="modal">Imprimer</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}
+
+{% block javascripts  %}
+     <script type="text/javascript" src="{{ asset('assets/js/jquery.filepicker.min.js') }}"></script>
+     <script type="text/javascript" src="{{ asset('assets/js/intlTelInput.min.js') }}"></script>
+     <script type="text/javascript" src="{{ asset('assets/js/bootstrap-datepicker.min.js') }}"></script>
+     <script type="text/javascript" src="{{ asset('assets/js/inscription.js') }}"></script>
+
+
+     <script type="text/javascript">
+         $(function() {
+           $("input[type='file']").filepicker();
+           $(".tel").intlTelInput({
+               utilsScript : "{{ asset('assets/js/utils.js') }}",
+               autoHideDialCode : false,
+               //nationalMode : false,
+               initialCountry : "bj"
+           });
+
+           $(".js-datepicker").datepicker(
+               {
+                   format: 'yyyy-mm-dd'
+               }
+
+           );
+
+           $("select.empty").on('change',function(e){
+               var idSelect = $(this).attr('id');
+               $("select.empty#"+idSelect+" option:selected").each(function(){
+                   $(this).parent().css("color","#000");
+               })
+           })
+
+
+           $("select#form_filiereserie").on('focus',function(e){
+
+                $("select#form_filiereserie option:first-child").each(function(){
+                    $(this).attr("disabled","disabled");
+                });
+            }).on('change',function(e){
+                $("select#form_filiereserie option:selected").each(function(){
+                    $(this).parent().css("color","#000");
+                });
+            })
+
+
+            $("select#form_niveauEtude").on('focus',function(e){
+
+                 $("select#form_niveauEtude option:first-child").each(function(){
+                     $(this).attr("disabled","disabled");
+                 });
+             }).on('change',function(e){
+                 $("select#form_niveauEtude option:selected").each(function(){
+                     $(this).parent().css("color","#000");
+                 });
+             })
+
+           //$(".empty").selectize
+         })
+
+
+     </script>
+
+     <script type="text/javascript">
+        $(document).ready(function(){
+            var ulError1 = $('div.col-sm-7 ul li').parent(),
+                ulError2 = $('div.col-sm-5 ul li').parent(),
+                ulError3 = $('div.col-sm-7 + ul li').parent();
+
+
+        if (ulError1) {
+            var inputsError = ulError1.siblings("input");
+
+            for(var i = 0; i< inputsError.length ; i++) {
+                var inp = inputsError[i];
+                inp.style.borderColor = "#c33";
+            }
+        }
+
+        if (ulError2) {
+            var selectsError = ulError2.siblings("span").find("select");
+            var inputsError = ulError2.siblings("input");
+
+            for(var i = 0; i< selectsError.length ; i++) {
+                var sel = selectsError[i];
+                sel.style.borderColor = "#c33";
+            }
+
+            for(var i = 0; i< inputsError.length ; i++) {
+                var inp = inputsError[i];
+                inp.style.borderColor = "#c33";
+            }
+
+        }
+
+        if (ulError3) {
+            var inputsError = ulError3.siblings("div.col-sm-7").find("input");
+
+            for(var i = 0; i< inputsError.length ; i++) {
+                var inp = inputsError[i];
+                inp.style.borderColor = "#c33";
+            }
+        }
+
+        })
+     </script>
+
+    {% endblock %}

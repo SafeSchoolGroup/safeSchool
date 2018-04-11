@@ -1,0 +1,33 @@
+SafeSchool\UserBundle\Entity\User:
+    type: entity
+    table: utilisateur
+    repositoryClass: SafeSchool\UserBundle\Repository\UserRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+
+    fields:
+        userType:
+            type: string
+            length: '100'
+
+        etablissementId:
+            type: integer
+            nullable: true
+
+        ownerId:
+            type: integer
+            nullable: true
+
+    oneToMany:
+        etablissementVotes :
+            targetEntity: \AppBundle\Entity\Vote
+            mappedBy: user
+            cascade: ['persist']
+            orphanRemoval: true
+
+
+    lifecycleCallbacks: {  }

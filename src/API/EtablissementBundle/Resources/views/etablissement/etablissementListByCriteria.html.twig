@@ -1,0 +1,47 @@
+{% extends 'general_layout.html.twig' %}
+
+  {% block stylesheets %}
+     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style_etablissementList.css') }}"/>
+  {% endblock stylesheets %}
+
+  {% block body %}
+  <div class="row" class="z-index: 2">
+    <section id="top-section" class="container-fluid padding-top-50 padding-bottom-mob-0">
+      <div class="col-sm-12">
+        <div class=" text-center ">
+          <br>
+          <h2>
+            Liste des {{etablissements[0].niveauEtablissement}} {{etablissements[0].statutEtablissement}}
+          </h2>
+        </div>
+        <div class="panel-body padding-bottom-50 padding-bottom-mob-0 ">
+          {% for etablissement in etablissements %}
+          <div class="challenge col-xs-12 col-sm-4 col-md-4 challenge-holder " data-unique="challenge-6">
+            <a href="#" class="challenge-wrap">
+              <div class="embed-responsive embed-responsive-16by9 radius">
+                <img src="{{ asset('assets/img/spr.jpg') }}" title="" alt="{{ asset('assets/img/etsDefault.jpg') }}" class="embed-responsive-item">
+              </div>
+              <div class="caption clearfix" style="background-color:#fff;">
+                <div class="caption-title font-head">{{etablissement.nom}}</div>
+                <div class="caption-body is-truncated" style="height: 80px; word-wrap: break-word;">
+                  <p style="color:#999">{{etablissement.indication}} <br>
+                    <b style="color:#999">Tel:</b> {{etablissement.telephone1}} <br>
+                    <a href="#">Note</a>
+                  </p>
+                  <p><a href="#" class="btn btn-inscription">Inscription</a></p>
+                </div>
+              </div>
+            </a>
+          </div>
+          {% endfor %}
+
+        </div>
+        </div>
+    </section>
+  </div>
+
+  {% endblock %}
+
+  {% block javascripts %}
+  <script type="text/javascript" src="{{ asset('assets/js/etablissementJs.js') }}" language="javascript"></script>
+  {% endblock %}

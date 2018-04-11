@@ -1,0 +1,24 @@
+api_inscription:
+    path:     /{id}
+    defaults: { _controller: APIInscriptionBundle:Inscription:inscription }
+    methods:  [GET, POST]
+
+api_verifInfo:
+    path:     /validationInscription/{info}
+    defaults: { _controller: APIInscriptionBundle:Inscription:validationInscription }
+    methods:  [GET, POST]
+    #route pour la methode ajax (specialite d'une filiere)
+option_etablissement_filiere:
+    path:     /{id}/{id_classe}/{id_niveau}/option
+    defaults: { _controller: "APIInscriptionBundle:Inscription:getSpecialiteByFiliere" }
+    methods:  [GET, POST]
+
+niveau_etablissement_filiere:
+    path:     /{id}/{id_classe}/niveauEtude
+    defaults: { _controller: "APIInscriptionBundle:Inscription:getNiveauByEtablissementAndClasse" }
+    methods:  [GET, POST]
+
+data_inscription:
+    path:     /{id}/data
+    defaults: { _controller: "APIInscriptionBundle:Inscription:validationInscription" }
+    methods:  [POST]

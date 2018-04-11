@@ -1,0 +1,37 @@
+AppBundle\Entity\EtablissementProf:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\EtablissementProfRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+
+    manyToOne:
+        etablissement:
+            targetEntity: Etablissement
+            inversedBy:  etablissementProfs
+            joinColumn:
+                etablissement_id:
+                    referencedColumnName: id
+        prof:
+            targetEntity: Prof
+            inversedBy: profEtablissements
+            joinColumn:
+                prof_id:
+                    referencedColumnName: id
+        matiere:
+            targetEntity: Matiere
+            inversedBy:  etablissementProfMatieres
+            joinColumn:
+                matiere_id:
+                    referencedColumnName: id
+    oneToMany:
+        etsProfMatieres:
+            targetEntity: Enseigner
+            mappedBy: etablissementProf
+            cascade: ['persist']
+    lifecycleCallbacks: {  }

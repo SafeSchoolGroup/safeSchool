@@ -1,0 +1,539 @@
+{% extends 'default/etablissement_layout.html.twig' %}
+
+
+{% block stylesheetsEtablissement %}
+<link rel="stylesheet" type="text/css" media="screen" href="{{ asset('assets/css/styles_etablissementHome.css') }}">
+<link rel="stylesheet" type="text/css" media="print" href="{{ asset('assets/css/style_impressionMatieres.css') }}">
+
+{% endblock stylesheetsEtablissement %}
+
+{% block photoCouvertureEtablissement %}
+<img src="{{asset('uploads/etablissement/'~ etablissement.photoCouvertureEtablissement)}}" id="img-couverture">
+
+{% endblock %}
+
+{% block bodyEtablissement %}
+
+<div class="row" id="div-historique">
+  <div class="col-md-5 div-imgHistorique">
+    <img src="{{asset('assets/img/historique1.jpg')}}" width="620" height="350">
+  </div>
+  <a href="{{path('api_info_new')}}">creer une information</a>  <br>
+  <a href="{{path('api_info_avis_new')}}">creer un avis</a> <br>
+  <a href="{{path('api_info_by_destinataire',{code:'6m1'})}}">les info de la 6m1</a> <br>
+  <a href="{{path('api_info_of_ets',{etablissementId:1,max:2})}}">actu de ets 1</a>
+
+  <div class="col-md-5 div-textHistorique">
+      <h1>HISTORIQUE</h1>
+      <p>
+        {{ etablissement.historique }}
+      </p>
+      <a href="#" class="btn btn-default btn-historique">Voir Tout</a>
+  </div>
+
+</div>
+<div class="row" id="div-stat_bilan">
+  <p id="p-titreBilan">
+    Bilan et Statistique
+  </p>
+  <!-- Div statistic -->
+  <div class="col-md-6">
+    <table class="table table-bordered table-hover dataTable" id="table-stat" role="grid">
+      <thead>
+        <tr role="row">
+          <th>  </th>
+          <th colspan="3">Classes</th>
+        </tr>
+        <tr>
+          <th> EXAMENS </th>
+          <td>CEP</td>
+          <td>BEPC</td>
+          <td>BAC</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="odd" role="row">
+          <td>2015-2016</td>
+          <td>20%</td>
+          <td>55%</td>
+          <td>55%</td>
+        </tr>
+        <tr class="even" role="row">
+          <td>2014-2015</td>
+          <td>25%</td>
+          <td>35%</td>
+          <td>55%</td>
+        </tr>
+        <tr class="odd" role="row">
+          <td>2015-2016</td>
+          <td>20%</td>
+          <td>55%</td>
+          <td>55%</td>
+        </tr>
+        <tr class="even" role="row">
+          <td>2014-2015</td>
+          <td>25%</td>
+          <td>35%</td>
+          <td>55%</td>
+        </tr>
+        <tr class="even" role="row">
+          <td>2014-2015</td>
+          <td>25%</td>
+          <td>35%</td>
+          <td>55%</td>
+        </tr>
+        <tr class="odd" role="row">
+          <td>2015-2016</td>
+          <td>20%</td>
+          <td>55%</td>
+          <td>55%</td>
+        </tr>
+        <tr class="even" role="row">
+          <td>2014-2015</td>
+          <td>25%</td>
+          <td>35%</td>
+          <td>55%</td>
+        </tr>
+        <tr class="even" role="row">
+          <td>2014-2015</td>
+          <td>25%</td>
+          <td>35%</td>
+          <td>55%</td>
+        </tr>
+        <tr class="odd" role="row">
+          <td>2015-2016</td>
+          <td>20%</td>
+          <td>55%</td>
+          <td>55%</td>
+        </tr>
+        <tr class="even" role="row">
+          <td>2014-2015</td>
+          <td>25%</td>
+          <td>35%</td>
+          <td>55%</td>
+        </tr>
+        <tr class="even" role="row">
+          <td>2014-2015</td>
+          <td>25%</td>
+          <td>35%</td>
+          <td>55%</td>
+        </tr>
+        <tr class="odd" role="row">
+          <td>2015-2016</td>
+          <td>20%</td>
+          <td>55%</td>
+          <td>55%</td>
+        </tr>
+        <tr class="even" role="row">
+          <td>2014-2015</td>
+          <td>25%</td>
+          <td>35%</td>
+          <td>55%</td>
+        </tr>
+        <tr class="even" role="row">
+          <td>2014-2015</td>
+          <td>25%</td>
+          <td>35%</td>
+          <td>55%</td>
+        </tr>
+        <tr class="odd" role="row">
+          <td>2015-2016</td>
+          <td>20%</td>
+          <td>55%</td>
+          <td>55%</td>
+        </tr>
+        <tr class="even" role="row">
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+
+        </tr>
+      </tfoot>
+
+
+
+    </table>
+  </div>
+
+  <!-- Div graphe -->
+  <div class="col-md-4">
+    <canvas id="canvas" width="300" height="300"></canvas>
+  </div>
+
+  <!-- bouton tous les bilans -->
+  <a href="#" class="btn btn-default pillule" id="btn-bilan">Tous les Bilans </a>
+</div>
+<!-- div cours -->
+<div class="row" id="div-filieres">
+  <p class="filiere-firstP"> Nos Filieres</p>
+  <p id="p-avFilieres">
+    Our Featured Courses are selected through a rigorous process and uniquely created for each semester
+  </p>
+
+  <div class="col-md-7 filieres">
+    {% for filiere in filieres %}
+
+    <div class="div-uneFiliere" title="Afficher toute la description">
+      <a href="{{ path('api_etablissement_filiere',{'id' : filiere.id}) }}"  id="{{ filiere.id }}" class="a-filiere">
+        <h3> {{ filiere.libelleFiliere }} </h3>
+      </a>
+      <p class="p-petiteDesc">
+        {{ filiere.description }}
+      </p>
+
+    </div>
+    {% endfor %}
+
+  </div>
+  <div class="col-md-5" id="div-description">
+    <p id="p-descriptionFiliere">
+      Cliqué sur une filière et vous verrez aparaittre ici sa description.<br>
+      La description d'une filière renseigne sur la définition de la filiere,
+      les prérequis, les conditions qu'il faut pour faire cette filière,
+      les matières qu'on y fait ainsi que les débouchés qu'offre cette filière.<br>
+      Veillez donc tenir compte de toutes ces informations pour faire votre choix.
+    </p>
+    <a href="#horaire" class="btn btn-default pillule" data-toggle="modal" id="btn-matiere">Les matieres </a>
+  </div>
+
+
+  <div  class="modal fade" role="dialog" id="horaire">
+    <div class="modal-dialog" id="horaires" style="right: 0px;">
+      <div class="modal-content">
+        <div class="modal-header">
+
+        </div>
+        <div class="modal-body" id="horairesContent">
+
+
+          <h2>
+            Comptabilite (gestion/fiscalite)
+            <a href="#" id="horairesBack" class="close" data-dismiss="modal">Retour</a>
+            <a href="#" id="printG" name="imprimer">
+              <i class="glyphicon glyphicon-print"></i> </a>
+            </h2>
+            <div class="implantation fadeInUp" id="implantation8" style="display: block;">
+              <ul class="nav nav-tabs tabsAnnees">
+                <li class="active"><a href="#block1" data-toggle="tab" id="L1">Block 1</a></li>
+                <li><a href="#block2" data-toggle="tab" id="L2">Block 2</a></li>
+                <li><a href="#block3" data-toggle="tab" id="L3">Block 3</a></li>
+              </ul>
+            </div>
+            <div class="tab-content">
+              <div class="block1 annee animated tab-pane fade in active" id="block1">
+                <table class="animated">
+                  <thead>
+                    <tr>
+                      <th></th>
+                      <th><em>Credits</em></th>
+                      <th><em>Heures</em></th>
+                    </tr>
+
+                  </thead>
+                  <tbody>
+
+
+                  </tbody>
+
+                  <tfoot>
+                    <tr>
+                      <td>Total</td>
+                      <td align="center" class="tf-credit">852</td>
+                      <td align="center" class="tf-masseHoraire">852</td>
+                    </tr>
+                  </tfoot>
+
+                </table>
+              </div>
+
+
+              <div class="block2 annee animated tab-pane" id="block2">
+                <table class="animated">
+                  <thead>
+                    <tr>
+                      <th></th>
+                      <th><em>Credits</em></th>
+                      <th><em>Heures</em></th>
+                    </tr>
+
+                  </thead>
+                  <tbody>
+
+
+                  </tbody>
+
+                  <tfoot>
+                    <tr>
+                      <td>Total</td>
+                      <td align="center" class="tf-credit"></td>
+                      <td align="center" class="tf-masseHoraire"></td>
+                    </tr>
+                  </tfoot>
+
+                </table>
+              </div>
+
+              <div class="block3 annee animated tab-pane" id="block3">
+                <table class="animated">
+                  <thead>
+                    <tr>
+                      <th></th>
+                      <th><em>Credits</em></th>
+                      <th><em>Heures</em></th>
+                    </tr>
+
+                  </thead>
+                  <tbody>
+
+
+                  </tbody>
+
+                  <tfoot>
+                    <tr>
+                      <td>Total</td>
+                      <td align="center" class="tf-credit"></td>
+                      <td align="center" class="tf-masseHoraire"></td>
+                    </tr>
+                  </tfoot>
+
+                </table>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+
+
+  <div class="row" id="div-actu">
+    <div class="col-md-9 actuCharge">
+      <h3 class="h3-titreActu_charge">
+        {{ latestActus[0].titre }}
+      </h3>
+      <p class="p-descriptionActu_charge">
+
+          {{ latestActus[0].description }}
+
+      </p>
+      <a href="{{path('api_etablissement_liste_actus')}}" title="aller dans le journal scolaire" id="a-actu">Voir <span class="glyphicon glyphicon-plus"></span></a>
+
+    </div>
+    <div class="col-md-3 allLatestActus">
+      {% for actu in latestActus %}
+      <div class="latestActu" id="{{ actu.id }}">
+
+        <h3 class="h3-titre_actu position">
+          {{ actu.titre }}
+        </h3>
+        <p class="p-description_actu position">
+          {{ actu.description }}
+        </p>
+        <div></div>
+      </div>
+
+      {% endfor %}
+
+    </div>
+
+
+  </div>
+
+  <!-- annonce et communique -->
+
+  <div class=" row div-annonce_com">
+    <a href="{{path('api_etablissement_annonces')}}" id="a-annonce_com" title="voir toutes les annonces et communiqués"><h1>Les annonces et Communiqués</h1></a>
+    <div id="annonceCarroussel" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators indique">
+        <li data-target="#annonceCarroussel" data-slide-to="0" class="active"></li>
+        <li data-target="#annonceCarroussel" data-slide-to="1"></li>
+        <li data-target="#annonceCarroussel" data-slide-to="2"></li>
+        <li data-target="#annonceCarroussel" data-slide-to="3"></li>
+        <li data-target="#annonceCarroussel" data-slide-to="4"></li>
+        <li data-target="#annonceCarroussel" data-slide-to="5"></li>
+        <li data-target="#annonceCarroussel" data-slide-to="6"></li>
+        <li data-target="#annonceCarroussel" data-slide-to="7"></li>
+        <li data-target="#annonceCarroussel" data-slide-to="8"></li>
+        <li data-target="#annonceCarroussel" data-slide-to="9"></li>
+
+      </ol>
+
+      <div class="carousel-inner" role="listbox">
+
+        {% for annonce_com in annonces_coms %}
+        {% if annonce_com == annonces_coms[0] %}
+        <div class="item active">
+          <div class="col-md-11 div-titre_annonce">
+            <p  class="p-annonce_titre">
+              <h3 class="h3-annonce_titre">
+                {{ annonce_com.titre }}
+              </h3>
+            </p>
+
+            <p class="p-description_annonce">
+              {{ annonce_com.description }}
+            </div>
+          </p>
+        </div>
+        {% else %}
+        <div class="item">
+          <div class="col-md-11 div-titre_annonce">
+            <p  class="p-annonce_titre">
+              <h3 class="h3-annonce_titre">
+                {{ annonce_com.titre }}
+              </h3>
+            </p>
+
+            <p class="p-description_annonce">
+              {{ annonce_com.description }}
+            </p>
+          </div>
+        </div>
+        {% endif %}
+
+        {% endfor %}
+
+      </div>
+
+      <a class="left carousel-control" href="#annonceCarroussel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="right carousel-control" href="#annonceCarroussel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+
+  </div>
+
+
+  <div class="">
+    <a href="{{path('api_etablissement_contact')}}" id="a-contact" title="contact"><h1>contact</h1></a>
+
+  </div>
+
+  {% endblock %}
+
+
+  {% block scriptEtablissement %}
+  <script type="text/javascript" src="{{ asset('assets/datatables/js/dataTables.bootstrap.min.js') }}" language="javascript"></script>
+  <script type="text/javascript" src="{{ asset('assets/datatables/js/jquery.dataTables.min.js') }}" language="javascript"></script>
+  <script type="text/javascript" src="{{ asset('assets/js/Chart.min.js') }}" language="javascript"></script>
+  <script type="text/javascript" src="{{ asset('assets/js/ajaxFiliere.js') }}" language="javascript"></script>
+
+
+  <script type="text/javascript" language="javascript">
+  $(document).ready(function(){
+    $(".div-uneFiliere a").on('click',function(){
+      var id = $(this).attr("id");
+      $("#p-recupereId").text(id);
+    });
+
+  });
+
+
+  </script>
+
+  <script type="text/javascript">
+  $(document).ready(function(){
+    $("#table-stat").DataTable({
+      "paging": true,
+      "lengthChange": true,
+      "searching": true,
+      "ordering": true,
+      "info": false,
+      "autoWidth": false,
+
+    });
+
+    var areaChartData = {
+      labels: ["January", "February", "March", "April", "May", "June", "July"],
+      datasets: [
+        {
+          label: "Electronics",
+          fillColor: "rgba(210, 214, 222, 1)",
+          strokeColor: "rgba(210, 214, 222, 1)",
+          pointColor: "rgba(210, 214, 222, 1)",
+          pointStrokeColor: "#c1c7d1",
+          pointHighlightFill: "#fff",
+          pointHighlightStroke: "rgba(220,220,220,1)",
+          data: [65, 59, 80, 81, 56, 55, 40]
+        },
+        {
+          label: "Digital Goods",
+          fillColor: "rgba(60,141,188,0.9)",
+          strokeColor: "rgba(60,141,188,0.8)",
+          pointColor: "#3b8bba",
+          pointStrokeColor: "rgba(60,141,188,1)",
+          pointHighlightFill: "#fff",
+          pointHighlightStroke: "rgba(60,141,188,1)",
+          data: [28, 48, 40, 19, 86, 27, 90]
+        }
+      ]
+    };
+
+    var areaChartOptions = {
+      //Boolean - If we should show the scale at all
+      showScale: true,
+      //Boolean - Whether grid lines are shown across the chart
+      scaleShowGridLines: false,
+      //String - Colour of the grid lines
+      scaleGridLineColor: "rgba(0,0,0,.05)",
+      //Number - Width of the grid lines
+      scaleGridLineWidth: 1,
+      //Boolean - Whether to show horizontal lines (except X axis)
+      scaleShowHorizontalLines: true,
+      //Boolean - Whether to show vertical lines (except Y axis)
+      scaleShowVerticalLines: true,
+      //Boolean - Whether the line is curved between points
+      bezierCurve: true,
+      //Number - Tension of the bezier curve between points
+      bezierCurveTension: 0.3,
+      //Boolean - Whether to show a dot for each point
+      pointDot: false,
+      //Number - Radius of each point dot in pixels
+      pointDotRadius: 4,
+      //Number - Pixel width of point dot stroke
+      pointDotStrokeWidth: 1,
+      //Number - amount extra to add to the radius to cater for hit detection outside the drawn point
+      pointHitDetectionRadius: 20,
+      //Boolean - Whether to show a stroke for datasets
+      datasetStroke: true,
+      //Number - Pixel width of dataset stroke
+      datasetStrokeWidth: 2,
+      //Boolean - Whether to fill the dataset with a color
+      datasetFill: true,
+      //String - A legend template
+      //Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
+      maintainAspectRatio: true,
+      //Boolean - whether to make the chart responsive to window resizing
+      responsive: true
+    };
+
+    //Create the line chart
+    //areaChart.Line(areaChartData, areaChartOptions);
+
+    //-------------
+    //- LINE CHART -
+    //--------------
+    var lineChartCanvas = $("#canvas").get(0).getContext("2d");
+    var lineChart = new Chart(lineChartCanvas);
+    var lineChartOptions = areaChartOptions;
+    lineChartOptions.datasetFill = false;
+    lineChart.Line(areaChartData, lineChartOptions);
+
+  });
+
+  </script>
+  {% endblock scriptEtablissement %}

@@ -1,0 +1,19 @@
+AppBundle\Entity\FondateurOuDirecteur:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\FondateurOuDirecteurRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        fonction:
+            type: string
+            length: 255
+        createdAt:
+            type: datetime
+        updatedAt:
+            type: datetime
+    lifecycleCallbacks: {  }

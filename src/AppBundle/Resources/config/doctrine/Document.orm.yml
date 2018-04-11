@@ -1,0 +1,36 @@
+AppBundle\Entity\Document:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\DocumentRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        titre:
+            type: string
+            length: 255
+        description:
+            type: text
+        datePublication:
+            type: date
+            column: date_publication
+        taille:
+            type: integer
+        createdAt:
+            type: datetime
+            column: created_at
+        updatedAt:
+            type: datetime
+            column: updated_at
+    inheritanceType: SINGLE_TABLE
+    discriminatorColumn:
+        name: typeDocument
+        type: string
+    discriminatorMap:
+        memoire: Memoire
+        epreuve: Epreuve
+        expose: Expose
+    lifecycleCallbacks: {  }

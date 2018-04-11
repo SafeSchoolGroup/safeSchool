@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Etablissement list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Nomfondateur</th>
+                <th>Prenomfondateur</th>
+                <th>Nomdirecteur</th>
+                <th>Prenomdirecteur</th>
+                <th>Adresserue</th>
+                <th>Adresseville</th>
+                <th>Adressepostale</th>
+                <th>Telephone1</th>
+                <th>Telephone2</th>
+                <th>Email</th>
+                <th>Urlsite</th>
+                <th>Anneecreation</th>
+                <th>Historique</th>
+                <th>Statutetablissement</th>
+                <th>Categorieetablissement</th>
+                <th>Niveauetablissement</th>
+                <th>Logoetablissement</th>
+                <th>Photocouvertureetablissement</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for etablissement in etablissements %}
+            <tr>
+                <td><a href="{{ path('api_etablissement_show', { 'id': etablissement.id }) }}">{{ etablissement.id }}</a></td>
+                <td>{{ etablissement.nom }}</td>
+                
+                <td>{{ etablissement.adresseRue }}</td>
+                <td>{{ etablissement.adresseVille }}</td>
+                <td>{{ etablissement.adressePostale }}</td>
+                <td>{{ etablissement.telephone1 }}</td>
+                <td>{{ etablissement.telephone2 }}</td>
+                <td>{{ etablissement.email }}</td>
+                <td>{{ etablissement.urlSite }}</td>
+                <td>{{ etablissement.anneeCreation }}</td>
+                <td>{{ etablissement.historique }}</td>
+                <td>{{ etablissement.statutEtablissement }}</td>
+                <td>{{ etablissement.categorieetablissement }}</td>
+                <td>{{ etablissement.niveauEtablissement }}</td>
+                <td>{{ etablissement.logoEtablissement }}</td>
+                <td>{{ etablissement.photoCouvertureEtablissement }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('api_etablissement_show', { 'id': etablissement.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('api_etablissement_edit', { 'id': etablissement.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('api_etablissement_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

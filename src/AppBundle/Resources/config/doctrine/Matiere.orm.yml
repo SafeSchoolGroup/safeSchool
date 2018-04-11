@@ -1,0 +1,34 @@
+AppBundle\Entity\Matiere:
+    type: entity
+    repositoryClass: AppBundle\Repository\MatiereRepository
+
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        codeMatiere:
+            type: string
+            length: '7'
+        libelleMatiere:
+            type: string
+            length: 255
+        credit:
+            type: integer
+        masseHoraire:
+            type: integer
+    oneToMany:
+        notes:
+          targetEntity: Note
+          mappedBy: matiere
+          cascade: ['persist']
+        etablissementProfMatieres:
+          targetEntity: EtablissementProf
+          mappedBy: matiere
+          cascade: ['persist']
+    manyToOne:
+        etsClasseNiveauSpecialite:
+            targetEntity: EtablissementClasseNiveauSpecialite
+    lifecycleCallbacks: {  }

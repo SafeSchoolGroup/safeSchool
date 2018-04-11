@@ -1,0 +1,26 @@
+{% extends 'default/etablissement_layout.html.twig' %}
+
+  {% block stylesheetsEtablissement %}
+  <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('assets/css/styles_listeActus.css') }}">
+
+  {% endblock stylesheetsEtablissement %}
+
+  {% block bodyEtablissement %}
+  <h1 style="text-align:center">Liste des actualités</h1>
+
+  {% for actu in actus %}
+
+      <div class="row uneActu">
+        <h2>
+            {{ actu.titre }}
+        </h2>
+      <p>
+          {{ actu.datePublication|date }}
+      </p>
+      <div class="">{{ actu.description }}</div>
+      </div>
+
+
+  {% endfor %}
+
+  {% endblock %}

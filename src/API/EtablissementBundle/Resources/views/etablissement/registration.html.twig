@@ -1,0 +1,42 @@
+<!-- Modal1 -->
+<div class="modal fade" id="registration_modal" tabindex="-1" role="dialog" >
+    <div class="modal-dialog" role="document">
+        <!-- Modal content-->
+        <div class="modal-content abt-w3l">
+            <div class="modal-header">
+                <button type="button" class="close clo1" data-dismiss="modal">&times;</button>
+                <h4>Renseigner les informations</h4>
+                {{ render(controller('APIEtablissementBundle:Etablissement:new')) }}
+            </div>
+        </div>
+    </div>
+</div>
+    <script type="text/javascript" src="{{ asset('assets/js/jquery-3.1.0.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/etablissementJs.js') }}"></script>
+    <script type="text/javascript" language="JavaScript">
+        $(document).ready(function(){
+            $(document).on('submit','form#form-school-registration',function(e){
+                e.preventDefault();
+               $.ajax({
+                    method      : $(this).attr( 'method' ),
+                    url         : $(this).attr('action'),
+                    data        : $(this).serialize(),
+                    dataType    : "json"
+               })
+                   .done (function(data, status, object) {
+                     if (data.message == "Success") {
+                       alert(data.userN + "\n" + data.userpas);
+                     }
+                     else{
+                       alert("wrong");
+                     }
+                     //window.location.href = 'http://localhost:8000/login';
+                        //if(data.error) $('div.has-error').html(data.message);
+                    })
+                    .fail(function(data, status, object){
+                        console.log(data);
+                    });
+            });
+        });
+    </script>
+<!-- //Modal1 -->

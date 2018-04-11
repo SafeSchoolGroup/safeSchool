@@ -1,0 +1,25 @@
+AppBundle\Entity\Domaine:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\DomaineRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        codeDomaine:
+            type: string
+            length: '10'
+            column: code_domaine
+        libelleDomaine:
+            type: string
+            length: '255'
+            unique: true
+            column: libelle_domaine
+    manyToMany:
+        sousDomaines:
+            targetEntity: SousDomaine
+            cascade: ['persist']
+    lifecycleCallbacks: {  }

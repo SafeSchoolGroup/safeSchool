@@ -1,0 +1,143 @@
+<!--top-bar-->
+<div class="top-search-bar">
+    <div class="header-top-nav">
+        <ul>
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+                <li>
+                    <a href="{{ path('fos_user_security_logout') }}" class="btn btn-primary" style="color: #FFFFFF">
+                        {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a>
+                </li>
+            {% else %}
+
+                <li><a href="#" data-toggle="modal" data-target="#myModal3"><i class="fa fa-key" aria-hidden="true"></i>Se
+                        connecter</a></li>
+                <li><a href="#" data-toggle="modal" data-target="#myModal4"><i class="fa fa-lock"
+                                                                               aria-hidden="true"></i>Créer un
+                        compte</a></li>
+            {% endif %}
+        </ul>
+    </div>
+</div>
+<!-- Modal1 -->
+<div class="modal fade" id="myModal1" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content modal-info">
+            <div class="modal-header">
+                <button type="button" class="close w3l" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                <h4>Subscribe Now</h4>
+                <!--newsletter-->
+                <div class="newsletter">
+                    <form action="#" method="post">
+                        <input type="email" name="email" size="30" required="" placeholder="Please fill your email"/>
+                        <input type="submit" value="Subscribe"/>
+                    </form>
+                </div>
+                <!--//newsletter-->
+            </div>
+        </div>
+    </div>
+</div>
+<div class="clearfix"></div>
+
+<!-- //Modal1 -->
+
+<!-- Modal3 -->
+<div class="modal fade" id="myModal3" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <!-- Modal content-->
+        <div class="modal-content news-w3l">
+            <div class="modal-header">
+                <button type="button" class="close w3l" data-dismiss="modal">&times;</button>
+                <h4>Connectez-vous </h4>
+            </div>
+
+            {#{{ render(controller('SafeSchoolUserBundle:Security:login')) }}#}
+
+        </div>
+    </div>
+</div>
+<div class="clearfix"></div>
+<!-- //Modal3 -->
+
+<!-- Modal4 -->
+<div class="modal fade" id="myModal4" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <!-- Modal content-->
+        <div class="modal-content news-w3l">
+            <div class="modal-header">
+                <button type="button" class="close w3l" data-dismiss="modal">&times;</button>
+                <h4>Register Now</h4>
+                <div>
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab"
+                                                                  data-toggle="tab">Elève</a></li>
+                        <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Chef
+                                Etablissement</a></li>
+                    </ul>
+
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="home">
+                            <div class="login-main wthree">
+
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="profile">
+                            <div class="login-main wthree">
+                                
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!--newsletter-->
+
+
+                <!--<form action="#" method="post">
+                    <input type="text" placeholder="Name" name="Name">
+                    <input type="email" placeholder="Email" required="" name="Email">
+                    <input type="password" placeholder="Password" name="Password">
+                    <input type="password" placeholder="Confirm Password" name="Password">
+                    <input type="text" placeholder="Phone Number" name="Number">
+                    <input type="submit" value="Register Now">
+                </form>-->
+
+                <!--//newsletter-->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- //modal 4-->
+
+<div class="clearfix"></div>
+<div class="clearfix"></div>
+<!--//top-bar-->
+<!-- navigation -->
+<div class="top-nav">
+    <nav class="navbar navbar-default">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+        </div>
+        <!-- navbar-header -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="{{ path('homepage') }}" class="hvr-underline-from-center active">Acceuil</a></li>
+                <li><a href="#about" class="hvr-underline-from-center scroll">Etablissements</a></li>
+                <li><a href="#services" class="hvr-underline-from-center scroll">Classement</a></li>
+                <li><a href="#gallery" class="hvr-underline-from-center scroll">Comment évaluer ?</a></li>
+                <li><a href="#contact" class="hvr-underline-from-center scroll">Contactez-nous</a></li>
+            </ul>
+        </div>
+        <div class="clearfix"></div>
+    </nav>
+</div>

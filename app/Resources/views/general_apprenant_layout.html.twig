@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+		<link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+		<link rel="stylesheet" type="text/css" href="{{ asset('bootstrap/css/bootstrap.min.css') }}" />
+		<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/styless.css') }}" />
+    <style media="screen">
+
+      .main-header {
+      	position: relative;
+      	max-height: 100px;
+      	z-index: 1030;
+        background-color: magenta;
+        height: 50px;
+      }
+
+      .wrapper {
+      	min-height: 100%;
+      	position: static;
+      	overflow: hidden;
+      }
+
+      .main-sidebar {
+        	position: absolute;
+          background-color: #222d32;
+        	top: 0;
+        	left: 0;
+        	padding-top: 50px;
+        	min-height: 100%;
+        	/*width: 230px;*/
+        	z-index: 810;
+        	-webkit-transition: -webkit-transform .3s ease-in-out,width .3s ease-in-out;
+        	-moz-transition: -moz-transform .3s ease-in-out,width .3s ease-in-out;
+        	-o-transition: -o-transform .3s ease-in-out,width .3s ease-in-out;
+        	transition: transform .3s ease-in-out,width .3s ease-in-out;
+        }
+
+        .main-content-block {
+        	min-height: 100%;
+          margin-left: 354px;
+          padding-top: 105px;
+          height: 200px;
+        	background-color: blue;
+        	z-index: 800;
+        }
+
+        .side-right-block {
+        	background-color: green;
+        	margin-left: 1047px;
+        	height: 100px;
+        	margin-top: -200px;
+        }
+    </style>
+        {% block stylesheets %}{% endblock %}
+
+		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+   		<!--[if lt IE 9]>
+      		<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    	<![endif]-->
+    </head>
+    <body>
+        <div class="wrapper">
+          <header class="main-header">
+
+          </header>
+          <div class="row">
+            <div class="col-md-3 main-sidebar">
+              {% block sidebar_menu_left %}{% endblock %}
+            </div>
+
+            <div class="col-md-6 main-content-block">
+              {% block main_center_block %}{% endblock %}
+            </div>
+
+            <div class="col-md-3 side-right-block">
+              {% block side_column_right %}{% endblock %}
+            </div>
+
+          </div>
+
+
+      	{% block carousel %}{% endblock %}
+
+	<footer>
+		<div class="container">
+			<ul class="ul-footer-list">
+                <li><h3> ACTIVITES </h3></li>
+				<li><a href="">Activer mon compte </a></li>
+				<li><a href="">Etablissements</a></li>
+				<li><a href="">Documents</a></li>
+				<li><a href="">Exploits</a></li>
+				<li><a href="">Forum</a></li>
+				<li><a href="">Contactez-nous</a></li>
+			</ul>
+
+            <ul class="ul-footer-list">
+                <li><h3> SERVICES </h3></li>
+                <li><a href="">Activer mon compte </a></li>
+                <li><a href="">Etablissements</a></li>
+                <li><a href="">Documents</a></li>
+                <li><a href="">Exploits</a></li>
+                <li><a href="">Forum</a></li>
+                <li><a href="">Contactez-nous</a></li>
+            </ul>
+
+			<ul class="ul-footer-list">
+                <li><h3> AIDE & SUPPORT </h3></li>
+				<li><a href="">Avis & Suggestions</a></li>
+				<li><a href="">Voir les établissements à proximité</a></li>
+				<li><a href="">Aide</a></li>
+				<li><a href="">A propos</a></li>
+			</ul>
+
+		</div>
+       <div class="div-footer-divider"></div>
+
+            <ul class="ul-footer-languages">
+                    <li><a href="">English</a></li>
+                    <li><a href="">Français</a></li>
+                    <li><a href="">Deutsch</a></li>
+            </ul>
+
+        <ul class="ul-footer-terms">
+            <li>Copyright &copy; 2016 safeSchool, Inc.</li>
+            <li><a href="">Mentions légales</a>&boxv;</li>
+            <li><a href="">Politique de confidentialité</a>&boxv;</li>
+           <li><a href="">Plan du site</a></li>
+        </ul>
+	</footer>
+</div><!-- end /div.container-fluid -->
+
+        <script type="text/javascript" src="{{ asset('assets/js/jquery-3.1.0.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
+                {% block javascripts %}{% endblock %}
+    </body>
+</html>

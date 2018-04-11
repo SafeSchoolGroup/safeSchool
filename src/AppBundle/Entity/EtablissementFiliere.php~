@@ -1,0 +1,345 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\Common\Collections\ArrayCollection;
+
+/**
+ * EtablissementFiliere
+ */
+class EtablissementFiliere
+{
+    /**
+     * @var int
+     */
+    private $id;
+
+    /**
+     * @var Etablissement
+     */
+    private $etablissement;
+
+    /**
+     * @var Filiere
+     */
+    private $filiere;
+
+    /**
+     * @var int
+     */
+    private $fraisScolarite;
+
+    /**
+     * @var int
+     */
+    private $pourcentagePartiel;
+
+    /**
+     * @var int
+     */
+    private $pourcentageDevoir;
+
+    /**
+     * @var int
+     */
+    private $pourcentageTP;
+
+    /**
+     * @var \Datetime
+     */
+    private $created_at;
+
+    /**
+     * @var \Datetime
+     */
+    private $updated_at;
+
+    /**
+     * @var ArrayCollection
+     */
+    private $etablissementFiliereSousFilieres;
+
+     /**
+      * @var ArrayCollection
+      */
+     private $etablissementFiliereMatieres = null;
+
+     /**
+      * Constructor
+      *
+      */
+     public function __construct() {
+         $this->etablissementFiliereMatieres = new ArrayCollection();
+         $this->etablissementFiliereSousFilieres = new ArrayCollection();
+     }
+
+     /**
+      * Get id
+      *
+      * @return int
+      */
+     public function getId()
+     {
+         return $this->id;
+     }
+
+    /**
+     * Set createdAt
+     *
+     * @param \DateTime $createdAt
+     *
+     * @return EtablissementFiliere
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->created_at = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->created_at;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     *
+     * @return EtablissementFiliere
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updated_at = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updated_at;
+    }
+
+    /**
+     * Add etablissementFiliereMatiere
+     *
+     * @param \AppBundle\Entity\Matiere $etablissementFiliereMatiere
+     *
+     * @return EtablissementFiliere
+     */
+    public function addEtablissementFiliereMatiere(\AppBundle\Entity\Matiere $etablissementFiliereMatiere)
+    {
+        $this->etablissementFiliereMatieres[] = $etablissementFiliereMatiere;
+
+        return $this;
+    }
+
+    /**
+     * Remove etablissementFiliereMatiere
+     *
+     * @param \AppBundle\Entity\Matiere $etablissementFiliereMatiere
+     */
+    public function removeEtablissementFiliereMatiere(\AppBundle\Entity\Matiere $etablissementFiliereMatiere)
+    {
+        $this->etablissementFiliereMatieres->removeElement($etablissementFiliereMatiere);
+    }
+
+    /**
+     * Get etablissementFiliereMatieres
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getEtablissementFiliereMatieres()
+    {
+        return $this->etablissementFiliereMatieres;
+    }
+
+    /**
+     * Add etablissementFiliereSousFiliere
+     *
+     * @param \AppBundle\Entity\SousFiliere $etablissementFiliereSousFiliere
+     *
+     * @return EtablissementFiliere
+     */
+    public function addEtablissementFiliereSousFiliere(\AppBundle\Entity\SousFiliere $etablissementFiliereSousFiliere)
+    {
+        $this->etablissementFiliereSousFilieres[] = $etablissementFiliereSousFiliere;
+
+        return $this;
+    }
+
+    /**
+     * Remove etablissementFiliereSousFiliere
+     *
+     * @param \AppBundle\Entity\SousFiliere $etablissementFiliereSousFiliere
+     */
+    public function removeEtablissementFiliereSousFiliere(\AppBundle\Entity\SousFiliere $etablissementFiliereSousFiliere)
+    {
+        $this->etablissementFiliereSousFilieres->removeElement($etablissementFiliereSousFiliere);
+    }
+
+    /**
+     * Get etablissementFiliereSousFilieres
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getEtablissementFiliereSousFilieres()
+    {
+        return $this->etablissementFiliereSousFilieres;
+    }
+
+    /**
+     * Set etablissement
+     *
+     * @param \AppBundle\Entity\Etablissement $etablissement
+     *
+     * @return EtablissementFiliere
+     */
+    public function setEtablissement(\AppBundle\Entity\Etablissement $etablissement = null)
+    {
+        $this->etablissement = $etablissement;
+
+        return $this;
+    }
+
+    /**
+     * Get etablissement
+     *
+     * @return \AppBundle\Entity\Etablissement
+     */
+    public function getEtablissement()
+    {
+        return $this->etablissement;
+    }
+
+    /**
+     * Set filiere
+     *
+     * @param \AppBundle\Entity\Filiere $filiere
+     *
+     * @return EtablissementFiliere
+     */
+    public function setFiliere(\AppBundle\Entity\Filiere $filiere = null)
+    {
+        $this->filiere = $filiere;
+
+        return $this;
+    }
+
+    /**
+     * Get filiere
+     *
+     * @return \AppBundle\Entity\Filiere
+     */
+    public function getFiliere()
+    {
+        return $this->filiere;
+    }
+
+    /**
+     * Set fraisScolarite
+     *
+     * @param integer $fraisScolarite
+     *
+     * @return EtablissementFiliere
+     */
+    public function setFraisScolarite($fraisScolarite)
+    {
+        $this->fraisScolarite = $fraisScolarite;
+
+        return $this;
+    }
+
+    /**
+     * Get fraisScolarite
+     *
+     * @return integer
+     */
+    public function getFraisScolarite()
+    {
+        return $this->fraisScolarite;
+    }
+
+    /**
+     * Set pourcentageDevoir
+     *
+     * @param integer $pourcentageDevoir
+     *
+     * @return EtablissementFiliere
+     */
+    public function setPourcentageDevoir($pourcentageDevoir)
+    {
+        $this->pourcentageDevoir = $pourcentageDevoir;
+
+        return $this;
+    }
+
+    /**
+     * Get pourcentageDevoir
+     *
+     * @return integer
+     */
+    public function getPourcentageDevoir()
+    {
+        return $this->pourcentageDevoir;
+    }
+
+    /**
+     * Set pourcentagePartiel
+     *
+     * @param integer $pourcentagePartiel
+     *
+     * @return EtablissementFiliere
+     */
+    public function setPourcentagePartiel($pourcentagePartiel)
+    {
+        $this->pourcentagePartiel = $pourcentagePartiel;
+
+        return $this;
+    }
+
+    /**
+     * Get pourcentagePartiel
+     *
+     * @return integer
+     */
+    public function getPourcentagePartiel()
+    {
+        return $this->pourcentagePartiel;
+    }
+
+    /**
+     * Set pourcentageTP
+     *
+     * @param integer $pourcentageTP
+     *
+     * @return EtablissementFiliere
+     */
+    public function setPourcentageTP($pourcentageTP)
+    {
+        $this->pourcentageTP = $pourcentageTP;
+
+        return $this;
+    }
+
+    /**
+     * Get pourcentageTP
+     *
+     * @return integer
+     */
+    public function getPourcentageTP()
+    {
+        return $this->pourcentageTP;
+    }
+}

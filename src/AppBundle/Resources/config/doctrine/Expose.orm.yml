@@ -1,0 +1,13 @@
+AppBundle\Entity\Expose:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\ExposeRepository
+    fields:
+        matiere:
+            type: string
+            length: 255
+        typeExpose:
+            type: string
+            length: 255
+            column: type_expose
+    lifecycleCallbacks: {  }

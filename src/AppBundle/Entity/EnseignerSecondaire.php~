@@ -1,0 +1,283 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * EnseignerSecondaire
+ */
+class EnseignerSecondaire
+{
+  /**
+   * @var int
+   */
+    private $id;
+
+    /**
+     * @var date
+     */
+    private $dateEnseigner;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $enseignerProgCoursSecondaire;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $matiereProgCoursSecondaire;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $profProgCoursSecondaire;
+
+    /**
+     * @var \AppBundle\Entity\EtablissementProf
+     */
+    private $etablissementProf;
+
+    /**
+     * @var SousClasse
+     */
+    private $sousClasse;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->enseignerProgCoursSecondaire = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Set dateEnseigner
+     *
+     * @param \DateTime $dateEnseigner
+     * @return Enseigner
+     */
+    public function setDateEnseigner($dateEnseigner)
+    {
+        $this->dateEnseigner = $dateEnseigner;
+
+        return $this;
+    }
+
+    /**
+     * Get dateEnseigner
+     *
+     * @return \DateTime
+     */
+    public function getDateEnseigner()
+    {
+        return $this->dateEnseigner;
+    }
+
+    /**
+     * Set prof
+     *
+     * @param \AppBundle\Entity\Prof $prof
+     * @return Enseigner
+     */
+    public function setProf(\AppBundle\Entity\Prof $prof)
+    {
+        $this->prof = $prof;
+
+        return $this;
+    }
+
+    /**
+     * Get prof
+     *
+     * @return \AppBundle\Entity\Prof
+     */
+    public function getProf()
+    {
+        return $this->prof;
+    }
+
+    /**
+     * Set matiere
+     *
+     * @param \AppBundle\Entity\Matiere $matiere
+     * @return Enseigner
+     */
+    public function setMatiere(\AppBundle\Entity\Matiere $matiere)
+    {
+        $this->matiere = $matiere;
+
+        return $this;
+    }
+
+    /**
+     * Get matiere
+     *
+     * @return \AppBundle\Entity\Matiere
+     */
+    public function getMatiere()
+    {
+        return $this->matiere;
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set etablissementProf
+     *
+     * @param \AppBundle\Entity\EtablissementProf $etablissementProf
+     *
+     * @return EnseignerSecondaire
+     */
+    public function setEtablissementProf(\AppBundle\Entity\EtablissementProf $etablissementProf = null)
+    {
+        $this->etablissementProf = $etablissementProf;
+
+        return $this;
+    }
+
+    /**
+     * Get etablissementProf
+     *
+     * @return \AppBundle\Entity\EtablissementProf
+     */
+    public function getEtablissementProf()
+    {
+        return $this->etablissementProf;
+    }
+
+    /**
+     * Add enseignerProgCoursSecondaire
+     *
+     * @param \AppBundle\Entity\ProgrammeCoursSecondaire $enseignerProgCoursSecondaire
+     *
+     * @return EnseignerSecondaire
+     */
+    public function addEnseignerProgCoursSecondaire(\AppBundle\Entity\ProgrammeCoursSecondaire $enseignerProgCoursSecondaire)
+    {
+        $this->enseignerProgCoursSecondaire[] = $enseignerProgCoursSecondaire;
+
+        return $this;
+    }
+
+    /**
+     * Remove enseignerProgCoursSecondaire
+     *
+     * @param \AppBundle\Entity\ProgrammeCoursSecondaire $enseignerProgCoursSecondaire
+     */
+    public function removeEnseignerProgCoursSecondaire(\AppBundle\Entity\ProgrammeCoursSecondaire $enseignerProgCoursSecondaire)
+    {
+        $this->enseignerProgCoursSecondaire->removeElement($enseignerProgCoursSecondaire);
+    }
+
+    /**
+     * Get enseignerProgCoursSecondaire
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getEnseignerProgCoursSecondaire()
+    {
+        return $this->enseignerProgCoursSecondaire;
+    }
+
+    /**
+     * Add matiereProgCoursSecondaire
+     *
+     * @param \AppBundle\Entity\ProgrammeCoursSecondaire $matiereProgCoursSecondaire
+     *
+     * @return EnseignerSecondaire
+     */
+    public function addMatiereProgCoursSecondaire(\AppBundle\Entity\ProgrammeCoursSecondaire $matiereProgCoursSecondaire)
+    {
+        $this->matiereProgCoursSecondaire[] = $matiereProgCoursSecondaire;
+
+        return $this;
+    }
+
+    /**
+     * Remove matiereProgCoursSecondaire
+     *
+     * @param \AppBundle\Entity\ProgrammeCoursSecondaire $matiereProgCoursSecondaire
+     */
+    public function removeMatiereProgCoursSecondaire(\AppBundle\Entity\ProgrammeCoursSecondaire $matiereProgCoursSecondaire)
+    {
+        $this->matiereProgCoursSecondaire->removeElement($matiereProgCoursSecondaire);
+    }
+
+    /**
+     * Get matiereProgCoursSecondaire
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getMatiereProgCoursSecondaire()
+    {
+        return $this->matiereProgCoursSecondaire;
+    }
+
+    /**
+     * Add profProgCoursSecondaire
+     *
+     * @param \AppBundle\Entity\ProgrammeCoursSecondaire $profProgCoursSecondaire
+     *
+     * @return EnseignerSecondaire
+     */
+    public function addProfProgCoursSecondaire(\AppBundle\Entity\ProgrammeCoursSecondaire $profProgCoursSecondaire)
+    {
+        $this->profProgCoursSecondaire[] = $profProgCoursSecondaire;
+
+        return $this;
+    }
+
+    /**
+     * Remove profProgCoursSecondaire
+     *
+     * @param \AppBundle\Entity\ProgrammeCoursSecondaire $profProgCoursSecondaire
+     */
+    public function removeProfProgCoursSecondaire(\AppBundle\Entity\ProgrammeCoursSecondaire $profProgCoursSecondaire)
+    {
+        $this->profProgCoursSecondaire->removeElement($profProgCoursSecondaire);
+    }
+
+    /**
+     * Get profProgCoursSecondaire
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getProfProgCoursSecondaire()
+    {
+        return $this->profProgCoursSecondaire;
+    }
+
+    /**
+     * Set sousClasse
+     *
+     * @param \AppBundle\Entity\SousClasse $sousClasse
+     *
+     * @return EnseignerSecondaire
+     */
+    public function setSousClasse(\AppBundle\Entity\SousClasse $sousClasse = null)
+    {
+        $this->sousClasse = $sousClasse;
+
+        return $this;
+    }
+
+    /**
+     * Get sousClasse
+     *
+     * @return \AppBundle\Entity\SousClasse
+     */
+    public function getSousClasse()
+    {
+        return $this->sousClasse;
+    }
+}

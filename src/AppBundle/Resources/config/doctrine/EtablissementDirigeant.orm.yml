@@ -1,0 +1,33 @@
+AppBundle\Entity\EtablissementDirigeant:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\EtablissementDirigeantRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+            annee:
+                type: string
+                length: 10
+            createdAt:
+                type: datetime
+            updatedAt:
+                type: datetime
+
+    manyToOne:
+            etablissement:
+                targetEntity: Etablissement
+                inversedBy:  dirigeants
+                joinColumn:
+                    etablissement_id:
+                        referencedColumnName: id
+            dirigeant:
+                targetEntity: Dirigeant
+                inversedBy: etablissements
+                joinColumn:
+                    dirigeant_id:
+                        referencedColumnName: id
+    lifecycleCallbacks: {  }

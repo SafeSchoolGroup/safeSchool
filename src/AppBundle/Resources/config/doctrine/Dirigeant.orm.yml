@@ -1,0 +1,25 @@
+AppBundle\Entity\Dirigeant:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\DirigeantRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        fonction:
+            type: string
+            length: 255
+        createdAt:
+            type: datetime
+        updatedAt:
+            type: datetime
+
+    oneToMany:
+        etablissements:
+            targetEntity: EtablissementDirigeant
+            mappedBy: dirigeant
+            cascade: ['persist']
+    lifecycleCallbacks: {  }

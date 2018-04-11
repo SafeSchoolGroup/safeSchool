@@ -1,0 +1,157 @@
+.div-toutContenuEtablissement
+{
+    background-color: #fff;
+    opacity: 0.8;
+    box-shadow: 1px 0 10px rgba(0,0,0,0.75);
+    margin-top: 30px;
+    padding-top: 17px;
+    padding-bottom: 17px;
+
+}
+
+#p-niveau a
+{
+  margin-left: -50px;
+}
+
+.div-barreHaut
+{
+    background-color: #f3f3f3;
+    opacity: 1;
+    height: 56px;
+    width: 856px;
+    font-family: Candara;
+    font-size: 20px;
+    color: #595959;
+}
+
+#Secondaire > div.panel-heading , #Lycée > div.panel-heading , #Université > div.panel-heading
+{
+  background-color: transparent;
+}
+
+#Secondaire.panel-default , #Lycée.panel-default , #Université.panel-default
+{
+    border-color: transparent;
+}
+
+.div-barreHaut h5
+{
+  margin-left: 15px;
+}
+
+#div-barreBas
+{
+    background-color: #f3f3f3;
+    opacity: 1;
+    height: 56px;
+    width: 810px;
+    margin-left: 20px;
+    margin-top: 20px;
+    padding-left: 20px;
+    padding-top: 10px;
+    font-family: Candara;
+    font-size: 20px;
+    color: #007eff;
+}
+
+#p-niveau
+{
+    margin-left: 50px;
+    margin-top: 0px;
+    font-family: Candara;
+    font-size: 28px;
+    color: #007eff;
+}
+
+
+#div-menu-categorie
+{
+    height: 29px;
+    font-size: 21.5px;
+    font-family: "Myriad Pro";
+    border-bottom: 3px solid #007eff;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    padding-right: 15px;
+    width: 810px;
+
+}
+
+#div-menu-categorie > .c-a-ligne
+{
+    text-decoration: none;
+    color: #000;
+    margin-right: 15px;
+}
+
+#div-menu-categorie > .c-a-ligne:hover
+{
+    text-decoration: none;
+    color: #007eff;
+
+
+}
+
+#div-menu-categorie > .active
+{
+    color: #007eff;
+}
+
+#div-touteEcole
+{
+
+    overflow: auto;
+
+}
+
+.c-div-ecole
+{
+    opacity: 1;
+    width: 810px;
+    margin-bottom: 20px;
+    margin-top: -15px;
+
+}
+
+.div-toutContenuEtablissement h4 > a , .div-toutContenuEtablissement h5 > a
+{
+  text-decoration: none;
+}
+
+.c-div-imgEcole, .c-div-imgEcole > img
+{
+    margin-left: 0px;
+    margin-right: 50px;
+    padding-left: 0px;
+    width: 265px;
+    height:115px;
+
+}
+
+.c-div-nomEcole
+{
+    margin-top: 33px;
+    font-family: Candara;
+    color: #595959;
+    font-size: 14px;
+}
+
+.div-carte
+{
+  margin-top: 50px;
+}
+
+.p-nomEcole
+{
+    font-weight: bold;
+}
+
+.c-div-imgLocalisationEcole
+{
+   /* margin-left: 152px;*/
+    margin-bottom: 5px;
+    margin-left: 17px;
+    padding-left: 0px;
+
+}

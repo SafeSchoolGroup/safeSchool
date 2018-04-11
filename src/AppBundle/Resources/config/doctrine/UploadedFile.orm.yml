@@ -1,0 +1,46 @@
+AppBundle\Entity\UploadedFile:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\UploadedFileRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+        path:
+            type: string
+            length: 255
+        srcpathOrOldname:
+            type: string
+            length: 255
+            nullable: true
+        action:
+            type: string
+            length: 255
+        createdAt:
+            type: datetime
+        lastModified:
+            type: datetime
+        type:
+            type: string
+            length: 255
+    oneToMany:
+        children:
+            targetEntity: UploadedFile
+            mappedBy: parentFolder
+            cascade: ['persist']
+    manyToOne:
+        parentFolder:
+            targetEntity: UploadedFile
+            inversedBy:  children
+            nullable: true
+            joinColumn:
+                parent_folder_id:
+                    referencedColumnName: id
+            cascade: ['persist','remove']
+    lifecycleCallbacks: {  }

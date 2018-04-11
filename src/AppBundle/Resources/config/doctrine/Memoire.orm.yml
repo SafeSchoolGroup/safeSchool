@@ -1,0 +1,9 @@
+AppBundle\Entity\Memoire:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\MemoireRepository
+    fields:
+        domaine:
+            type: string
+            length: 255
+    lifecycleCallbacks: {  }

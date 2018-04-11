@@ -1,0 +1,33 @@
+AppBundle\Entity\Note:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\NoteRepository
+
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        note:
+            type: float
+        typeNote:
+            type: string
+            length: 255
+        dateNote:
+            type: date
+    manyToOne:
+        apprenantCursus:
+            targetEntity: CursusApprenant
+            inversedBy:  notes
+            joinColumn:
+                cursus_apprenant_id:
+                    referencedColumnName: id
+        matiere:
+            targetEntity: Matiere
+            inversedBy:  notes
+            joinColumn:
+                matiere_id:
+                    referencedColumnName: id
+    lifecycleCallbacks: {  }

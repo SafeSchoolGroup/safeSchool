@@ -1,0 +1,32 @@
+AppBundle\Entity\Tuteur:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\TuteurRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        profession:
+            type: string
+            length: 255
+        lienParente:
+            type: string
+            length: 255
+    oneToMany:
+        apprenants:
+            targetEntity: Apprenant
+            mappedBy: tuteur
+<<<<<<< HEAD
+
+    oneToOne:
+          user:
+            targetEntity: \SafeSchool\UserBundle\Entity\User
+            mappedBy: tuteur
+            cascade: ['persist']
+=======
+            
+>>>>>>> e3cf71c865805064fd6da76c0057bd222032bc35
+    lifecycleCallbacks: {  }

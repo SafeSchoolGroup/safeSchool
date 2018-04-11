@@ -1,0 +1,23 @@
+# Learn more about services, parameters and containers at
+# http://symfony.com/doc/current/book/service_container.html
+parameters:
+#    parameter_name: value
+# rating percentages by uers
+     rating:
+        students_rate_value: 0.60
+        teachers_rate_value: 0.40
+
+services:
+#    service_name:
+#        class: AppBundle\Directory\ClassName
+#        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+
+# service for uploading files
+    app.infos_uploader:
+        class: AppBundle\FileUploader
+        arguments: ['%infos%']
+
+# service for uploading ets files
+    app.etablissement_uploader:
+        class: AppBundle\FileUploader
+        arguments: ['%etablissements_directory%']

@@ -1,0 +1,224 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * SousFiliere
+ */
+class SousFiliere
+{
+    /**
+     * @var int
+     */
+    private $id;
+
+    /**
+     * @var string
+     */
+    private $codeSousFiliere;
+
+    /**
+     * @var string
+     */
+    private $libelleSousFiliere;
+
+    /**
+     * @var EtablissementFiliere
+     */
+    private $etablissementFiliere;
+
+    /**
+     * @var ArrayCollection
+     */
+    private $sousFiliereApprenantCursus = null;
+
+    /**
+     * @var ArrayCollection
+     */
+    private $sousFiliereProgCours = null;
+
+    // constructor
+
+    public function __construct() {
+
+      $this->sousFiliereApprenantCursus = new ArrayCollection();
+      $this->sousFiliereProgCours = new ArrayCollection();
+
+
+    }
+
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Get codeSousFiliere
+     *
+     * @return string
+     */
+    public function getCodeSousFiliere()
+    {
+        return $this->codeSousFiliere;
+    }
+
+    /**
+     * Set codeSousFiliere
+     *
+     * @param string $codeSousFiliere
+     * @return SousFiliere
+     */
+    public function setCodeSousFiliere($codeSousFiliere)
+    {
+        $this->codeSousFiliere = $codeSousFiliere;
+
+        return $this;
+    }
+
+    /**
+     * Get libelleSousFiliere
+     *
+     * @return string
+     */
+    public function getLibelleSousFiliere()
+    {
+        return $this->libelleSousFiliere;
+    }
+
+    /**
+     * Set libelleSousFiliere
+     *
+     * @param string $libelleSousFiliere
+     * @return SousFiliere
+     */
+    public function setLibelleSousFiliere($libelleSousFiliere)
+    {
+        $this->libelleSousFiliere = $libelleSousFiliere;
+
+        return $this;
+    }
+
+    /**
+     * Get filiere
+     *
+     * @return \AppBundle\Entity\Filiere
+     */
+    public function getFiliere()
+    {
+        return $this->filiere;
+    }
+
+    /**
+     * Set filiere
+     *
+     * @param \AppBundle\Entity\Filiere $filiere
+     * @return SousFiliere
+     */
+    public function setFiliere(\AppBundle\Entity\Filiere $filiere = null)
+    {
+        $this->filiere = $filiere;
+
+        return $this;
+    }
+
+    /**
+     * Add sousFiliereApprenantCursus
+     *
+     * @param \AppBundle\Entity\EtatApprenant $sousFiliereApprenantCursus
+     *
+     * @return SousFiliere
+     */
+    public function addSousFiliereApprenantCursus(\AppBundle\Entity\EtatApprenant $sousFiliereApprenantCursus)
+    {
+        $this->sousFiliereApprenantCursus[] = $sousFiliereApprenantCursus;
+
+        return $this;
+    }
+
+    /**
+     * Remove sousFiliereApprenantCursus
+     *
+     * @param \AppBundle\Entity\EtatApprenant $sousFiliereApprenantCursus
+     */
+    public function removeSousFiliereApprenantCursus(\AppBundle\Entity\EtatApprenant $sousFiliereApprenantCursus)
+    {
+        $this->sousFiliereApprenantCursus->removeElement($sousFiliereApprenantCursus);
+    }
+
+    /**
+     * Get sousFiliereApprenantCursus
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getSousFiliereApprenantCursus()
+    {
+        return $this->sousFiliereApprenantCursus;
+    }
+
+    /**
+     * Get etablissementFiliere
+     *
+     * @return \AppBundle\Entity\EtablissementFiliere
+     */
+    public function getEtablissementFiliere()
+    {
+        return $this->etablissementFiliere;
+    }
+
+    /**
+     * Set etablissementFiliere
+     *
+     * @param \AppBundle\Entity\EtablissementFiliere $etablissementFiliere
+     *
+     * @return SousFiliere
+     */
+    public function setEtablissementFiliere(\AppBundle\Entity\EtablissementFiliere $etablissementFiliere = null)
+    {
+        $this->etablissementFiliere = $etablissementFiliere;
+
+        return $this;
+    }
+
+    /**
+     * Add sousFiliereProgCour
+     *
+     * @param \AppBundle\Entity\ProgrammeCours $sousFiliereProgCour
+     *
+     * @return SousFiliere
+     */
+    public function addSousFiliereProgCour(\AppBundle\Entity\ProgrammeCours $sousFiliereProgCour)
+    {
+        $this->sousFiliereProgCours[] = $sousFiliereProgCour;
+
+        return $this;
+    }
+
+    /**
+     * Remove sousFiliereProgCour
+     *
+     * @param \AppBundle\Entity\ProgrammeCours $sousFiliereProgCour
+     */
+    public function removeSousFiliereProgCour(\AppBundle\Entity\ProgrammeCours $sousFiliereProgCour)
+    {
+        $this->sousFiliereProgCours->removeElement($sousFiliereProgCour);
+    }
+
+    /**
+     * Get sousFiliereProgCours
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getSousFiliereProgCours()
+    {
+        return $this->sousFiliereProgCours;
+    }
+}

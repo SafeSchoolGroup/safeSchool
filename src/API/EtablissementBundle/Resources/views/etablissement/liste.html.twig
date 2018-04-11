@@ -1,0 +1,247 @@
+{% extends 'general_layout.html.twig' %}
+
+  {% block stylesheets %}
+     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style_etablissementListe.css') }}"/>
+  {% endblock stylesheets %}
+
+  {% block body %}
+
+    <div class="panel-group div-toutContenuEtablissement" id="accordion">
+      <div class="div-secondaire panel panel-default panel-group" id="Secondaire">
+        <div class="panel-heading">
+          <h4 class="panel-title" id="p-niveau">
+              <a href="#a-secondaire" data-toggle="collapse" data-parent="#Secondaire">Secondaire</a>
+          </h4>
+        </div>
+      <div class="panel-collapse collapse in" id="a-secondaire">
+        <div class="panel-body">
+
+        <div class="div-secondairePrive panel panel-default panel-group">
+          <div class="div-barreHaut panel-heading">
+             <h5 class="panel-title">
+               <a href="#a-prive"  data-toggle="collapse" data-parent="#Secondaire" id="Privé"> <img src="{{ asset('assets/img/GroupBox-Bleu.png') }}">
+                Privés
+              </a>
+
+             </h5>
+
+          </div>
+          <div class="panel-collapse collapse" id="a-prive">
+            <div class="panel-body">
+          <div id="div-menu-categorie">
+                      <a  class="c-a-ligne" id="Laïc">Laïc</a>
+                      <a class="c-a-ligne" id="Catholique">Catholique</a>
+                      <a class="c-a-ligne" id="Protestant">Protestant</a>
+                      <a class="c-a-ligne" id="Coranique">Coranique</a>
+                      <a class="c-a-ligne" id="Social">Social</a>
+
+         </div>
+
+         <div id="div-touteEcole" class="SecondairePrivé">
+
+
+        </div>
+      </div>
+
+    </div>
+      </div>
+
+        <div class="div-secondaire-public panel panel-default">
+
+          <div class="div-barreHaut panel-heading">
+                      <h5 class="panel-title">
+                        <a href="#a-public" data-toggle="collapse" data-parent="#Secondaire" id="Public">
+                          <img src="{{ asset('assets/img/GroupBox-Bleu.png') }}">
+                          Public
+                        </a>
+                      </h5>
+
+          </div>
+          <div class="panel-collapse collapse" id="a-public">
+            <div class="panel-body">
+
+          <div id="div-touteEcole" class="SecondairePublic">
+
+
+         </div>
+       </div>
+     </div>
+        </div>
+      </div>
+      </div>
+
+     </div>
+
+     <div class="div-lycee panel panel-default panel-group" id="Lycée">
+       <div class="panel-heading ">
+         <h4 class="panel-title" id="p-niveau">
+           <a href="#a-lycee" data-toggle="collapse" data-parent="#accordion">Lycée</a>
+         </h4>
+
+       </div>
+       <div class="panel-collapse collapse" id="a-lycee">
+         <div class="panel-body" id="lycee">
+
+       <div class="div-lycee-agricole panel panel-default">
+
+         <div class="div-barreHaut panel-heading">
+                <h5 class="panel-title">
+                  <a href="#a-agricole" data-toggle="collapse" data-parent="#Lycée" id="Agricole">
+                    <img src="{{ asset('assets/img/GroupBox-Bleu.png') }}">
+                    Agricole
+                  </a>
+                </h5>
+         </div>
+        <div class="panel-collapse collapse in" id="a-agricole">
+          <div class="panel-body">
+
+
+         <div id="div-touteEcole" class="LycéeAgricole">
+
+
+        </div>
+      </div>
+    </div>
+       </div>
+
+       <div class="div-lycee-technique panel panel-default">
+
+         <div class="div-barreHaut panel-heading">
+                    <h5 class="panel-title">
+                      <a href="#a-technique" data-toggle="collapse" data-parent="#Lycée" id="Technique">
+                        <img src="{{ asset('assets/img/GroupBox-Bleu.png') }}">
+                        Technique
+                      </a>
+                    </h5>
+
+         </div>
+         <div class="panel-collapse collapse in" id="a-technique">
+           <div class="panel-body">
+
+
+
+                  <div id="div-touteEcole" class="LycéeTechnique">
+
+
+                   </div>
+                 </div>
+               </div>
+                 </div>
+               </div>
+                 </div>
+               </div>
+
+
+
+
+
+      <div class="div-universite panel panel-default panel-group" id="Université">
+        <div class="panel-heading">
+          <h4  class="panel-title" id="p-niveau">
+            <a href="#a-universite" data-toggle="collapse" data-parent="#accordion">Université</a>
+
+          </h4>
+        </div>
+        <div class="panel-collapse collapse" id="a-universite">
+          <div class="panel-body">
+
+
+        <div class="div-universite-ecole panel panel-default">
+
+          <div class="div-barreHaut panel-heading">
+                    <h5 class="panel-title">
+                      <a href="#a-ecole"  data-toggle="collapse" data-parent="#Université" id="Ecole">
+                        <img src="{{ asset('assets/img/GroupBox-Bleu.png') }}">
+                        Ecole
+                      </a>
+                    </h5>
+
+          </div>
+          <div class="panel-collapse collapse in" id="a-ecole">
+            <div class="panel-body">
+
+
+          <div id="div-touteEcole" class="UniversitéEcole">
+
+
+         </div>
+       </div>
+     </div>
+        </div>
+
+
+        <div class="div-universite-faculte panel panel-default">
+
+          <div class="div-barreHaut panel-heading">
+                      <h5 class="panel-title">
+                        <a href="#a-faculte"  data-toggle="collapse" data-parent="#Université" id="Faculté">
+                          <img src="{{ asset('assets/img/GroupBox-Bleu.png') }}">
+                          Faculté
+                        </a>
+                      </h5>
+
+          </div>
+          <div class="panel-collapse collapse in" id="a-faculte">
+            <div class="panel-body">
+
+
+          <div id="div-touteEcole" class="UniversitéFaculté">
+
+                    <div class="row c-div-ecole">
+                        <div class="col-md-3 c-div-imgEcole">
+                        </div>
+                        <div class="col-md-3 c-div-nomEcole" >
+                            <p id="p-nomEcole"></p>
+                            <p id="p-adresseEcole"></p>
+                        </div>
+
+                    </div>
+         </div>
+       </div>
+     </div>
+        </div>
+
+        <div class="div-universite-institut panel panel-default">
+
+          <div class="div-barreHaut panel-heading">
+                      <h5 class="panel-title">
+                        <a href="#a-institut"  data-toggle="collapse" data-parent="#Université" id="Institut">
+                          <img src="{{ asset('assets/img/GroupBox-Bleu.png') }}">
+                          Institut
+                        </a>
+                      </h5>
+
+          </div>
+          <div class="panel-collapse collapse in" id="a-institut">
+            <div class="panel-body">
+
+
+
+          <div id="div-touteEcole" class="UniversitéInstitut">
+
+                    <div class="row c-div-ecole">
+                        <div class="col-md-3 c-div-imgEcole">
+
+                        </div>
+                        <div class="col-md-3 c-div-nomEcole" >
+                            <p id="p-nomEcole"></p>
+                            <p id="p-adressEcole"></p>
+                        </div>
+
+
+                    </div>
+         </div>
+       </div>
+     </div>
+        </div>
+      </div>
+    </div>
+
+      </div>
+    </div>
+
+  {% endblock %}
+
+  {% block javascripts %}
+  <script type="text/javascript" src="{{ asset('assets/js/etablissementJs.js') }}" language="javascript"></script>
+  {% endblock %}

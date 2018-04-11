@@ -1,0 +1,118 @@
+{% extends 'general_layout.html.twig' %}
+
+  {% block stylesheets %}
+     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style_etablissementList.css') }}"/>
+  {% endblock stylesheets %}
+
+  {% block body %}
+  <div class="row" class="z-index: 2">
+    <section id="top-section" class="container-fluid padding-top-50 padding-bottom-mob-0">
+      <div class="col-sm-12">
+        <div class=" text-center ">
+          <br>
+          <h2>
+            Liste des Etablissements
+            <p id="h2-p">Trouvez ici les meilleurs établissements du Bénin</p>
+          </h2>
+        </div>
+        <div class="panel-body padding-bottom-50 padding-bottom-mob-0 ">
+          <div class="col-sm-4 col-md-3 padding-0">
+            <a href="{{path('api_etablissement_liste',{niveau:'secondaire',statut:'prive'})}}" class="blue">
+              <div class="featured_category boox center-block thumbnail">
+                <img src="{{ asset('assets/img/spr.jpg') }}" title="Cliquer pour avoir la liste des etablissements secondaires privés">
+                <div class="box-content bg-white padd-5 blue-hover">
+                  <h4>Secondaire Privé</h4>
+                </div>
+
+              </div>
+            </a>
+          </div>
+          <div class="col-sm-4 col-md-3 padding-0">
+            <a href="{{path('api_etablissement_liste',{niveau:'secondaire',statut:'public'})}}" class="blue">
+              <div class="featured_category boox center-block thumbnail">
+                <img src="{{ asset('assets/img/spu.jpg') }}" title="Cliquer pour avoir la liste des etablissements secondaires publics">
+                <div class="box-content bg-white padd-5 blue-hover">
+                  <h4>Secondaire Public</h4>
+                </div>
+
+              </div>
+            </a>
+          </div>
+          <div class="col-sm-4 col-md-3 padding-0">
+            <a href="{{path('api_etablissement_liste',{niveau:'lycee',statut:'agricole'})}}" class="blue">
+              <div class="featured_category boox center-block thumbnail">
+                <img src="{{ asset('assets/img/agro.jpg') }}" title="Cliquer pour avoir la liste des lycés agricoles">
+                <div class="box-content bg-white padd-5 blue-hover">
+                  <h4>Lycée Agricole</h4>
+                </div>
+
+              </div>
+            </a>
+          </div>
+          <div class="col-sm-4 col-md-3 padding-0">
+            <a href="{{path('api_etablissement_liste',{niveau:'lycee',statut:'technique'})}}" class="blue">
+              <div class="featured_category boox center-block thumbnail">
+                <img src="{{ asset('assets/img/techn.jpg') }}" title="Cliquer pour avoir la liste des lycés techniques">
+                <div class="box-content bg-white padd-5 blue-hover">
+                  <h4>Lycée Technique</h4>
+                </div>
+
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="panel-body padding-bottom-50 padding-bottom-mob-0 ">
+          <div class="col-sm-4 col-md-3 padding-0">
+            <a href="{{path('api_etablissement_liste',{niveau:'universite',statut:'institut'})}}" class="blue">
+              <div class="featured_category boox center-block thumbnail">
+                <img src="{{ asset('assets/img/ui.jpg') }}" title="Cliquer pour avoir la liste des universités privées">
+                <div class="box-content bg-white padd-5 blue-hover">
+                  <h4>Université: Institut</h4>
+                </div>
+
+              </div>
+            </a>
+          </div>
+          <div class="col-sm-4 col-md-3 padding-0">
+            <a href="{{path('api_etablissement_liste',{niveau:'universite',statut:'ecole'})}}" class="blue">
+              <div class="featured_category boox center-block thumbnail">
+                <img src="{{ asset('assets/img/ue.jpg') }}" title="Cliquer pour avoir la liste des écoles de l'état">
+                <div class="box-content bg-white padd-5 blue-hover">
+                  <h4>Université: Ecole</h4>
+                </div>
+
+              </div>
+            </a>
+          </div>
+          <div class="col-sm-4 col-md-3 padding-0">
+            <a href="{{path('api_etablissement_liste',{niveau:'universite',statut:'faculte'})}}" class="blue">
+              <div class="featured_category boox center-block thumbnail">
+                <img src="{{ asset('assets/img/uf.jpg') }}" title="Cliquer pour avoir la liste des facultés">
+                <div class="box-content bg-white padd-5 blue-hover">
+                  <h4>Université: Faculté</h4>
+                </div>
+
+              </div>
+            </a>
+          </div>
+          <div class="col-sm-4 col-md-3 padding-0">
+            <a href="#" class="blue">
+              <div class="featured_category boox center-block thumbnail">
+                <img src="{{ asset('assets/img/sup.jpg') }}" title="Cliquer pour avoir les supprises hohoho!!">
+                <div class="box-content bg-white padd-5 blue-hover">
+                  <h4>Ho Ho Ho !!</h4>
+                </div>
+
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  {% endblock %}
+
+  {% block javascripts %}
+  <script type="text/javascript" src="{{ asset('assets/js/etablissementJs.js') }}" language="javascript"></script>
+  {% endblock %}

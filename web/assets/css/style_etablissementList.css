@@ -1,0 +1,132 @@
+body {
+    font-family: "Circular Book","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 1.42857;
+    color: #5e5e5e;
+    background-color: #f3f3f3;
+}
+.boox
+{
+max-width: 280px;
+height: 225px;
+padding: 10px;
+border: 1px solid #ddd;
+overflow: hidden;
+white-space: nowrap;
+text-overflow: ellipsis;
+box-shadow: 0 5px 8px rgba(0,0,0,.06);
+margin: 0 auto 25px;
+background-color: #fff;
+
+white-space: nowrap;
+}
+
+.boox:hover h4 {
+    font-family: 'Circular Bold';
+    color: #ff6900;
+    font-size: 22px;
+}
+
+.boox h4 {
+    font-size: 16px;
+    line-height: 20px;
+    color: #000;
+    margin-bottom: 0;
+}
+
+.boox img
+{
+  height: 150px !important;
+  width: 300px;
+}
+
+#h2-p
+{
+  font-size: 16px;
+}
+.padding-top-50
+{
+  padding-top: 50px;
+}
+
+#top-business .box-content {
+    padding-top: 5px;
+}
+
+/*by Criteria*/
+.caption .caption-title {
+  font-size: 17px;
+margin-bottom: 5px;
+line-height: 21px;
+color: #999;
+font-weight: bold;
+}
+
+.font-head {
+    font-family: "Circular Black","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.caption {
+    height: 210px;
+    overflow: hidden;
+    padding-left: 14.4px;
+    padding-right: 14.4px;
+    padding-top: 12px;
+    font-size: 13px;
+    line-height: 1.6;
+    position: relative;
+}
+
+.challenge .challenge-holder {
+    position: relative;
+}
+
+.challenge .challenge-holder .challenge-wrap {
+    -webkit-transition: all .1s ease-in-out;
+    -moz-transition: all .1s ease-in-out;
+    -o-transition: all .1s ease-in-out;
+    transition: all .1s ease-in-out;
+    color: #5e5e5e;
+    display: block;
+    position: relative;
+    overflow: hidden;
+    border-radius: 6px;
+    border: 1px solid #e7e7e7;
+    background-color: #fff;
+    padding: 0;
+    margin-bottom: 24px;
+  }
+
+  .radius
+  {
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+  }
+
+  .challenge .challenge-holder .challenge-wrap .caption {
+    font-size: 13px;
+    line-height: 1.6;
+}
+.btn-inscription
+{
+  height: 25px;
+  background-color: #00aeef;
+  margin-left: 52px;
+  border-radius: 3px;
+  text-shadow: 0 1px 1px rgba(0,0,0,.4);
+  color: #fff;
+  padding-top: 1px;
+}
+
+.btn-inscription:hover
+{
+  color: #00aeef;
+  background-color: #fff;
+  border-color: #00aeef;
+}
+.challenge
+{
+  width: 246px;
+  height: auto;
+  margin-bottom: 45px;
+}

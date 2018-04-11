@@ -1,0 +1,26 @@
+AppBundle\Entity\Classe:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\ClasseRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        codeClasse:
+            type: string
+            length: '5'
+            unique: true
+        libelleClasse:
+            type: string
+            length: '20'
+            nullable: true
+            unique: true
+    oneToMany:
+        classeEtablissements:
+            targetEntity: EtablissementClasse
+            mappedBy: classe
+            cascade: ['persist']
+    lifecycleCallbacks: {  }

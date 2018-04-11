@@ -1,0 +1,403 @@
+<?php
+
+namespace AppBundle\Entity;
+
+/**
+ * CursusApprenant
+ */
+class CursusApprenant
+{
+    /**
+     * @var integer
+     */
+    private $id;
+
+    /**
+     * @var string
+     */
+    private $decision;
+
+    /**
+     * @var string
+     */
+    private $anneeScolaire;
+
+    /**
+     * @var string
+     */
+    private $statut;
+
+    /**
+     * @var string
+     */
+    private $moyenneGenerale;
+
+    /**
+     * @var string
+     */
+    private $classe;
+
+    /**
+     * @var \DateTime
+     */
+    private $createdAt;
+
+    /**
+     * @var \DateTime
+     */
+    private $updatedAt;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $notes;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $moyennePeriodiqueApprenants;
+
+    /**
+     * @var \AppBundle\Entity\EtablissementApprenant
+     */
+    private $etablissementApprenant;
+
+    /**
+     * @var \AppBundle\Entity\SousClasse
+     */
+    private $sousClasse;
+
+    /**
+     * @var \AppBundle\Entity\EtablissementClasseNiveauSpecialite
+     */
+    private $etsClasseNiveauSpecialite;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->notes = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->moyennePeriodiqueApprenants = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->createdAt = new \DateTime('now');
+        $this->updatedAt = new \DateTime('now');
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set decision
+     *
+     * @param string $decision
+     *
+     * @return CursusApprenant
+     */
+    public function setDecision($decision)
+    {
+        $this->decision = $decision;
+
+        return $this;
+    }
+
+    /**
+     * Get decision
+     *
+     * @return string
+     */
+    public function getDecision()
+    {
+        return $this->decision;
+    }
+
+    /**
+     * Set anneeScolaire
+     *
+     * @param string $anneeScolaire
+     *
+     * @return CursusApprenant
+     */
+    public function setAnneeScolaire($anneeScolaire)
+    {
+        $this->anneeScolaire = $anneeScolaire;
+
+        return $this;
+    }
+
+    /**
+     * Get anneeScolaire
+     *
+     * @return string
+     */
+    public function getAnneeScolaire()
+    {
+        return $this->anneeScolaire;
+    }
+
+    /**
+     * Set statut
+     *
+     * @param string $statut
+     *
+     * @return CursusApprenant
+     */
+    public function setStatut($statut)
+    {
+        $this->statut = $statut;
+
+        return $this;
+    }
+
+    /**
+     * Get statut
+     *
+     * @return string
+     */
+    public function getStatut()
+    {
+        return $this->statut;
+    }
+
+    /**
+     * Set moyenneGenerale
+     *
+     * @param string $moyenneGenerale
+     *
+     * @return CursusApprenant
+     */
+    public function setMoyenneGenerale($moyenneGenerale)
+    {
+        $this->moyenneGenerale = $moyenneGenerale;
+
+        return $this;
+    }
+
+    /**
+     * Get moyenneGenerale
+     *
+     * @return string
+     */
+    public function getMoyenneGenerale()
+    {
+        return $this->moyenneGenerale;
+    }
+
+    /**
+     * Set classe
+     *
+     * @param string $classe
+     *
+     * @return CursusApprenant
+     */
+    public function setClasse($classe)
+    {
+        $this->classe = $classe;
+
+        return $this;
+    }
+
+    /**
+     * Get classe
+     *
+     * @return string
+     */
+    public function getClasse()
+    {
+        return $this->classe;
+    }
+
+    /**
+     * Set createdAt
+     *
+     * @param \DateTime $createdAt
+     *
+     * @return CursusApprenant
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     *
+     * @return CursusApprenant
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * Add note
+     *
+     * @param \AppBundle\Entity\Note $note
+     *
+     * @return CursusApprenant
+     */
+    public function addNote(\AppBundle\Entity\Note $note)
+    {
+        $this->notes[] = $note;
+
+        return $this;
+    }
+
+    /**
+     * Remove note
+     *
+     * @param \AppBundle\Entity\Note $note
+     */
+    public function removeNote(\AppBundle\Entity\Note $note)
+    {
+        $this->notes->removeElement($note);
+    }
+
+    /**
+     * Get notes
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getNotes()
+    {
+        return $this->notes;
+    }
+
+    /**
+     * Add moyennePeriodiqueApprenant
+     *
+     * @param \AppBundle\Entity\MoyennePeriodiqueApprenant $moyennePeriodiqueApprenant
+     *
+     * @return CursusApprenant
+     */
+    public function addMoyennePeriodiqueApprenant(\AppBundle\Entity\MoyennePeriodiqueApprenant $moyennePeriodiqueApprenant)
+    {
+        $this->moyennePeriodiqueApprenants[] = $moyennePeriodiqueApprenant;
+
+        return $this;
+    }
+
+    /**
+     * Remove moyennePeriodiqueApprenant
+     *
+     * @param \AppBundle\Entity\MoyennePeriodiqueApprenant $moyennePeriodiqueApprenant
+     */
+    public function removeMoyennePeriodiqueApprenant(\AppBundle\Entity\MoyennePeriodiqueApprenant $moyennePeriodiqueApprenant)
+    {
+        $this->moyennePeriodiqueApprenants->removeElement($moyennePeriodiqueApprenant);
+    }
+
+    /**
+     * Get moyennePeriodiqueApprenants
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getMoyennePeriodiqueApprenants()
+    {
+        return $this->moyennePeriodiqueApprenants;
+    }
+
+    /**
+     * Set etablissementApprenant
+     *
+     * @param \AppBundle\Entity\EtablissementApprenant $etablissementApprenant
+     *
+     * @return CursusApprenant
+     */
+    public function setEtablissementApprenant(\AppBundle\Entity\EtablissementApprenant $etablissementApprenant = null)
+    {
+        $this->etablissementApprenant = $etablissementApprenant;
+
+        return $this;
+    }
+
+    /**
+     * Get etablissementApprenant
+     *
+     * @return \AppBundle\Entity\EtablissementApprenant
+     */
+    public function getEtablissementApprenant()
+    {
+        return $this->etablissementApprenant;
+    }
+
+    /**
+     * Set sousClasse
+     *
+     * @param \AppBundle\Entity\SousClasse $sousClasse
+     *
+     * @return CursusApprenant
+     */
+    public function setSousClasse(\AppBundle\Entity\SousClasse $sousClasse = null)
+    {
+        $this->sousClasse = $sousClasse;
+
+        return $this;
+    }
+
+    /**
+     * Get sousClasse
+     *
+     * @return \AppBundle\Entity\SousClasse
+     */
+    public function getSousClasse()
+    {
+        return $this->sousClasse;
+    }
+
+    /**
+     * Set etsClasseNiveauSpecialite
+     *
+     * @param \AppBundle\Entity\EtablissementClasseNiveauSpecialite $etsClasseNiveauSpecialite
+     *
+     * @return CursusApprenant
+     */
+    public function setEtsClasseNiveauSpecialite(\AppBundle\Entity\EtablissementClasseNiveauSpecialite $etsClasseNiveauSpecialite = null)
+    {
+        $this->etsClasseNiveauSpecialite = $etsClasseNiveauSpecialite;
+
+        return $this;
+    }
+
+    /**
+     * Get etsClasseNiveauSpecialite
+     *
+     * @return \AppBundle\Entity\EtablissementClasseNiveauSpecialite
+     */
+    public function getEtsClasseNiveauSpecialite()
+    {
+        return $this->etsClasseNiveauSpecialite;
+    }
+}

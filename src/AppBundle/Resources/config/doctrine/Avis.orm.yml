@@ -1,0 +1,28 @@
+AppBundle\Entity\Avis:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\AvisRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        titre:
+            type: string
+            length: 255
+        contenu:
+            type: string
+            length: 255
+        datePublication:
+            type: datetime
+        createdAt:
+            type: datetime
+        updatedAt:
+            type: datetime
+
+    manyToOne:
+        etablissement:
+            targetEntity: Etablissement
+    lifecycleCallbacks: {  }

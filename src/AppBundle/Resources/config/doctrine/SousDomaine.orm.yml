@@ -1,0 +1,25 @@
+AppBundle\Entity\SousDomaine:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\SousDomaineRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        codeSousdomaine:
+            type: string
+            length: '10'
+            column: code_sousdomaine
+        libelleSousdomaine:
+            type: string
+            length: '255'
+            unique: true
+            column: libelle_sousdomaine
+    oneToMany:
+         exploits:
+            targetEntity: Exploit
+            mappedBy: sousDomaine
+    lifecycleCallbacks: {  }

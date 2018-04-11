@@ -1,0 +1,218 @@
+<?php
+
+namespace AppBundle\Entity;
+
+/**
+ * EtablissementApprenant
+ */
+class EtablissementApprenant
+{
+    /**
+     * @var integer
+     */
+    private $id;
+
+    /**
+     * @var integer
+     */
+    private $fraisScolarite;
+
+    /**
+     * @var \DateTime
+     */
+    private $createdAt;
+
+    /**
+     * @var \DateTime
+     */
+    private $updatedAt;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $apprenantCursus;
+
+    /**
+     * @var \AppBundle\Entity\Etablissement
+     */
+    private $etablissement;
+
+    /**
+     * @var \AppBundle\Entity\Apprenant
+     */
+    private $apprenant;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->apprenantCursus = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->createdAt = new \DateTime('now');
+        $this->updatedAt = new \DateTime('now');
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set fraisScolarite
+     *
+     * @param integer $fraisScolarite
+     *
+     * @return EtablissementApprenant
+     */
+    public function setFraisScolarite($fraisScolarite)
+    {
+        $this->fraisScolarite = $fraisScolarite;
+
+        return $this;
+    }
+
+    /**
+     * Get fraisScolarite
+     *
+     * @return integer
+     */
+    public function getFraisScolarite()
+    {
+        return $this->fraisScolarite;
+    }
+
+    /**
+     * Set createdAt
+     *
+     * @param \DateTime $createdAt
+     *
+     * @return EtablissementApprenant
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     *
+     * @return EtablissementApprenant
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * Add apprenantCursus
+     *
+     * @param \AppBundle\Entity\CursusApprenant $apprenantCursus
+     *
+     * @return EtablissementApprenant
+     */
+    public function addApprenantCursus(\AppBundle\Entity\CursusApprenant $apprenantCursus)
+    {
+        $this->apprenantCursus[] = $apprenantCursus;
+
+        return $this;
+    }
+
+    /**
+     * Remove apprenantCursus
+     *
+     * @param \AppBundle\Entity\CursusApprenant $apprenantCursus
+     */
+    public function removeApprenantCursus(\AppBundle\Entity\CursusApprenant $apprenantCursus)
+    {
+        $this->apprenantCursus->removeElement($apprenantCursus);
+    }
+
+    /**
+     * Get apprenantCursus
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getApprenantCursus()
+    {
+        return $this->apprenantCursus;
+    }
+
+    /**
+     * Set etablissement
+     *
+     * @param \AppBundle\Entity\Etablissement $etablissement
+     *
+     * @return EtablissementApprenant
+     */
+    public function setEtablissement(\AppBundle\Entity\Etablissement $etablissement = null)
+    {
+        $this->etablissement = $etablissement;
+
+        return $this;
+    }
+
+    /**
+     * Get etablissement
+     *
+     * @return \AppBundle\Entity\Etablissement
+     */
+    public function getEtablissement()
+    {
+        return $this->etablissement;
+    }
+
+    /**
+     * Set apprenant
+     *
+     * @param \AppBundle\Entity\Apprenant $apprenant
+     *
+     * @return EtablissementApprenant
+     */
+    public function setApprenant(\AppBundle\Entity\Apprenant $apprenant = null)
+    {
+        $this->apprenant = $apprenant;
+
+        return $this;
+    }
+
+    /**
+     * Get apprenant
+     *
+     * @return \AppBundle\Entity\Apprenant
+     */
+    public function getApprenant()
+    {
+        return $this->apprenant;
+    }
+}

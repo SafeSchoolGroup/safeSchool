@@ -1,0 +1,95 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * CommentaireApprenant
+ */
+class CommentaireApprenant
+{
+    /**
+     * @var \stdClass
+     */
+    private $apprenant;
+
+    /**
+     * @var \stdClass
+     */
+    private $exploit;
+
+    /**
+     * @var string
+     */
+    private $contenu;
+
+    /**
+     * Set apprenant
+     *
+     * @param \stdClass $apprenant
+     * @return CommentaireApprenant
+     */
+    public function setApprenant($apprenant)
+    {
+        $this->apprenant = $apprenant;
+
+        return $this;
+    }
+
+    /**
+     * Get apprenant
+     *
+     * @return \stdClass
+     */
+    public function getApprenant()
+    {
+        return $this->apprenant;
+    }
+
+    /**
+     * Set exploit
+     *
+     * @param \stdClass $exploit
+     * @return CommentaireApprenant
+     */
+    public function setExploit($exploit)
+    {
+        $this->exploit = $exploit;
+
+        return $this;
+    }
+
+    /**
+     * Get exploit
+     *
+     * @return \stdClass
+     */
+    public function getExploit()
+    {
+        return $this->exploit;
+    }
+
+    /**
+     * Set contenu
+     *
+     * @param string $contenu
+     * @return CommentaireApprenant
+     */
+    public function setContenu($contenu)
+    {
+        $this->contenu = $contenu;
+
+        return $this;
+    }
+
+    /**
+     * Get contenu
+     *
+     * @return string
+     */
+    public function getContenu()
+    {
+        return $this->contenu;
+    }
+}

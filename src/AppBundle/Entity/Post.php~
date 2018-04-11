@@ -1,0 +1,54 @@
+<?php
+
+namespace AppBundle\Entity;
+
+/**
+ * Post
+ */
+class Post
+{
+    /**
+     * @var guid
+     */
+    private $id;
+
+    /**
+     * @var guid
+     */
+    private $code;
+
+
+    /**
+     * Get id
+     *
+     * @return guid
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set code
+     *
+     * @param guid $code
+     *
+     * @return Post
+     */
+    public function setCode($code)
+    {
+        $this->code = $code;
+
+        return $this;
+    }
+
+    /**
+     * Get code
+     *
+     * @return guid
+     */
+    public function getCode()
+    {
+        return $this->code;
+    }
+}

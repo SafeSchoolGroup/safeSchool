@@ -1,0 +1,22 @@
+AppBundle\Entity\NiveauEtude:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\NiveauEtudeRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        codeNiveauEtude:
+            type: string
+            length: '10'
+            unique: false
+
+        libelleNiveauEtude:
+            type: string
+            length: '10'
+            unique: false
+
+    lifecycleCallbacks: {  }

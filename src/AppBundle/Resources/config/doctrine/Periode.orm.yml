@@ -1,0 +1,40 @@
+AppBundle\Entity\Periode:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\PeriodeRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        dateDebut:
+            type: datetime
+        dateFin:
+            type: datetime
+            nullable: true
+        libelle:
+            type: string
+            length: '30'
+            nullable: true
+        anneeScolaire:
+            type: string
+            length: '10'
+            nullable: true
+        boucle:
+            type: boolean
+            nullable: true
+    manyToOne:
+        etablissement:
+            targetEntity: Etablissement
+            inversedBy:  periodes
+            joinColumn:
+                etablissement_id:
+                    referencedColumnName: id
+    oneToMany:
+        moyennePeriodiqueApprenants:
+            targetEntity: MoyennePeriodiqueApprenant
+            mappedBy: periode
+            cascade: ['persist']
+    lifecycleCallbacks: {  }

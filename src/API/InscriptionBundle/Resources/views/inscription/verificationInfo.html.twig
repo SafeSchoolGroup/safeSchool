@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+{% block stylesheetsEtablissement %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style_inscription.css') }} " />
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/filepicker.default.css') }} " />
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/intlTelInput.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootstrap-datepicker.min.css') }} " />
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/selectize.bootstrap3.css') }} " />
+
+{% endblock %}
+{% block body %}
+    <h1>Information Renseigner</h1>
+        <p>
+            {{infoInscription.apprenant.nom}}
+            {{infoInscription.tuteur.nom}}
+            {{infoInscription.fichier.nom}}
+        </p>
+
+        <div class="row">
+            <div class="form-group">
+                <div class="col-sm-offset-4 col-sm-6">
+                    <a href="{{path('api_verifInfo',{info: infoInscription.tuteur})}}"  class="btn btn-primary" id="imprime">valider</a>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-4 col-sm-6">
+                    <a href="{{path('impression')}}"  class="btn btn-primary" id="imprime">IMPRIME</a>
+                </div>
+            </div>
+        </div>
+
+{% endblock %}

@@ -1,0 +1,35 @@
+AppBundle\Entity\Vote:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\VoteRepository
+    uniqueConstraints:
+        unique_keys:
+          columns: [ etablissement_id,user_id,annee ]
+
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        nbreEtoiles:
+            type: integer
+        dateVote:
+            type: date
+        commentaire:
+            type: text
+            nullable: true
+        annee:
+            type: integer
+
+    manyToOne:
+        etablissement:
+            targetEntity: Etablissement
+            inversedBy: votes
+
+        user:
+            targetEntity: \SafeSchool\UserBundle\Entity\User
+            inversedBy: etablissementVotes
+
+    lifecycleCallbacks: {  }

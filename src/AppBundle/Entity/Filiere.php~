@@ -1,0 +1,165 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Filiere
+ */
+class Filiere
+{
+    /**
+     * @var int
+     */
+    private $id;
+
+    /**
+     * @var string
+     */
+    private $codeFiliere;
+
+    /**
+     * @var string
+     */
+    private $libelleFiliere;
+
+    /**
+     * @var string
+     */
+
+    private $description;
+
+    /**
+     * @var string
+     */
+    private $option;
+
+    /**
+     * @var ArrayCollection
+     */
+    private $filiereEtablissements = null;
+
+    // constructor
+
+    public function __construct() {
+
+      $this->filiereEtablissements = new ArrayCollection();
+    }
+
+
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Get codeFiliere
+     *
+     * @return string
+     */
+    public function getCodeFiliere()
+    {
+        return $this->codeFiliere;
+    }
+
+    /**
+     * Set codeFiliere
+     *
+     * @param string $codeFiliere
+     * @return Filiere
+     */
+    public function setCodeFiliere($codeFiliere)
+    {
+        $this->codeFiliere = $codeFiliere;
+
+        return $this;
+    }
+
+    /**
+     * Get libelleFiliere
+     *
+     * @return string
+     */
+    public function getLibelleFiliere()
+    {
+        return $this->libelleFiliere;
+    }
+
+    /**
+     * Set libelleFiliere
+     *
+     * @param string $libelleFiliere
+     * @return Filiere
+     */
+    public function setLibelleFiliere($libelleFiliere)
+    {
+        $this->libelleFiliere = $libelleFiliere;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     * @return Filiere
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Add filiereEtablissement
+     *
+     * @param \AppBundle\Entity\EtablissementFiliere $filiereEtablissement
+     *
+     * @return Filiere
+     */
+    public function addFiliereEtablissement(\AppBundle\Entity\EtablissementFiliere $filiereEtablissement)
+    {
+        $this->filiereEtablissements[] = $filiereEtablissement;
+
+        return $this;
+    }
+
+    /**
+     * Remove filiereEtablissement
+     *
+     * @param \AppBundle\Entity\EtablissementFiliere $filiereEtablissement
+     */
+    public function removeFiliereEtablissement(\AppBundle\Entity\EtablissementFiliere $filiereEtablissement)
+    {
+        $this->filiereEtablissements->removeElement($filiereEtablissement);
+    }
+
+    /**
+     * Get filiereEtablissements
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getFiliereEtablissements()
+    {
+        return $this->filiereEtablissements;
+    }
+}

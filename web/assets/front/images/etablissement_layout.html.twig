@@ -1,0 +1,185 @@
+{% extends 'general_layout.html.twig' %}
+
+
+
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/styles_etablissement.css') }}">
+    {% block stylesheetsEtablissement %}{% endblock stylesheetsEtablissement %}
+{% endblock stylesheets %}
+
+
+{% block body %}
+
+ <div class="row" id="div-tout">
+
+
+       <!-- side bar gauche -->
+
+       <div class="col-md-2" id="div-side-bar">
+              <div class="row" id="div-logo">
+                      <div class="col-md-4 avpLogo" >
+
+                      </div>
+                      <div class="col-md-4" >
+                        <!--<img src=  id="logo" width="100" height="100">-->
+                      </div>
+
+
+                        <div class="col-md-4 avpLogo" id="apLogo">
+
+                        </div>
+              </div>
+
+<!--
+                  <div>
+
+                        <p id="p-nomEtablissement">
+
+                        </p>
+
+                      <img src=  id="img-etab" width="250" height="200">
+                  </div>
+-->
+                  <div id="nte">Noter l'etablissement</div>
+                  <div id="div-trait"></div>
+                  <div id="div-historique">
+                      <span id="nm">jean piaget</span>
+                  </div>
+
+                  <a class="btn btn-default" id="btn" href="#" >S'INSCRIRE CHEZ NOUS</a>
+
+                  <p id="p-avEvents">
+                    Evenements
+                  </p>
+
+                  <!-- events -->
+
+            <div id="div-events">
+
+              <!-- 1er event -->
+
+              <div id="div-event1">
+                <div class="grandDiv-event">
+                  <img src=  class="img-event" width="250" height="365">
+                  <div class="petitDiv-event context-dark">
+                    <a href="#" class="btn btn-primary">Allez dans le journal</a>
+                  </div>
+                </div>
+                <div class="row div-infoEvent">
+                  <div class="col-md-3 div-infoDate">
+                    <p>
+
+                    </p>
+                    <p>
+
+
+                    </p>
+
+                  </div>
+                  <div class="col-md-7" id="div-descEvent">
+                    <p id="p-titreEvents">
+
+                    </p>
+
+
+                  </div>
+                </div>
+              </div>
+
+              <div class="entreEvent">
+
+              </div>
+
+              <!-- 2eme event -->
+
+              <div id="div-event2">
+                <div class="grandDiv-event">
+                  <img src=  class="img-event" width="250" height="365">
+                  <div class="petitDiv-event context-dark">
+                    <a href="#" class="btn btn-primary">Allez dans le journal</a>
+                  </div>
+                </div>
+                <div class="row div-infoEvent">
+                  <div class="col-md-3 div-infoDate">
+                    <p>
+
+                    </p>
+                    <p>
+
+
+                    </p>
+
+                  </div>
+                  <div class="col-md-7" id="div-descEvent">
+                    <p id="p-titreEvents">
+
+                    </p>
+
+
+                  </div>
+                </div>
+              </div>
+
+
+                            <div class="entreEvent">
+
+                            </div>
+
+                            <!-- 3eme event -->
+
+                            <div id="div-event3">
+                              <div class="grandDiv-event">
+                                <img src=  class="img-event" width="250" height="365">
+                                <div class="petitDiv-event context-dark">
+                                  <a href="#" class="btn btn-primary">Allez dans le journal</a>
+                                </div>
+                              </div>
+                              <div class="row div-infoEvent">
+                                <div class="col-md-3 div-infoDate">
+                                  <p>
+
+                                  </p>
+                                <p>
+
+
+                                  </p>
+
+                                </div>
+                                <div class="col-md-7" id="div-descEvent">
+                                  <p id="p-titreEvents">
+
+                                  </p>
+
+
+                                </div>
+                              </div>
+                            </div>
+
+            </div>
+        </div>
+
+
+
+      <div class="col-md-6" id="div-banniere">
+          <!-- Div banniere -->
+        <div class="div-img_banniere" id="div-img_banniere">
+          <img src=  id="img-banniere" height="500" width="1075">
+        </div>
+
+        <!-- Div contenu -->
+
+        <div class="">
+          {% block bodyEtablissement %}{% endblock %}
+        </div>
+
+      </div>
+
+
+
+
+</div>
+{% endblock body %}
+
+{% block javascripts %}
+  {% block scriptEtablissement %}{% endblock scriptEtablissement %}
+{% endblock %}

@@ -1,0 +1,35 @@
+AppBundle\Entity\MoyennePeriodiqueApprenant:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\MoyennePeriodiqueApprenantRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        createdAt:
+            type: datetime
+            nullable: true
+        updatedAt:
+            type: datetime
+            nullable: true
+        moyenne:
+            type: decimal
+            scale: '2'
+            nullable: true
+    manyToOne:
+      apprenantCursus:
+          targetEntity: CursusApprenant
+          inversedBy:  moyennePeriodiqueApprenants
+          joinColumn:
+              cursus_apprenant_id:
+                  referencedColumnName: id
+      periode:
+          targetEntity: Periode
+          inversedBy:  moyennePeriodiqueApprenants
+          joinColumn:
+              periode_id:
+                  referencedColumnName: id
+    lifecycleCallbacks: {  }

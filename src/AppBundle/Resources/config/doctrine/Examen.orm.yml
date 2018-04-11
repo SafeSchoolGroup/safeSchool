@@ -1,0 +1,37 @@
+AppBundle\Entity\Examen:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\ExamenRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        titre:
+            type: string
+            length: 255
+        description:
+            type: string
+            length: 255
+        createdAt:
+            type: datetime
+        updatedAt:
+            type: datetime
+        anneeScolaire:
+            type: string
+            length: 255
+        nombrePresente:
+            type: integer
+        nombreAdmis:
+            type: integer
+    manyToOne:
+         etablissement:
+            targetEntity: Etablissement
+            inversedBy: examens
+            joinColumn:
+                name: etablissement_id
+                referencedColumnName: id
+            cascade : ['persist']
+    lifecycleCallbacks: {  }

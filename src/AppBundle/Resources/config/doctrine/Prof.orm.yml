@@ -1,0 +1,17 @@
+AppBundle\Entity\Prof:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\ProfRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+
+    oneToMany:
+        profEtablissements:
+            targetEntity: EtablissementProf
+            mappedBy: prof
+            cascade: ['persist']
+    lifecycleCallbacks: {  }

@@ -1,0 +1,26 @@
+AppBundle\Entity\Salle:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\SalleRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        codeSalle:
+            type: string
+            length: '5'
+        nbrePlaces:
+            type: integer
+            nullable: true
+    manyToOne:
+         etablissement:
+            targetEntity: Etablissement
+            inversedBy: etablissementSalles
+    oneToMany:
+         progCours:
+            targetEntity: ProgrammeCours
+            mappedBy: salle
+    lifecycleCallbacks: {  }

@@ -1,0 +1,34 @@
+AppBundle\Entity\EtablissementClasseNiveau:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\EtablissementClasseNiveauRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        createdAt:
+          type: datetime
+        updatedAt:
+          type: datetime
+        libelle:
+          type: string
+          length: 6
+    oneToMany:
+          etsClasseNiveauSpecialites:
+            targetEntity: EtablissementClasseNiveauSpecialite
+            mappedBy: etsClasseNiveau
+            cascade: ['persist']
+          sousClasses:
+            targetEntity: SousClasse
+            mappedBy: etablissementClasseNiveau
+            cascade: ['persist']
+    manyToOne:
+        etablissementClasse:
+          targetEntity: EtablissementClasse
+          cascade: ['persist']
+        niveauEtude:
+          targetEntity: NiveauEtude
+    lifecycleCallbacks: {  }

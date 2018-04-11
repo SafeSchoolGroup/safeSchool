@@ -1,0 +1,29 @@
+AppBundle\Entity\EtablissementClasseNiveauSpecialite:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\EtablissementClasseNiveauSpecialiteRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    manyToOne:
+        etsClasseNiveau:
+            targetEntity: EtablissementClasseNiveau
+            inversedBy:  etsClasseNiveauSpecialites
+            joinColumn:
+                ets_classe_niveau_id:
+                    referencedColumnName: id
+        specialite:
+            targetEntity: Specialite
+            inversedBy: etsClasseNiveauSpecialites
+            joinColumn:
+                specialite_id:
+                    referencedColumnName: id
+    oneToMany:
+        apprenantCursus:
+            targetEntity: CursusApprenant
+            mappedBy: etsClasseNiveauSpecialite
+            cascade: ['persist']
+    lifecycleCallbacks: {  }

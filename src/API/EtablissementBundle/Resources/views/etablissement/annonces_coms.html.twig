@@ -1,0 +1,27 @@
+{% extends 'default/etablissement_layout.html.twig' %}
+
+  {% block stylesheetsEtablissement %}
+
+  {% endblock stylesheetsEtablissement %}
+
+  {% block bodyEtablissement %}
+<h1>Liste des Annonces et Communiqués</h1>
+  {% for an in all_annonces_coms %}
+
+    <div class="row">
+
+      <div class="col-md-3">
+        <h3>{{ an.titre }}</h3>
+        <p>
+          {{ an.datePublication|date }}
+        </p>
+      </div>
+
+      <div class="col-md-9">
+        {{ an.description }}
+      </div>
+
+    </div>
+  {% endfor %}
+
+  {% endblock %}

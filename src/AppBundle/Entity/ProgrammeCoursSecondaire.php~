@@ -1,0 +1,381 @@
+<?php
+
+namespace AppBundle\Entity;
+
+/**
+ * ProgrammeCoursSecondaire
+ */
+class ProgrammeCoursSecondaire
+{
+    /**
+     * @var int
+     */
+    private $id;
+
+    /**
+     * @var \stdClass
+     */
+    private $matiere;
+
+    /**
+     * @var \stdClass
+     */
+    private $sousClasse;
+
+    /**
+     * @var \DateTime
+     */
+    private $dateProgramme;
+
+    /**
+     * @var \DateTime
+     */
+    private $heureDebut;
+
+    /**
+     * @var \DateTime
+     */
+    private $heureFin;
+
+    /**
+     * @var string
+     */
+    private $jour;
+
+    /**
+     * @var Salle
+     */
+    private $salleSecondaire;
+
+    /**
+     * @var \AppBundle\Entity\Prof
+     */
+    private $prof;
+
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set dateProgramme
+     *
+     * @param \DateTime $dateProgramme
+     *
+     * @return ProgrammeCours
+     */
+    public function setDateProgramme($dateProgramme)
+    {
+        $this->dateProgramme = $dateProgramme;
+
+        return $this;
+    }
+
+    /**
+     * Get dateProgramme
+     *
+     * @return \DateTime
+     */
+    public function getDateProgramme()
+    {
+        return $this->dateProgramme;
+    }
+
+    /**
+     * Set heureDebut
+     *
+     * @param \DateTime $heureDebut
+     *
+     * @return ProgrammeCours
+     */
+    public function setHeureDebut($heureDebut)
+    {
+        $this->heureDebut = $heureDebut;
+
+        return $this;
+    }
+
+    /**
+     * Get heureDebut
+     *
+     * @return \DateTime
+     */
+    public function getHeureDebut()
+    {
+        return $this->heureDebut;
+    }
+
+    /**
+     * Set heureFin
+     *
+     * @param \DateTime $heureFin
+     *
+     * @return ProgrammeCours
+     */
+    public function setHeureFin($heureFin)
+    {
+        $this->heureFin = $heureFin;
+
+        return $this;
+    }
+
+    /**
+     * Get heureFin
+     *
+     * @return \DateTime
+     */
+    public function getHeureFin()
+    {
+        return $this->heureFin;
+    }
+
+    /**
+     * Set jour
+     *
+     * @param string $jour
+     *
+     * @return ProgrammeCours
+     */
+    public function setJour($jour)
+    {
+        $this->jour = $jour;
+
+        return $this;
+    }
+
+    /**
+     * Get jour
+     *
+     * @return string
+     */
+    public function getJour()
+    {
+        return $this->jour;
+    }
+
+    /**
+     * Set matiere
+     *
+     * @param \AppBundle\Entity\Matiere $matiere
+     *
+     * @return ProgrammeCours
+     */
+    public function setMatiere(\AppBundle\Entity\Matiere $matiere = null)
+    {
+        $this->matiere = $matiere;
+
+        return $this;
+    }
+
+    /**
+     * Get matiere
+     *
+     * @return \AppBundle\Entity\Matiere
+     */
+    public function getMatiere()
+    {
+        return $this->matiere;
+    }
+
+    /**
+     * Set sousFiliere
+     *
+     * @param \AppBundle\Entity\SousFiliere $sousFiliere
+     *
+     * @return ProgrammeCours
+     */
+    public function setSousFiliere(\AppBundle\Entity\SousFiliere $sousFiliere = null)
+    {
+        $this->sousFiliere = $sousFiliere;
+
+        return $this;
+    }
+
+    /**
+     * Get sousFiliere
+     *
+     * @return \AppBundle\Entity\SousFiliere
+     */
+    public function getSousFiliere()
+    {
+        return $this->sousFiliere;
+    }
+
+    /**
+     * Set sousClasse
+     *
+     * @param \AppBundle\Entity\SousClasse $sousClasse
+     *
+     * @return ProgrammeCoursSecondaire
+     */
+    public function setSousClasse(\AppBundle\Entity\SousClasse $sousClasse = null)
+    {
+        $this->sousClasse = $sousClasse;
+
+        return $this;
+    }
+
+    /**
+     * Get sousClasse
+     *
+     * @return \AppBundle\Entity\SousClasse
+     */
+    public function getSousClasse()
+    {
+        return $this->sousClasse;
+    }
+
+    /**
+     * Set salleSecondaire
+     *
+     * @param \AppBundle\Entity\Salle $salleSecondaire
+     *
+     * @return ProgrammeCoursSecondaire
+     */
+    public function setSalleSecondaire(\AppBundle\Entity\Salle $salleSecondaire = null)
+    {
+        $this->salleSecondaire = $salleSecondaire;
+
+        return $this;
+    }
+
+    /**
+     * Get salleSecondaire
+     *
+     * @return \AppBundle\Entity\Salle
+     */
+    public function getSalleSecondaire()
+    {
+        return $this->salleSecondaire;
+    }
+
+
+
+    /**
+     * Set prof
+     *
+     * @param \AppBundle\Entity\Prof $prof
+     *
+     * @return ProgrammeCoursSecondaire
+     */
+    public function setProf(\AppBundle\Entity\Prof $prof = null)
+    {
+        $this->prof = $prof;
+
+        return $this;
+    }
+
+    /**
+     * Get prof
+     *
+     * @return \AppBundle\Entity\Prof
+     */
+    public function getProf()
+    {
+        return $this->prof;
+    }
+    /**
+     * @var \AppBundle\Entity\EnseignerSecondaire
+     */
+    private $enseigner;
+
+
+    /**
+     * Set enseigner
+     *
+     * @param \AppBundle\Entity\EnseignerSecondaire $enseigner
+     *
+     * @return ProgrammeCoursSecondaire
+     */
+    public function setEnseigner(\AppBundle\Entity\EnseignerSecondaire $enseigner = null)
+    {
+        $this->enseigner = $enseigner;
+
+        return $this;
+    }
+
+    /**
+     * Get enseigner
+     *
+     * @return \AppBundle\Entity\EnseignerSecondaire
+     */
+    public function getEnseigner()
+    {
+        return $this->enseigner;
+    }
+    /**
+     * @var \AppBundle\Entity\EnseignerSecondaire
+     */
+    private $matiere_enseigner;
+
+    /**
+     * @var \AppBundle\Entity\EnseignerSecondaire
+     */
+    private $prof_enseigner;
+
+
+    /**
+     * Set matiereEnseigner
+     *
+     * @param \AppBundle\Entity\EnseignerSecondaire $matiereEnseigner
+     *
+     * @return ProgrammeCoursSecondaire
+     */
+    public function setMatiereEnseigner(\AppBundle\Entity\EnseignerSecondaire $matiereEnseigner = null)
+    {
+        $this->matiere_enseigner = $matiereEnseigner;
+
+        return $this;
+    }
+
+    /**
+     * Get matiereEnseigner
+     *
+     * @return \AppBundle\Entity\EnseignerSecondaire
+     */
+    public function getMatiereEnseigner()
+    {
+        return $this->matiere_enseigner;
+    }
+
+    /**
+     * Set profEnseigner
+     *
+     * @param \AppBundle\Entity\EnseignerSecondaire $profEnseigner
+     *
+     * @return ProgrammeCoursSecondaire
+     */
+    public function setProfEnseigner(\AppBundle\Entity\EnseignerSecondaire $profEnseigner = null)
+    {
+        $this->prof_enseigner = $profEnseigner;
+
+        return $this;
+    }
+
+    /**
+     * Get profEnseigner
+     *
+     * @return \AppBundle\Entity\EnseignerSecondaire
+     */
+    public function getProfEnseigner()
+    {
+        return $this->prof_enseigner;
+    }
+    /**
+     * @var \AppBundle\Entity\EnseignerSecondaire
+     */
+    private $matiereEnseigner;
+
+    /**
+     * @var \AppBundle\Entity\EnseignerSecondaire
+     */
+    private $profEnseigner;
+
+
+}

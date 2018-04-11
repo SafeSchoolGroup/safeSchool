@@ -1,0 +1,104 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Etablissement</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ etablissement.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ etablissement.nom }}</td>
+            </tr>
+            <tr>
+                <th>Nomfondateur</th>
+                <td>{{ etablissement.nomFondateur }}</td>
+            </tr>
+            <tr>
+                <th>Prenomfondateur</th>
+                <td>{{ etablissement.prenomFondateur }}</td>
+            </tr>
+            <tr>
+                <th>Nomdirecteur</th>
+                <td>{{ etablissement.nomDirecteur }}</td>
+            </tr>
+            <tr>
+                <th>Prenomdirecteur</th>
+                <td>{{ etablissement.prenomDirecteur }}</td>
+            </tr>
+            <tr>
+                <th>Adresserue</th>
+                <td>{{ etablissement.adresseRue }}</td>
+            </tr>
+            <tr>
+                <th>Adresseville</th>
+                <td>{{ etablissement.adresseVille }}</td>
+            </tr>
+            <tr>
+                <th>Adressepostale</th>
+                <td>{{ etablissement.adressePostale }}</td>
+            </tr>
+            <tr>
+                <th>Telephone1</th>
+                <td>{{ etablissement.telephone1 }}</td>
+            </tr>
+            <tr>
+                <th>Telephone2</th>
+                <td>{{ etablissement.telephone2 }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ etablissement.email }}</td>
+            </tr>
+            <tr>
+                <th>Urlsite</th>
+                <td>{{ etablissement.urlSite }}</td>
+            </tr>
+            <tr>
+                <th>Anneecreation</th>
+                <td>{{ etablissement.anneeCreation }}</td>
+            </tr>
+            <tr>
+                <th>Historique</th>
+                <td>{{ etablissement.historique }}</td>
+            </tr>
+            <tr>
+                <th>Statutetablissement</th>
+                <td>{{ etablissement.statutEtablissement }}</td>
+            </tr>
+            <tr>
+                <th>Categorieetablissement</th>
+                <td>{{ etablissement.categorieetablissement }}</td>
+            </tr>
+            <tr>
+                <th>Niveauetablissement</th>
+                <td>{{ etablissement.niveauEtablissement }}</td>
+            </tr>
+            <tr>
+                <th>Logoetablissement</th>
+                <td>{{ etablissement.logoEtablissement }}</td>
+            </tr>
+            <tr>
+                <th>Photocouvertureetablissement</th>
+                <td>{{ etablissement.photoCouvertureEtablissement }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('api_etablissement_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('api_etablissement_edit', { 'id': etablissement.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

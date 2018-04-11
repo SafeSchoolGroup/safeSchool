@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+		<link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+		<link rel="stylesheet" type="text/css" href="{{ asset('bootstrap/css/bootstrap.min.css') }}" />
+		<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/styless.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}" />
+
+        {% block stylesheets %}{% endblock %}
+
+		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+   		<!--[if lt IE 9]>
+      		<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    	<![endif]-->
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="bar-menu">
+                <div class="row">
+                    <a href="#" id="a-activer">Activer mon compte</a>
+                    <a href="{{ path('fos_user_security_login') }}" class="btn btn-primary" id="a-btn-connection">Connexion</a>
+                </div>
+            </div>
+
+		<nav class="navbar navbar-inverse" id="nav-main-menu">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#div-collapse" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#" id="a-logo">
+                        <img src="{{ asset ('assets/img/safeschoolLogoOmbree.png') }}" width="10%">
+                    </a>
+                </div><!-- /.navbar-header -->
+
+                <div class="collapse navbar-collapse" id="div-collapse">
+                        <ul class="nav navbar-nav" id="ul-main-navbar">
+                            <li class=""><a href="#">Acceuil</a></li>
+                            <li class=""><a href="{{path('api_etablissement_list')}}">Etablissements</a></li>                            
+
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Documents <span class="caret"></span></a>
+                                <ul class="dropdown-menu" id="ul-snd-dropdown">
+                                    <div class="container">
+                                        <ul class="submenu-list">
+                                            <li><h3><a href="">Epreuves </a> </h3></li>
+
+                                            <ul>
+                                                <li><a href="">Secondaire</a></li>
+                                                    <ul>
+                                                        <li><a href="">1<sup>er</sup> Cycle </a></li>
+                                                        <li><a href="">2<sup>nd</sup> Cycle</a></li>
+                                                    </ul>
+                                                <li><a href="">Universitaire</a></li>
+
+                                            </ul>
+                                        </ul>
+
+                                        <ul class="submenu-list">
+                                            <li><h3><a href="">Mémoires </a> </h3></li>
+                                            <ul>
+                                                <li><a href="">Bts </a></li>
+                                                <li><a href="">DTS/Licence</a></li>
+                                                <li><a href="">Master</a></li>
+                                                <li><a href="">Doctorat</a></li>
+                                            </ul>
+                                        </ul>
+
+                                        <ul class="submenu-list">
+                                            <li><h3><a href="">Exposés </a> </h3></li>
+                                            <ul>
+                                                <li><a href="">Secondaire</a></li>
+                                                <ul>
+                                                    <li><a href="">1<sup>er</sup> Cycle </a></li>
+                                                    <li><a href="">2<sup>nd</sup> Cycle</a></li>
+                                                </ul>
+                                                <li><a href="">Universitaire</a></li>
+
+                                            </ul>
+                                        </ul>
+
+                                    </div>
+                                </ul>
+                            </li>
+                            <li class=""><a href="#">Exploits</a></li>
+                            <li><a href="#">Forum</a></li>
+                            <li><a href="#registration_modal" data-toggle="modal" class="btn btn-primary">Enregistrer votre établissement</a></li>
+                        </ul>
+
+                    <form class="navbar-form navbar-right">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Rechercher des établissements" id="input-search">
+                            <span class="glyphicon glyphicon-search" id="glyph-search"></span>
+                        </div>
+                    </form>
+
+                    </div><!-- /.navbar-collapse -->
+                </div><!-- /.col-lg-9 -->
+         </nav>
+
+	{% block carousel %}{% endblock %}
+
+            <div class="container">
+                    {% block body %}{% endblock %}
+            </div>
+  {% block school_registration %}{% endblock %}
+  {% include 'APIEtablissementBundle::etablissement/registration.html.twig' %}
+	<footer>
+		<div class="container">
+			<ul class="ul-footer-list">
+                <li><h3> ACTIVITES </h3></li>
+				<li><a href="">Activer mon compte </a></li>
+				<li><a href="">Etablissements</a></li>
+				<li><a href="">Documents</a></li>
+				<li><a href="">Exploits</a></li>
+				<li><a href="">Forum</a></li>
+				<li><a href="">Contactez-nous</a></li>
+			</ul>
+
+            <ul class="ul-footer-list">
+                <li><h3> SERVICES </h3></li>
+                <li><a href="">Activer mon compte </a></li>
+                <li><a href="">Etablissements</a></li>
+                <li><a href="">Documents</a></li>
+                <li><a href="">Exploits</a></li>
+                <li><a href="">Forum</a></li>
+                <li><a href="">Contactez-nous</a></li>
+            </ul>
+
+			<ul class="ul-footer-list">
+                <li><h3> AIDE & SUPPORT </h3></li>
+				<li><a href="">Avis & Suggestions</a></li>
+				<li><a href="">Voir les établissements à proximité</a></li>
+				<li><a href="">Aide</a></li>
+				<li><a href="">A propos</a></li>
+			</ul>
+
+		</div>
+       <div class="div-footer-divider"></div>
+
+            <ul class="ul-footer-languages">
+                    <li><a href="">English</a></li>
+                    <li><a href="">Français</a></li>
+                    <li><a href="">Deutsch</a></li>
+            </ul>
+
+        <ul class="ul-footer-terms">
+            <li>Copyright &copy; 2016 safeSchool, Inc.</li>
+            <li><a href="">Mentions légales</a>&boxv;</li>
+            <li><a href="">Politique de confidentialité</a>&boxv;</li>
+           <li><a href="">Plan du site</a></li>
+        </ul>
+	</footer>
+        </div><!-- end /div.container-fluid -->
+
+        <script type="text/javascript" src="{{ asset('assets/js/jquery-3.1.0.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bootstrap/js/bootstrap.js') }}"></script>
+
+        {% block javascripts %}{% endblock %}
+
+    </body>
+</html>

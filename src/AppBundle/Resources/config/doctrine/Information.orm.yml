@@ -1,0 +1,42 @@
+AppBundle\Entity\Information:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\InformationRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+             titre:
+                 type: string
+                 length: 255
+             description:
+                 type: text
+             datePublication:
+                 type: date
+                 column: date_publication
+             typeInformation:
+                 type: string
+                 column: type_information
+             createdAt:
+                 type: datetime
+                 column: created_at
+             updatedAt:
+                 type: datetime
+                 column: updated_at
+             publie:
+                  type: boolean
+                  column: publie
+             destinataire :
+                 type: string
+                 column: destinataire
+             anneeScolaire :
+                  type: string
+                  column: annee_scolaire
+
+    manyToOne:
+            etablissement:
+                targetEntity: Etablissement
+    lifecycleCallbacks: {  }

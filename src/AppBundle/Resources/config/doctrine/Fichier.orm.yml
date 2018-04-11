@@ -1,0 +1,49 @@
+AppBundle\Entity\Fichier:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\FichierRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        nom:
+            type: string
+            length: '100'
+        chemin:
+            type: string
+            length: 255
+            unique: true
+        dateStockage:
+            type: date
+            column: date_stockage
+        typeFichier:
+            type: string
+            length: 255
+            column: type_fichier
+        isPhotoCouvertureExploit:
+            type: boolean
+            column: is_photo_couverture
+        createdAt:
+            type: datetime
+            column: created_at
+        updatedAt:
+            type: datetime
+            column: updated_at
+    manyToOne:
+         exploit:
+            targetEntity: Exploit
+            nullable: true
+            inversedBy: exploitFichiers
+         information:
+            targetEntity: Information
+            nullable: true
+         apprenant:
+            targetEntity: Apprenant
+            inversedBy: fichiers
+            joinColumn:
+                apprenant_id:
+                    referencedColumnName: id
+    lifecycleCallbacks: {  }

@@ -1,0 +1,41 @@
+AppBundle\Entity\PersonneSuperClass:
+    type: mappedSuperclass
+    table: null
+    repositoryClass: AppBundle\Repository\PersonneSuperClassRepository
+    fields:
+        nom:
+            type: string
+            length: '50'
+        prenom:
+            type: string
+            length: '50'
+        sexe:
+            type: string
+            length: '1'
+        adresseRue:
+            type: string
+            length: '25'
+            nullable: true
+        adresseVille:
+            type: string
+            length: '25'
+            nullable: true
+        email:
+            type: string
+            length: '25'
+        telephone:
+            type: string
+            length: '8'
+        dateNaissance:
+            type: date
+            nullable: true
+        lieuNaissance:
+            type: string
+            length: '50'
+            nullable: true
+    #oneToMany:
+        #profMatieres:
+            #targetEntity: Enseigner
+            #mappedBy: prof
+            #cascade: ['persist']
+    lifecycleCallbacks: {  }

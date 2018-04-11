@@ -1,0 +1,49 @@
+AppBundle\Entity\Apprenant:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\ApprenantRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        nationalite:
+            type: string
+            length: 255
+
+    manyToOne:
+         tuteur:
+            targetEntity: Tuteur
+            inversedBy: apprenants
+            joinColumn:
+                name: tuteur_id
+                referencedColumnName: id
+    oneToMany:
+          apprenantEtablissements:
+            targetEntity: EtablissementApprenant
+            mappedBy: apprenant
+            cascade: ['persist']
+          exploitApprenants:
+            targetEntity: ExploitApprenant
+            mappedBy: apprenant
+            cascade: ['persist']
+          fichiers:
+            targetEntity: Fichier
+            mappedBy: apprenant
+            cascade: ['persist']
+
+<<<<<<< HEAD
+    oneToOne:
+          user:
+            targetEntity: \SafeSchool\UserBundle\Entity\User
+            mappedBy: apprenant
+            cascade: ['persist']
+
+=======
+>>>>>>> e3cf71c865805064fd6da76c0057bd222032bc35
+    manyToMany:
+         exploits:
+            targetEntity: Exploit
+    lifecycleCallbacks: {  }
