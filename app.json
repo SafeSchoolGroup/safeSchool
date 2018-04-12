@@ -3,6 +3,9 @@
   "scripts": {
   },
   "env": {
+    "SYMFONY_ENV": {
+      "value": "prod"
+    }
   },
   "formation": {
   },
