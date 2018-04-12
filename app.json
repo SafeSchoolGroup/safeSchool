@@ -1,8 +1,11 @@
 {
-  "name": "safeSchool-app",
+  "name": "safeSchool",
   "scripts": {
   },
   "env": {
+    "SYMFONY_ENV": {
+      "value": "prod"
+    }
   },
   "formation": {
   },
