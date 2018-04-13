@@ -1,8 +1,12 @@
 {
   "name": "safeSchool",
   "scripts": {
+    "postdeploy": "php app/console doctrine:schema:create"
   },
   "env": {
+    "SYMFONY_ENV": {
+      "value": "prod"
+    }
   },
   "formation": {
   },
