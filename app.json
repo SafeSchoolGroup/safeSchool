@@ -11,6 +11,7 @@
   "formation": {
   },
   "addons": [
+    "cleardb"	
 
   ],
   "buildpacks": [
