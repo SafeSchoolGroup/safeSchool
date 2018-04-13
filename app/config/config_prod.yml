@@ -13,6 +13,18 @@ imports:
 #        result_cache_driver: apc
 #        query_cache_driver: apc
 
+# FOSUser Bundle config
+fos_user:
+    db_driver: orm
+    firewall_name: main
+    user_class: SafeSchool\UserBundle\Entity\User
+    from_email:
+        address:        safeschool.team@gmail.com
+        sender_name:    Demo App
+    template:
+        engine: twig
+
+
 monolog:
     handlers:
         main:
