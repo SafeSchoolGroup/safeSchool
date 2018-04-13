@@ -1,5 +1,6 @@
 {
   "name": "safeSchool",
+  "description": "project",
   "scripts": {
     "postdeploy": "php app/console doctrine:schema:create"
   },
