@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Publication d'une nouvelle statistqiue périodique</h1>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input type="submit" value="Publier" />
+    {{ form_end(form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('statperiodique_index') }}">Retourner à la liste des statistiques périodiques </a>
+        </li>
+    </ul>
+{% endblock %}

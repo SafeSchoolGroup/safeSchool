@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Note list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Note</th>
+                <th>Typenote</th>
+                <th>Datenote</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for note in notes %}
+            <tr>
+                <td><a href="{{ path('api_note_show', { 'id': note.id }) }}">{{ note.id }}</a></td>
+                <td>{{ note.note }}</td>
+                <td>{{ note.typeNote }}</td>
+                <td>{% if note.dateNote %}{{ note.dateNote|date('Y-m-d') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('api_note_show', { 'id': note.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('api_note_edit', { 'id': note.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('api_note_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

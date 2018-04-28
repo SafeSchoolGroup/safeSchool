@@ -1,0 +1,44 @@
+{% extends '::etablissement_layout.html.twig' %}
+
+{% block body %}
+    <h1>ProgrammeCours creation</h1>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <label for="programme_cours_matiereEnseigner">Matiere</label>
+        <select class="" name="programme_cours_matiereEnseigner_" id="programme_cours_matiereEnseigner" data-etablissement= {{idEtablissement}}>
+            <option value="">
+                Choississez une matiere voulue
+            </option>
+            {% for matiere in matieres %}
+                <option value="{{ matiere.matiere_id }}">
+                        {{ matiere.libelle }}
+                </option>
+            {% endfor %}
+        </select>
+
+        <label for="programme_cours_profEnseigner">Professeur</label>
+        <select class="" name="programme_cours_profEnseigner_" id="programme_cours_profEnseigner">
+            <option value="">
+                Choississez un prof voulue
+            </option>
+            {% for profe in profes %}
+                <option value="{{profe.prof_id}}">
+                        {{ profe.nom }}
+                </option>
+            {% endfor %}
+        </select>
+        <input type="submit" value="Create" />
+    {{ form_end(form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('api_programmecours_index',{ 'id_etablissement':idEtablissement})}}">Back to the list</a>
+
+        </li>
+    </ul>
+{% endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript" src="{{ asset('assets/js/programmeCoursSecondaire.js') }}"></script>
+{% endblock %}

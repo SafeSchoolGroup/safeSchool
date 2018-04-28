@@ -1,0 +1,56 @@
+
+api_note_index:
+    path:     /
+    defaults: { _controller: "APINoteBundle:Note:index" }
+    methods:  GET
+
+api_note_show:
+    path:     /{id}/show
+    defaults: { _controller: "APINoteBundle:Note:show" }
+    methods:  GET
+
+api_note_new:
+    path:     /new
+    defaults: { _controller: "APINoteBundle:Note:new" }
+    methods:  [GET, POST]
+
+api_note_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "APINoteBundle:Note:edit" }
+    methods:  [GET, POST]
+
+api_note_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "APINoteBundle:Note:delete" }
+    methods:  DELETE
+
+api_note_of_apprenant:
+    path:     apprenant/{id}
+    defaults: { _controller: "APINoteBundle:Note:getNotesOfApprenant", _format: json }
+    requirements: { _format: (xml|json) }
+    methods:  [GET, POST]
+
+api_note_for_tuteur:
+    path:     /tuteur/{id}
+    defaults: { _controller: "APINoteBundle:Note:getNotesForTuteur" }
+    methods:  [GET, POST]
+
+api_note_apprenant_page_note_et_moyenne:
+    path:     /pagenote/{id_apprenant}
+    defaults: { _controller: "APINoteBundle:Note:noteEtMoyenne" }
+    methods:  [GET, POST]
+
+api_note_apprenant_set_moyenne:
+    path:     /moyenne
+    defaults: { _controller: "APINoteBundle:Note:setApprenantMoyenne" }
+    methods:  [GET, POST]
+
+api_note_apprenant_get_moyenne:
+    path:     /moyenne/{id_apprenant}
+    defaults: { _controller: "APINoteBundle:Note:getApprenantMoyenne" }
+    methods:  [GET, POST]
+
+api_sous_classe_get_moyenne:
+    path:     /sousClasse/{id_cursus}/{id_periode}
+    defaults: { _controller: "APINoteBundle:Note:getMoyenneOfSousClasse" }
+    methods:  [GET, POST]

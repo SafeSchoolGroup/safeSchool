@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>ProgrammeCours list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Dateprogramme</th>
+                <th>Heuredebut</th>
+                <th>Heurefin</th>
+                <th>Jour</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for programmeCour in programmeCours %}
+            <tr>
+                <td><a href="{{ path('programmecours_show', { 'id': programmeCour.id }) }}">{{ programmeCour.id }}</a></td>
+                <td>{% if programmeCour.dateProgramme %}{{ programmeCour.dateProgramme|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if programmeCour.heureDebut %}{{ programmeCour.heureDebut|date('H:i:s') }}{% endif %}</td>
+                <td>{% if programmeCour.heureFin %}{{ programmeCour.heureFin|date('H:i:s') }}{% endif %}</td>
+                <td>{{ programmeCour.jour }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('programmecours_show', { 'id_etablissement': idEtablissement,'id': enseigner.id }) }}">show</a>
+
+                        </li>
+                        <li>
+                            <a href="{{ path('programmecours_edit', { 'id_etablissement': idEtablissement,'id': enseigner.id }) }}">edit</a>
+
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('api_programmecours_new',{'id_etablissement': idEtablissement}) }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

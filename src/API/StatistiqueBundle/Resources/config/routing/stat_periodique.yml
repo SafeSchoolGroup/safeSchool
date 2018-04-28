@@ -1,0 +1,29 @@
+statperiodique_index:
+    path:     /
+    defaults: { _controller: "APIStatistiqueBundle:StatPeriodique:index" }
+    methods:  GET
+
+statperiodique_show:
+    path:     /{id}/show
+    defaults: { _controller: "APIStatistiqueBundle:StatPeriodique:show" }
+    methods:  GET
+
+statperiodique_new:
+    path:     /new
+    defaults: { _controller: "APIStatistiqueBundle:StatPeriodique:new" }
+    methods:  [GET, POST]
+
+statperiodique_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "APIStatistiqueBundle:StatPeriodique:edit" }
+    methods:  [GET, POST]
+
+statperiodique_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "APIStatistiqueBundle:StatPeriodique:delete" }
+    methods:  DELETE
+
+statperiodique_statParPeriode:
+    path:     /stat-par-periode/{ets}
+    defaults: { _controller: "APIStatistiqueBundle:StatPeriodique:getStatPeriodiqueOfEts" }
+    methods:  [GET, POST]

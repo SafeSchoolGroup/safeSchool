@@ -1,0 +1,77 @@
+programmecours_index:
+    path:     /
+    defaults: { _controller: "AppBundle:ProgrammeCours:index" }
+    methods:  GET
+
+programmecours_show:
+    path:     /{id}/show
+    defaults: { _controller: "AppBundle:ProgrammeCours:show" }
+    methods:  GET
+
+programmecours_new:
+    path:     /new
+    defaults: { _controller: "AppBundle:ProgrammeCours:new" }
+    methods:  [GET, POST]
+
+programmecours_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AppBundle:ProgrammeCours:edit" }
+    methods:  [GET, POST]
+
+programmecours_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AppBundle:ProgrammeCours:delete" }
+    methods:  DELETE
+
+programmecours_prof_sous_classe:
+    path:     /{id}/prof_sous_classe
+    defaults: { _controller: "AppBundle:ProgrammeCours:getProfBySousClasse" }
+    methods:  [GET, POST]
+
+programmecours_matiere_sous_classe:
+    path:     /{id_prof}/{id_matiere}/matiere_sous_classe/{id_sous_classe}
+    defaults: { _controller: "AppBundle:ProgrammeCours:getProfAndMatiereBySousClasse", id_sous_classe: 'null', id_matiere: 'null', id_prof: 'null', }
+    methods:  [GET, POST]
+    requirements:
+        id_sous_classe: .+
+        id_prof: .+
+        id_matiere: .+
+
+programmecours_prof_matiere:
+    path:     /{id}/matiere_prof
+    defaults: { _controller: "AppBundle:ProgrammeCours:getMatiereByProf" }
+    methods:  [GET, POST]
+programmecours_sousclasse_prof:
+    path:     /{id}/sousClasse_prof
+    defaults: { _controller: "AppBundle:ProgrammeCours:getSousClasseByProf" }
+    methods:  [GET, POST]
+
+programmecours_sousclasse_matiere:
+    path:     /{id_prof}/sousClasse_matiere
+    defaults: { _controller: "AppBundle:ProgrammeCours:getSousClasseByMatiere" }
+    methods:  [GET, POST]
+
+programmecours_matiere_sousclasse_prof:
+    path:     /{id_prof}/matiere/{id_sous_classe}
+    defaults: { _controller: "AppBundle:ProgrammeCours:getMatiereBySousClasseAndProf", id_sous_classe: 'null' }
+    methods:  [GET, POST]
+    requirements:
+        id_sous_classe: .+
+
+programmecours_prof_sousclasse_matiere:
+    path:     /{id_matiere}/prof/{id_sous_classe}
+    defaults: { _controller: "AppBundle:ProgrammeCours:getProfBySousClasseAndMatiere", id_sous_classe: 'null' }
+    methods:  [GET, POST]
+    requirements:
+        id_sous_classe: .+
+
+
+programmecours_sousclasse_matiere_prof:
+    path:     /{id}/{id_prof}/sous_classe
+    defaults: { _controller: "AppBundle:ProgrammeCours:getSousClasseByProfAndMatiere" }
+    methods:  [GET, POST]
+
+programmecours_matiere_un_prof:
+    path:     /{id_matiere}/matieres_un_prof
+    defaults: { _controller: "AppBundle:ProgrammeCours:getProfByMatiere" }
+    methods:  [GET, POST]

@@ -1,0 +1,58 @@
+{% extends '::general_apprenant_layout.html.twig' %}
+
+{% block stylesheets %}
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/apprenantNote_style.css') }}" />
+{% endblock %}
+
+  {% block main_center_block %}
+
+<input type="hidden" id="idApprenant" data-idApprenant= {{ id_apprenant }}>
+  <p>
+    notes de l'apprenant par matiere
+  </p>
+
+  <a href="#" class="btn btn-default a-note">Voir les notes</a>
+
+  <div class="table-responsive">
+    <table class="table table-note table-striped table-hover">
+      <thead class="thead-note">
+        <tr class="info">
+          <th>
+            Crédits
+          </th>
+          <th>
+            Matieres
+          </th>
+          <th>
+            Interos
+          </th>
+          <th>
+            Devoirs
+          </th>
+          <th>
+            Partiels
+          </th>
+          <th>
+            Compos
+          </th>
+          <th>
+            Moyennes
+          </th>
+        </tr>
+      </thead>
+      <tbody class="tbody-note">
+
+      </tbody>
+
+      <tfoot class="tfoot-note">
+
+      </tfoot>
+    </table>
+  </div>
+
+{% endblock %}
+
+{% block javascripts %}
+<script type="text/javascript" src="{{ asset('assets/js/note.js') }}" language="javascript"></script>
+
+{% endblock %}

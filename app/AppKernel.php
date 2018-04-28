@@ -19,10 +19,14 @@ class AppKernel extends Kernel
             new \FOS\UserBundle\FOSUserBundle(),
             new SafeSchool\UserBundle\SafeSchoolUserBundle(),
             //new API\NotationBundle\APINotationBundle(),
-            new API\EtablissementBundle\APIEtablissementBundle(),
-          //  new API\NoteBundle\APINoteBundle(),
-
             new API\InscriptionBundle\APIInscriptionBundle(),
+            new API\EtablissementBundle\APIEtablissementBundle(),
+            new API\InfoBundle\APIInfoBundle(),
+            new API\MediathequeBundle\APIMediathequeBundle(),
+            new API\NoteBundle\APINoteBundle(),
+            new API\StatistiqueBundle\APIStatistiqueBundle(),
+            new API\ProgrammeBundle\APIProgrammeBundle(),
+            new API\ExploitBundle\APIExploitBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {

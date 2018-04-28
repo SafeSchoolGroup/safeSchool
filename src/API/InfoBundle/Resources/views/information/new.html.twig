@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Information creation</h1>
+
+    <form action="{{ path('api_info_new') }}" method="post" enctype="multipart/form-data">
+        {{ form_widget(form) }}
+        <label for="destinataire">destinataire</label>
+        <select class="" id="destinataire" name="destinataire">
+          <optgroup label="visible par:">
+            <option value="public">Tout le Monde</option>
+            <option value="apprenants">Tous les Apprenants</option>
+            <option value="professeurs">Tous les Professeurs</option>
+            <option value="tuteurs">Tous les Tuteurs</option>
+
+          </optgroup>
+          <optgroup label="Classes">
+            {% for gt in sousClasses %}
+
+            <optgroup label="{{gt[0].codeClasse}}">
+              <option value="{{gt[0].codeClasse}}">Toutes les classes de {{gt[0].codeClasse}}</option>
+              {% for  sc in gt %}
+                  <option value="{{sc.codeSousClasse}}">{{sc.codeSousClasse}}</option>
+                  <optgroup label="visible par:">
+                    <option value="apprenants{{sc.codeSousClasse}}">Apprenants de la {{sc.codeSousClasse}}</option>
+                    <option value="professeurs{{sc.codeSousClasse}}">Professeurs de la {{sc.codeSousClasse}}</option>
+                    <option value="tuteurs{{sc.codeSousClasse}}">Tuteurs de la {{sc.codeSousClasse}}</option>
+                  </optgroup>
+              {% endfor %}
+            </optgroup>
+
+            {% endfor %}
+          </optgroup>
+
+        </select>
+        <label for="fileInfo">joindre fichier</label>
+        <input type="file" name="fileInfo">
+        <input type="submit" value="Create" />
+    {{ form_end(form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('api_info_index') }}">Back to the list</a>
+        </li>
+    </ul>
+    
+{% endblock %}

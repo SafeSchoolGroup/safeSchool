@@ -1,0 +1,309 @@
+{% extends 'general_layout.html.twig' %}
+
+{% block stylesheets %}
+  <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/jquery-ui.min.css') }}" />
+  <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/own.css') }}" />
+  <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/styles.css') }}" />
+  <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/jquery.mCustomScrollbar.css') }}" />
+  <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/dropzone.css') }}" />
+  <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/ninja-slider.css') }}"  />
+
+{% endblock %}
+
+{% block body %}
+<div class="row " id="store-titre">
+  <h1>Médiathèque de l'établissement</h1>
+</div>
+<br>
+<div class="row" id="div-menu-store">
+  <div class="col-xs-2 col-md-2" id="store-titre-a">
+    <div class="dropdown">
+      <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+        Nouveau
+          <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu">
+          <li id="dropdown-menu-ul1"><a href="#">Dossier</a></li>
+          <li id="dropdown-menu-ul2" data-toggle="modal" data-target="#div-dropzone"><a href="#">Fichier</a></li>
+      </ul>
+    </div>
+    <div class="row div-create-folder">
+      <div class="col-xs-8 col-md-8">
+          <form class="form-inline hidden-form" role="form" method="post">
+            <div class="col-xs-8 col-md-8">
+              <div class="form-group">
+                  <input type="text" class="form-control" id="input-directory" placeholder="Nom du dossier" required name="destpathdir">
+              </div>
+            </div>
+            <div class="col-xs-2 col-md-2">
+              <button type="submit" class="btn btn-default" id="buttom-create">Valider</button>
+            </div>
+          </form>
+      </div>
+      <div class="col-xs-2 col-md-2">
+        <button  class="btn btn-warning hidden" id="buttom-annuler">Annuler</button>
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-7 col-md-7" id="div-menu-center">
+    <div class="row">
+      <div class="col-xs-8 col-md-8" id="store-file-tree">
+        <div class="breadcrumbs"></div>
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-2 col-md-2">
+    <div class="row" id="div-menu-right">
+      <div class="col-xs-8 col-md-8" id="div-menu-right1">
+        <div class="row">
+          <div class="col-xs-1 col-md-1 div-menu-right-action" id="send" data-toggle="tooltip" title="Envoyer">
+            <a href="#"><span class="glyphicon glyphicon-send"></span></a>
+          </div>
+          <div class="col-xs-1 col-md-1 div-menu-right-action" id="copy" data-toggle="tooltip" title="Copier">
+            <a href="#"><span class="glyphicon glyphicon-copy"></span></a>
+          </div>
+          <div class="col-xs-1 col-md-1 div-menu-right-action" id="move" data-toggle="tooltip" title="Déplacer">
+            <a href="#"><span class="glyphicon glyphicon-move"></span></a>
+          </div>
+          <div class="col-xs-1 col-md-1 div-menu-right-action" id="paste" data-toggle="tooltip" title="coller">
+            <a href="#"><span class="glyphicon glyphicon-paste"></span></a>
+          </div>
+          <div class="col-xs-1 col-md-1 div-menu-right-action" id="rename"  data-toggle="tooltip"  title="Renommer">
+            <a id="a-rename" href="#"><span class="glyphicon glyphicon-share-alt" data-toggle="modal" data-target="#renameModal"></span></a>
+          </div>
+          <div class="col-xs-1 col-md-1 div-menu-right-action" id="remove" data-toggle="tooltip" title="Supprimer">
+            <a href="#"><span class="glyphicon glyphicon-trash"></span></a>
+          </div>
+          <div class="col-xs-1 col-md-1 div-menu-right-action" id="restaure" data-toggle="tooltip" title="Restaurer">
+            <a href="#"><span class="glyphicon glyphicon-flash"></span></a>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-3 col-md-3" id="div-menu-right2">
+          <div class="row">
+              <div class="col-xs-4 col-md-4 div-menu-right-action displayInfo" id="details" data-toggle="tooltip" title="Afficher les détails">
+                <a href="#"><span class="glyphicon glyphicon-info-sign"></span></a>
+              </div>
+              <div class="col-xs-4 col-md-4 div-menu-right-action" id="parametre" data-toggle="tooltip" title="Paramètre">
+                <a href="#"><span class="glyphicon glyphicon-cog"></span></a>
+              </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row" id="div-file-store">
+  <div class="col-xs-2 col-md-2" id="div-file-left">
+    <div class="row setting-left" id ="div-monDisque" >
+      <a href="#">
+        <div class="col-xs-3 col-md-3">
+          <span class="glyphicon glyphicon-cloud"></span>
+        </div>
+        <div class="col-xs-7 col-md-7">
+          Mon Disque
+        </div>
+      </a>
+    </div>
+    <div class="row setting-left">
+      <a href="#">
+        <div class="col-xs-3 col-md-3">
+          <span class="glyphicon glyphicon-home"></span>
+        </div>
+        <div class="col-xs-7 col-md-7">
+          Récents
+        </div>
+      </a>
+    </div>
+    <div class="row setting-left">
+      <a href="#">
+        <div class="col-xs-3 col-md-3">
+          <span class="glyphicon glyphicon-folder-open"></span>
+        </div>
+        <div class="col-xs-7 col-md-7">
+          Favoris
+        </div>
+      </a>
+    </div>
+    <div class="row setting-left">
+      <a href="#">
+        <div class="col-xs-3 col-md-3">
+          <span class="glyphicon glyphicon-trash"></span>
+        </div>
+        <div id="div-corbeille" class="col-xs-7 col-md-7">
+          Corbeille
+        </div>
+      </a>
+    </div>
+    <div class="row setting-left">
+      <a href="#">
+        <div class="col-xs-3 col-md-3">
+         <span class="glyphicon glyphicon-envelope"></span>
+        </div>
+        <div class="col-xs-7 col-md-7">
+        Reçus
+        </div>
+      </a>
+    </div>
+  </div>
+  <div class="col-xs-7 col-md-7 div-file-center" >
+    <div class="row btn btn-primary" id="buttom-ouvrir-dropzone"
+    data-toggle="modal" data-target="#div-dropzone">
+      Ajouter de nouveaux fichiers
+    </div>
+    <div class="row search" >
+      <input id="div-recherche" type="search" placeholder="Trouver un fichier ..." />
+    </div>
+    <div class="filemanager">
+
+  		<ul class="data"></ul>
+
+  		<div class="nothingfound">
+  			<div class="nofiles">
+        </div>
+  			<span> Ce dossier est vide ! </span>
+  		</div>
+
+  	</div>
+  </div>
+  <div class="col-xs-3 col-md-3 div-file-right">
+
+  </div>
+</div>
+
+
+
+<div id="renameModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+  <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Entrer le nouveau nom</h4>
+      </div>
+      <div class="modal-body">
+        <input type="text" name="renameinput" value="">
+      </div>
+      <div class="modal-footer">
+        <div class="col-xs-5 col-md-5">
+            <button type="button" class="btn btn-warning pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Annuler</button>
+        </div>
+        <div class="col-xs-5 col-md-5">
+            <button id="button-modal-submit" type="submit" class="btn btn-primary  pull-right"><span class="glyphicon glyphicon-check"></span> Valider</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="dialog" style="display: none">
+</div>
+
+<div class="modal fade bs-example-modal-lg" role="dialog" aria-labelledby="myLargeModalLabel" id="myModalImage">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="row" id="modal-title">
+         <h4>Visualisation</h4>
+      </div>
+      <div class="modal-body" id="slider-modal">
+      </div>
+      <div class="modal-footer" id="dropzone-fermer">
+        <button type="button" class="btn btn-warning" data-dismiss="modal">Fermer</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div id="popupconfirmation" title="Confirmation de la suppression">
+    <p>Désirez-vous vraiment supprimer cet item ?</p>
+</div>
+
+
+
+<div class="row modal modal-md fade in " id="div-dropzone" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="row" id="modal-title">
+           <h4>Ajout d'un nouveau fichier</h4>
+        </div>
+        <div class="row" id="actions">
+            <!-- The fileinput-button span is used to style the file input field as button -->
+              <div class=" col-md-3 btn btn-success fileinput-button dz-clickable">
+                  <i class="glyphicon glyphicon-plus"></i>
+                  Ajouter des fichiers
+              </div>
+
+              <div type="submit" class=" col-md-3 btn btn-primary start" id="dropzone-toutTeleverser">
+                  <i class="glyphicon glyphicon-upload"></i>
+                  Tout téléverser
+              </div>
+
+              <div type="reset" class=" col-md-3 btn btn-warning cancel">
+                  <i class="glyphicon glyphicon-ban-circle"></i>
+                  Tout annuler
+              </div>
+        </div>
+      <div class="row"  id="total-progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+          <div class="progress-bar progress-bar-success" style="width:0%;" data-dz-uploadprogress></div>
+      </div>
+      <div class="table table-striped" class="files" id="previews">
+        <div id="template" class="row file-row">
+          <!-- This is used as the file preview template -->
+          <div class="col-xs-3 col-md-3">
+              <span class="preview"><img data-dz-thumbnail /></span>
+          </div>
+          <div class="col-xs-6 col-md-6" id="dropzone-name">
+            <div class="row">
+              <p class="name" data-dz-name></p>
+              <strong class="error text-danger" data-dz-errormessage></strong>
+            </div>
+            <div class="row" id="dropzone-size">
+                <p class="size" data-dz-size></p>
+                <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                  <div class="progress-bar progress-bar-success" style="width:0%;" data-dz-uploadprogress></div>
+                </div>
+            </div>
+          </div>
+          <div class="col-xs-3 col-md-3" id="dropzone-actions">
+            <div class="row" id="dropzone-televerser">
+              <button class="btn btn-primary start">
+                  <i class="glyphicon glyphicon-upload"></i>
+                  <span>Téléverser</span>
+              </button>
+            </div>
+            <div class="row" id="dropzone-annuler">
+              <button data-dz-remove class="btn btn-warning cancel">
+                  <i class="glyphicon glyphicon-ban-circle"></i>
+                  <span>Annuler</span>
+              </button>
+            </div>
+            <div class="row" id="dropzone-supprimer">
+              <button data-dz-remove class="btn btn-danger delete" id="dropzone-supprimer">
+                <i class="glyphicon glyphicon-trash"></i>
+                <span>Supprimer</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row" id="dropzone-fermer">
+        <button type="button" class="btn btn-warning" data-dismiss="modal">Fermer</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block javascripts %}
+<script src="{{ asset('assets/js/jquery.mCustomScrollbar.concat.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('assets/js/jquery-ui.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('assets/js/driveStore.js') }}" type="text/javascript"></script>
+<script src="{{ asset('assets/js/dropzone.js') }}" type="text/javascript"></script>
+<script src="{{ asset('assets/js/functions.js') }}" type="text/javascript"></script>
+<script src="{{ asset('assets/js/jquery-1.4.2.js') }}" type="text/javascript"></script>
+<script src="{{ asset('assets/js/ninja-slider.js') }}" type="text/javascript"></script>
+
+
+{% endblock %}

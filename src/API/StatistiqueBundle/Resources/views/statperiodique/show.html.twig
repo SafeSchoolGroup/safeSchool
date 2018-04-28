@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Détail de la statistique périodique</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>N° d'ordre</th>
+                <td>{{ statPeriodique.id }}</td>
+            </tr>
+            <tr>
+                <th>Période</th>
+                <td>{{ statPeriodique.periode }}</td>
+            </tr>
+            <tr>
+                <th>Effectif total</th>
+                <td>{{ statPeriodique.effectifTotal }}</td>
+            </tr>
+            <tr>
+                <th>Moyenne</th>
+                <td>{{ statPeriodique.moyenne }}</td>
+            </tr>
+            <tr>
+                <th>Nombre d'apprenants ayant la moyenne</th>
+                <td>{{ statPeriodique.nombreApprenantAyantMoyenne }}</td>
+            </tr>
+            <tr>
+                <th>Année scolaire</th>
+                <td>{{ statPeriodique.anneeScolaire }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('statperiodique_index') }}">Retourner à la liste des statistiques périodiques</a>
+        </li>
+        <li>
+            <a href="{{ path('statperiodique_edit', { 'id': statPeriodique.id }) }}">Modifier</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Supprimer">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

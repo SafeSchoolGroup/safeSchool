@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Information</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ information.id }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ information.titre }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ information.description }}</td>
+            </tr>
+            <tr>
+                <th>Datepublication</th>
+                <td>{% if information.datePublication %}{{ information.datePublication|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Typeinformation</th>
+                <td>{{ information.typeInformation }}</td>
+            </tr>
+            <tr>
+                <th>Createdat</th>
+                <td>{% if information.createdAt %}{{ information.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Updatedat</th>
+                <td>{% if information.updatedAt %}{{ information.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Anneescolaire</th>
+                <td>{{ information.anneeScolaire }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('api_info_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('api_info_edit', { 'id': information.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

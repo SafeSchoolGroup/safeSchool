@@ -19,6 +19,36 @@ api_etablissement:
     resource: "@APIEtablissementBundle/Resources/config/routing.yml"
     prefix:   /etablissement
 
+#information
+api_info:
+    resource: "@APIInfoBundle/Resources/config/routing.yml"
+    prefix:   /information
+
+#mediatheque
+api_mediatheque:
+    resource: "@APIMediathequeBundle/Resources/config/routing.yml"
+    prefix:   /mediatheque
+
+#note
+api_note:
+    resource: "@APINoteBundle/Resources/config/routing.yml"
+    prefix:   /note
+
+#statistiques
+api_statistique:
+    resource: "@APIStatistiqueBundle/Resources/config/routing.yml"
+    prefix:   /statistique
+
+#programme cours
+api_programme:
+    resource: "@APIProgrammeBundle/Resources/config/routing.yml"
+    prefix:   /programme/{id_etablissement}
+
+#exploit
+api_exploit:
+    resource: "@APIExploitBundle/Resources/config/routing.yml"
+    prefix:   /exploit/{id_user}
+
 # FOSUser Bundle resources
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"

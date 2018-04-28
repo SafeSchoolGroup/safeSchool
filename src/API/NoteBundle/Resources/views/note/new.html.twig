@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Note creation</h1>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+
+
+        {% if ets.niveauEtablissement == 'Secondaire' %}
+          <label for="type">Type:</label>
+          <select class="" name="type">
+            <option value="intero">Interogation</option>
+            <option value="devoir">Devoir</option>
+            <option value="compo">Composition</option>
+          </select>
+
+          {% elseif ets.niveauEtablissement == 'universite' %}
+
+            <label for="type">Type:</label>
+            <select class="" name="type">
+              <option value="intero">Interogation</option>
+              <option value="devoir">Devoir</option>
+              <option value="compo">Travaux Pratique</option>
+            </select>
+          {% endif %}
+
+        <label for="apprenant">Choisissez un Apprenant</label>
+        <select class="" name="apprenant">
+          {% for ca in apprenants_of_sous_classe %}
+            <option value="{{ca.etablissementApprenant.apprenant.id}}">{{ca.etablissementApprenant.apprenant.nom}}</option>
+          {% endfor %}
+        </select>
+        <br>
+        <label for="matiere">Choisissez une Matiere</label>
+        <select class="" name="matiere">
+          {% for m in matieres_of_classe %}
+            <option value="{{m.id}}">{{m.libelleMatiere}}</option>
+          {% endfor %}
+        </select>
+
+        <input type="submit" value="Create" />
+    {{ form_end(form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('api_note_index') }}">Back to the list</a>
+        </li>
+    </ul>
+{% endblock %}

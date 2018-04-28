@@ -1,0 +1,7 @@
+api_examen:
+    resource: "@APIStatistiqueBundle/Resources/config/routing/examen.yml"
+    prefix:   /examen
+
+api_stat_periodique:
+    resource: "@APIStatistiqueBundle/Resources/config/routing/stat_periodique.yml"
+    prefix:   /stat_periodique
