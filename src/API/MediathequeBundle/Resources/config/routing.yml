@@ -1,0 +1,67 @@
+api_mediatheque_homepage:
+    path:     /
+    defaults: { _controller: "APIMediathequeBundle:DriveStore:index" }
+    methods:  [GET, POST]
+
+api_mediatheque_check:
+    path:     /check/{path}
+    defaults: { _controller: "APIMediathequeBundle:DriveStore:check" }
+    methods:  [GET, POST]
+    requirements:
+            path: .+
+
+api_mediatheque_find:
+    path:     /find/{path}
+    defaults: { _controller: "APIMediathequeBundle:DriveStore:find" }
+    methods:  [GET, POST]
+    requirements:
+            path: .+
+
+api_mediatheque_create_path:
+    path:     /create/{path}
+    defaults: { _controller: "APIMediathequeBundle:DriveStore:create" }
+    methods:  [GET, POST]
+    requirements:
+            path: .+
+
+api_mediatheque_remove:
+    path:     /remove/{path}
+    defaults: { _controller: "APIMediathequeBundle:DriveStore:remove" }
+    methods:  [GET, POST]
+    requirements:
+            path: .+
+
+api_mediatheque_copy:
+    path:     /copy/{path}
+    defaults: { _controller: "APIMediathequeBundle:DriveStore:copy" }
+    methods:  [GET,POST]
+    requirements:
+            path: .+
+
+api_mediatheque_move:
+    path:     /move/{path}
+    defaults: { _controller: "APIMediathequeBundle:DriveStore:move" }
+    methods:  [GET,POST]
+    requirements:
+            path: .+
+
+api_mediatheque_rename:
+    path:     /rename/{path}
+    defaults: { _controller: "APIMediathequeBundle:DriveStore:rename" }
+    methods:  [GET, POST]
+    requirements:
+            path: .+
+
+api_mediatheque_restaure:
+    path:     /restaure/{path}
+    defaults: { _controller: "APIMediathequeBundle:DriveStore:restaure" }
+    methods:  [GET, POST]
+    requirements:
+            path: .+
+
+api_mediatheque_uploader:
+    path:     /upload
+    defaults: { _controller: "APIMediathequeBundle:DriveStore:driveFilesUpload" }
+    methods:  [GET, POST]
+    requirements:
+            path: .+

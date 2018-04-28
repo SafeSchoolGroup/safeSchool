@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Liste des statistiques périodiques</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>N° d'ordre</th>
+                <th>Période</th>
+                <th>Effectif total</th>
+                <th>Moyenne</th>
+                <th>Nombre d'apprenants  ayant la moyenne</th>
+                <th>Année scolaire</th>
+                <th>Opérations</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for statPeriodique in statPeriodiques %}
+            <tr>
+                <td><a href="{{ path('statperiodique_show', { 'id': statPeriodique.id }) }}">{{ statPeriodique.id }}</a></td>
+                <td>{{ statPeriodique.periode }}</td>
+                <td>{{ statPeriodique.effectifTotal }}</td>
+                <td>{{ statPeriodique.moyenne }}</td>
+                <td>{{ statPeriodique.nombreApprenantAyantMoyenne }}</td>
+                <td>{{ statPeriodique.anneeScolaire }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('statperiodique_show', { 'id': statPeriodique.id }) }}">Afficher</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('statperiodique_edit', { 'id': statPeriodique.id }) }}">Modifier</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('statperiodique_new') }}">Publier une nouvelle statistique périodique</a>
+        </li>
+    </ul>
+{% endblock %}

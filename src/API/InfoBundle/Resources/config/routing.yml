@@ -1,0 +1,60 @@
+api_info_index:
+    path:     /
+    defaults: { _controller: "APIInfoBundle:Information:index" }
+    methods:  GET
+
+api_info_show:
+    path:     /{id}/show
+    defaults: { _controller: "APIInfoBundle:Information:show" }
+    methods:  GET
+
+api_info_new:
+    path:     /new
+    defaults: { _controller: "APIInfoBundle:Information:new" }
+    methods:  [GET, POST]
+
+api_info_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "APIInfoBundle:Information:edit" }
+    methods:  [GET, POST]
+
+api_info_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "APIInfoBundle:Information:delete" }
+    methods:  DELETE
+
+
+api_info_avis_index:
+    path:     /avis
+    defaults: { _controller: "APIInfoBundle:Avis:index" }
+    methods:  GET
+
+api_info_avis_show:
+    path:     /avis/{id}/show
+    defaults: { _controller: "APIInfoBundle:Avis:show" }
+    methods:  GET
+
+api_info_avis_new:
+    path:     avis/new
+    defaults: { _controller: "APIInfoBundle:Avis:new" }
+    methods:  [GET, POST]
+
+api_info_avis_edit:
+    path:     /avis/{id}/edit
+    defaults: { _controller: "APIInfoBundle:Avis:edit" }
+    methods:  [GET, POST]
+
+api_info_avis_delete:
+    path:     /avis/{id}/delete
+    defaults: { _controller: "APIInfoBundle:Avis:delete" }
+    methods:  DELETE
+
+api_info_by_destinataire:
+    path:     /{code}
+    defaults: { _controller: "APIInfoBundle:Information:getInfoByDestinataire" }
+    methods:  [GET, POST]
+
+api_info_of_ets:
+    path:     /{etablissementId}/{max}/{type}
+    defaults: { _controller: "APIInfoBundle:Information:getInfosOfEtablissement",type:"null" }
+    methods:  [GET, POST]

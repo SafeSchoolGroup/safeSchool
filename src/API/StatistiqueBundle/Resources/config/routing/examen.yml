@@ -1,0 +1,29 @@
+examen_index:
+    path:     /
+    defaults: { _controller: "APIStatistiqueBundle:Examen:index" }
+    methods:  GET
+
+examen_show:
+    path:     /{id}/show
+    defaults: { _controller: "APIStatistiqueBundle:Examen:show" }
+    methods:  GET
+
+examen_new:
+    path:     /new
+    defaults: { _controller: "APIStatistiqueBundle:Examen:new" }
+    methods:  [GET, POST]
+
+examen_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "APIStatistiqueBundle:Examen:edit" }
+    methods:  [GET, POST]
+
+examen_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "APIStatistiqueBundle:Examen:delete" }
+    methods:  DELETE
+
+examen_viewer:
+    path:     /examenEts/{ets}
+    defaults: { _controller: "APIStatistiqueBundle:Examen:getExamenOfEts" }
+    methods:  [GET, POST]

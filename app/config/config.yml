@@ -1,6 +1,6 @@
 imports:
 #- { resource: parameters.php }	
-#- { resource: parameters.yml }
+    - { resource: parameters.yml }
     - { resource: security.yml }
     - { resource: services.yml }
 
@@ -10,6 +10,11 @@ parameters:
     locale: en
     infos: '%kernel.root_dir%/../web/uploads/docs'
     etablissements_directory: '%kernel.root_dir%/../web/uploads/etablissement'
+    files_directory: '%kernel.root_dir%/../web/uploads/documents'
+    exploits_files_directory: '%kernel.root_dir%/../web/uploads/dossiers-exploit'
+    inscription_files_directory: '%kernel.root_dir%/../web/uploads/dossiers'
+    informations_directory: '%kernel.root_dir%/../web/uploads/informations'
+    driveStore_dir: ""
 framework:
     #esi:             ~
     translator:      { fallbacks: ["%locale%"] }

@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Note</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ note.id }}</td>
+            </tr>
+            <tr>
+                <th>Note</th>
+                <td>{{ note.note }}</td>
+            </tr>
+            <tr>
+                <th>Typenote</th>
+                <td>{{ note.typeNote }}</td>
+            </tr>
+            <tr>
+                <th>Datenote</th>
+                <td>{% if note.dateNote %}{{ note.dateNote|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('api_note_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('api_note_edit', { 'id': note.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

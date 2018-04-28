@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Détail d'un examen</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>N° d'ordre</th>
+                <td>{{ examan.id }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ examan.titre }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ examan.description }}</td>
+            </tr>
+            <tr>
+                <th>Date de publication</th>
+                <td>{% if examan.createdAt %}{{ examan.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Date de dernière mise à jout</th>
+                <td>{% if examan.updatedAt %}{{ examan.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Année scolaire</th>
+                <td>{{ examan.anneeScolaire }}</td>
+            </tr>
+            <tr>
+                <th>Nombre de candidats présentés</th>
+                <td>{{ examan.nombrePresente }}</td>
+            </tr>
+            <tr>
+                <th>Nombre de candidats admis</th>
+                <td>{{ examan.nombreAdmis }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('examen_index') }}">Retourner à la liste des examens</a>
+        </li>
+        <li>
+            <a href="{{ path('examen_edit', { 'id': examan.id }) }}">Modifier</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Supprimer">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Liste des examens</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>N° d'ordre</th>
+                <th>Titre</th>
+                <th>Description</th>
+                <th>Date de publication</th>
+                <th>Date de dernière mise à jout</th>
+                <th>Année scolaire</th>
+                <th>Nombre de candidats présentés</th>
+                <th>Nombre de candidats admis</th>
+                <th>Opérations</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for examan in examens %}
+            <tr>
+                <td><a href="{{ path('examen_show', { 'id': examan.id }) }}">{{ examan.id }}</a></td>
+                <td>{{ examan.titre }}</td>
+                <td>{{ examan.description }}</td>
+                <td>{% if examan.createdAt %}{{ examan.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if examan.updatedAt %}{{ examan.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ examan.anneeScolaire }}</td>
+                <td>{{ examan.nombrePresente }}</td>
+                <td>{{ examan.nombreAdmis }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('examen_show', { 'id': examan.id }) }}">Afficher</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('examen_edit', { 'id': examan.id }) }}">Modifier</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('examen_new') }}">Publier un nouveau examen</a>
+        </li>
+    </ul>
+{% endblock %}
