@@ -47,6 +47,11 @@ class Apprenant extends PersonneSuperClass
     private $exploits;
 
     /**
+     * @var \SafeSchool\UserBundle\Entity\User
+     */
+    private $user;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -241,4 +246,38 @@ class Apprenant extends PersonneSuperClass
         return $this->exploits;
     }
 
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \SafeSchool\UserBundle\Entity\User $user
+     *
+     * @return Apprenant
+     */
+    public function setUser(\SafeSchool\UserBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \SafeSchool\UserBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
 }

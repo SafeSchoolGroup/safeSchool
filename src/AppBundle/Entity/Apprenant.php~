@@ -246,27 +246,4 @@ class Apprenant extends PersonneSuperClass
         return $this->exploits;
     }
 
-    /**
-     * Set user
-     *
-     * @param \SafeSchool\UserBundle\Entity\User $user
-     *
-     * @return Apprenant
-     */
-    public function setUser(\SafeSchool\UserBundle\Entity\User $user = null)
-    {
-        $this->user = $user;
-
-        return $this;
-    }
-
-    /**
-     * Get user
-     *
-     * @return \SafeSchool\UserBundle\Entity\User
-     */
-    public function getUser()
-    {
-        return $this->user;
-    }
 }

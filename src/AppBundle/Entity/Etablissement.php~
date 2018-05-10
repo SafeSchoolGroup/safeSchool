@@ -890,4 +890,28 @@ class Etablissement
     {
         return $this->dirigeants;
     }
+
+    /**
+     * Set indication
+     *
+     * @param string $indication
+     *
+     * @return Etablissement
+     */
+    public function setIndication($indication)
+    {
+        $this->indication = $indication;
+
+        return $this;
+    }
+
+    /**
+     * Get indication
+     *
+     * @return string
+     */
+    public function getIndication()
+    {
+        return $this->indication;
+    }
 }

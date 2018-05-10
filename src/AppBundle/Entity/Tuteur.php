@@ -25,6 +25,11 @@ class Tuteur extends PersonneSuperClass
     private $lienParente;
 
     /**
+     * @var \SafeSchool\UserBundle\Entity\User
+     */
+    private $user;
+
+    /**
      * @var \Doctrine\Common\Collections\Collection
      */
     private $apprenants;
@@ -118,11 +123,7 @@ class Tuteur extends PersonneSuperClass
     {
         return $this->apprenants;
     }
-    /**
-     * @var \SafeSchool\UserBundle\Entity\User
-     */
-    private $user;
-
+    
 
     /**
      * Set user
@@ -146,5 +147,15 @@ class Tuteur extends PersonneSuperClass
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
     }
 }

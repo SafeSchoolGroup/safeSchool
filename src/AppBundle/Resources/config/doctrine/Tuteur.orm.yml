@@ -19,14 +19,11 @@ AppBundle\Entity\Tuteur:
         apprenants:
             targetEntity: Apprenant
             mappedBy: tuteur
-<<<<<<< HEAD
-
+            
     oneToOne:
           user:
             targetEntity: \SafeSchool\UserBundle\Entity\User
             mappedBy: tuteur
             cascade: ['persist']
-=======
             
->>>>>>> e3cf71c865805064fd6da76c0057bd222032bc35
     lifecycleCallbacks: {  }

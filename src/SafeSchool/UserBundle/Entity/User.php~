@@ -27,8 +27,6 @@ class User extends BaseUser
     private $etablissementVotes = null;
 
     /**
-<<<<<<< HEAD
-=======
      * @var int
      * Apprenant , tuteur or dirigeant id
      */
@@ -40,7 +38,6 @@ class User extends BaseUser
     private $etablissementId;
 
     /**
->>>>>>> e3cf71c865805064fd6da76c0057bd222032bc35
      * Constructor
      *
      */
@@ -119,17 +116,6 @@ class User extends BaseUser
     }
 
     /**
-<<<<<<< HEAD
-     * Set firstLogin
-     *
-     * @param \DateTime $firstLogin
-     *
-     * @return User
-     */
-    public function setFirstLogin($firstLogin)
-    {
-        $this->firstLogin = $firstLogin;
-=======
      * Set idEtablissement
      *
      * @param integer $idEtablissement
@@ -139,21 +125,11 @@ class User extends BaseUser
     public function setIdEtablissement($idEtablissement)
     {
         $this->idEtablissement = $idEtablissement;
->>>>>>> e3cf71c865805064fd6da76c0057bd222032bc35
 
         return $this;
     }
 
     /**
-<<<<<<< HEAD
-     * Get firstLogin
-     *
-     * @return \DateTime
-     */
-    public function getFirstLogin()
-    {
-        return $this->firstLogin;
-=======
      * Get idEtablissement
      *
      * @return integer
@@ -161,6 +137,55 @@ class User extends BaseUser
     public function getIdEtablissement()
     {
         return $this->idEtablissement;
->>>>>>> e3cf71c865805064fd6da76c0057bd222032bc35
     }
+
+    /**
+     * Set etablissementId
+     *
+     * @param integer $etablissementId
+     *
+     * @return User
+     */
+    public function setEtablissementId($etablissementId)
+    {
+        $this->etablissementId = $etablissementId;
+
+        return $this;
+    }
+
+    /**
+     * Get etablissementId
+     *
+     * @return integer
+     */
+    public function getEtablissementId()
+    {
+        return $this->etablissementId;
+    }
+
+    /**
+     * Set ownerId
+     *
+     * @param integer $ownerId
+     *
+     * @return User
+     */
+    public function setOwnerId($ownerId)
+    {
+        $this->ownerId = $ownerId;
+
+        return $this;
+    }
+
+    /**
+     * Get ownerId
+     *
+     * @return integer
+     */
+    public function getOwnerId()
+    {
+        return $this->ownerId;
+    }
+
+
 }

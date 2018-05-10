@@ -48,6 +48,8 @@ class EtablissementApprenant
     public function __construct()
     {
         $this->apprenantCursus = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->createdAt = new \DateTime('now');
+        $this->updatedAt = new \DateTime('now');
     }
 
     /**

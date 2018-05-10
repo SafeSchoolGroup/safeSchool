@@ -61,4 +61,14 @@ class Prof extends PersonneSuperClass
     {
         return $this->profEtablissements;
     }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 }

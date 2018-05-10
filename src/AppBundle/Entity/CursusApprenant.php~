@@ -79,6 +79,8 @@ class CursusApprenant
     {
         $this->notes = new \Doctrine\Common\Collections\ArrayCollection();
         $this->moyennePeriodiqueApprenants = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->createdAt = new \DateTime('now');
+        $this->updatedAt = new \DateTime('now');
     }
 
     /**
