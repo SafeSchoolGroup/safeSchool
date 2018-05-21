@@ -1,15 +1,12 @@
 # This file is auto-generated during the composer install
 parameters:
-    database_host: 127.0.0.1
-    database_port: null
-    database_name: db_safeschool
-    database_user: root
-    database_password: 'bola#2016'
-    mailer_transport: smtp
+    database_host: 
+    database_port: 
+    database_name: 
+    database_user: 
+    database_password: ''
+    mailer_transport: 
     mailer_host: 127.0.0.1
     mailer_user: null
     mailer_password: null
     secret: ThisTokenIsNotSoSecretChangeIt
-
-fos_user:
-    db_driver: orm
