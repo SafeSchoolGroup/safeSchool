@@ -2,12 +2,13 @@ safe_school_user:
     resource: "@SafeSchoolUserBundle/Resources/config/routing.yml"
     prefix:   /user
 
+ss_app:
+    resource: "@AppBundle/Resources/config/routing.yml"
+
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
 
-ss_app:
-    resource: "@AppBundle/Resources/config/routing.yml"
 
 #inscription
 api_inscription:
